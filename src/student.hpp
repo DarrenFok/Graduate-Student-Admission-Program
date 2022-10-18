@@ -15,15 +15,15 @@ public:
 	void setFirstName(string firstName);
 	void setLastName(string lastName);
 	void setCGPA(float CGPA);
-	void setResarch(int research);
+	void setResearch(int research);
 	void setID(int studentID);
 
 	//get
-	string getFirstName();
-	string getLastName();
-	float getCGPA();
-	int getResearch();
-	int getID();
+	string getFirstName() const;
+	string getLastName() const;
+	float getCGPA() const;
+	int getResearch() const;
+	int getID() const;
 
 	//compare friend functions, either returns less, equal or greater
 	friend string compareCGPA(const Student& student1, const Student& student2);
@@ -47,7 +47,7 @@ class DomesticStudent : public Student{
 public:
 	//province
 	void SetProvince(string province);
-	string getProvince();
+	string getProvince() const;
 
 private:
 	string province;
