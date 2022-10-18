@@ -41,33 +41,3 @@ private:
 	int studentID;
 
 };
-
-//DomesticStudent child class of Student
-class DomesticStudent : public Student{
-public:
-	//province
-	void SetProvince(string province);
-	string getProvince() const;
-
-private:
-	string province;
-
-};
-
-class InternationalStudent : public Student{
-public:
-private:
-	string country;
-	int TOEFL;
-
-};
-
-class TOEFLScore{
-public:
-private:
-	int reading;
-	int listening;
-	int speaking;
-	int writing;
-	int total;
-};
