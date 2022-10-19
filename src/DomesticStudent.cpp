@@ -1,11 +1,13 @@
 #include "DomesticStudent.hpp"
+#include <iostream>
+using namespace std;
 
 //overload <<
-std::ostream& operator<<(std::ostream& os, const DomesticStudent& stu){
+std::ostream& operator<<(std::ostream& os, const DomesticStudent& inputDS){
 	//Example: Domestic Student #: 301461164, Fok, Darren, Province: BC, CGPA: 3.14, Research Score: 25
 	//output
-	os << "Domestic Student #: " << stu.getID() << ", " << stu.getLastName << ", " << stu.getFirstName << ", Province: " <<
-			stu.getProvince << ", CGPA: " << stu.getCGPA << ", Research Score: " << stu.getResearch << std::endl;
+	os << "Domestic Student #: " << inputDS.getID() << ", " << inputDS.getLastName() << ", " << inputDS.getFirstName() << ", Province: " <<
+			inputDS.getProvince() << ", CGPA: " << inputDS.getCGPA() << ", Research Score: " << inputDS.getResearch() << endl;
 
 	return os;
 }

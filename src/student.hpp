@@ -2,6 +2,7 @@
 using namespace std; //use namespace std
 #include <string> //you will have to use string in C++
 #include <iostream>
+using namespace std;
 
 class Student{
 public:
