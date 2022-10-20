@@ -20,3 +20,20 @@ void DomesticStudent::setProvince(string input){
 string DomesticStudent::getProvince() const{
 	return province;
 }
+
+//compare function
+string DomesticStudent::compareProvince(const DomesticStudent& DS1, const DomesticStudent& DS2){
+	if(DS1.province < DS2.province){
+		return "<";
+	}
+	else if(DS1.province == DS2.province){
+		return "==";
+	}
+	else if(DS1.province > DS2.province){
+		return ">";
+	}
+	else{
+		cout << "ERROR: DomesticStudent.compareProince";
+		exit(1);
+	}
+}

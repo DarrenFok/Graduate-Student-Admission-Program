@@ -10,6 +10,9 @@ public:
 	void setProvince(string province);
 	string getProvince() const;
 
+	//compare function
+	string compareProvince(const DomesticStudent& DS1, const DomesticStudent& DS2);
+
 private:
 	string province;
 

@@ -8,7 +8,7 @@ public:
 
 	//getter, setter
 	void setCountry(string input);
-	string getCountry();
+	string getCountry() const;
 
 	//compare
 	string compareCountry(const InternationalStudent& IS1, const InternationalStudent& IS2);
