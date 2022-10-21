@@ -4,7 +4,6 @@
 #include <fstream> //file processing
 #include <sstream> //formatted string processing
 #include <cstdlib> //atof and atoi
-#include "student.hpp"
 #include "stu_sort.hpp"
 
 /*I provide example code here to help you read the input

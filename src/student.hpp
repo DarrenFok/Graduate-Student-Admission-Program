@@ -2,6 +2,7 @@
 using namespace std; //use namespace std
 #include <string> //you will have to use string in C++
 #include <iostream>
+#include "toefl.hpp"
 using namespace std;
 
 class Student{
@@ -42,3 +43,44 @@ private:
 	int studentID;
 
 };
+
+//DomesticStudent child class of Student
+class DomesticStudent : public Student{
+public:
+	//overload <<
+	friend std::ostream& operator<<(std::ostream& os, const DomesticStudent& inputDS);
+
+	//province
+	void setProvince(string province);
+	string getProvince() const;
+
+	//compare function
+	string compareProvince(const DomesticStudent& DS1, const DomesticStudent& DS2);
+
+private:
+	string province;
+
+};
+
+class InternationalStudent : public Student{
+public:
+	//overload the operator
+	friend std::ostream& operator<<(std::ostream& os, const InternationalStudent& inputIS);
+
+	//getter, setter
+	void setCountry(string input);
+	string getCountry() const;
+
+	//compare
+	string compareCountry(const InternationalStudent& IS1, const InternationalStudent& IS2);
+
+	void setTOEFL(const toefl input);
+	toefl& getTOEFL() const;
+
+
+private:
+	string country;
+	toefl TOEFL;
+
+};
+
