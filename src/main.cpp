@@ -58,13 +58,13 @@ int main(){
     //get cpga separated by comma, and convert string to float
     getline(ss, s_cgpa, ',');
     cgpa = atof(s_cgpa.c_str());
-    
+
     //get researchScore separated by comma, and convert it to int
     getline(ss, s_researchScore, ',');
     researchScore = atoi(s_researchScore.c_str());
 
     //print the student info to the screen
-    cout << "Domestic student " << stu_count << " " << firstName << " " 
+    cout << "Domestic student " << stu_count << " " << firstName << " "
 	 << lastName << " from " << province << " province has cgpa of "
 	 << cgpa << ", and research score of " << researchScore << endl;
 
