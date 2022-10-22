@@ -13,6 +13,21 @@ int main(){
 	string menuChoice; //to choose domestic, international, exit
     string menuChoice2; //to choose what type of sort
 
+    //read .txt files
+    ifstream domesticFile("domestic-stu.txt");
+    ifstream internationalFile("international-stu.txt");
+
+    //check if files read properly
+    if(!domesticFile.is_open()) {
+        cout << "ERROR: Unable to open file domestic-stu.txt" << endl;
+        return -1;
+    }
+    if(!internationalFile.is_open()){
+        cout << "ERROR: Unable to open file international-stu.txt";
+        return -1;
+    }
+
+    //menu - loops until user wants to exit
     do{
         //UI asking for user input
         cout << "Welcome to the Graduate Student Admission Program\n";
