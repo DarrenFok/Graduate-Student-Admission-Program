@@ -1,0 +1,6 @@
+# ninja log v5
+10	100	6881695333220003	CMakeFiles/Project.dir/src/toefl.cpp.obj	cf0483833cc8ea78
+6	416	6881695336382874	CMakeFiles/Project.dir/src/main.cpp.obj	78662bd42c71fe69
+446	598	6881695338184509	Project.exe	29b541954a6586c1
+14	429	6881695336523001	CMakeFiles/Project.dir/src/student.cpp.obj	83ddf2cd1f0582ff
+0	446	6881695336683145	CMakeFiles/Project.dir/src/stu_sort.cpp.obj	4b794d148437d55b

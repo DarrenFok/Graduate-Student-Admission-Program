@@ -15,7 +15,7 @@ int studentSort::partition1(vector<Student> array, int low, int high){ //for las
 
 	for(int j = low; j <= high-1; j++){ //loop from low to high
 		//if current iteration is less than pivot, increment low AND swap elements at i and j
-		if(array[j].getLastName() < pivot.getLastName()){
+		if(compareLastName(pivot, array[j]) == "<"){
 			i++; //increment index of smaller element
 			swap(array[i], array[j]);
 		}
