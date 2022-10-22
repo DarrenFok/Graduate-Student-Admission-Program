@@ -32,3 +32,33 @@ void studentSort::sortLastName(vector<Student> array, int first, int last){
 		sortLastName(array, pivot+1, last);
 	}
 }
+
+//sort firstname
+void studentSort::sortFirstName(vector<Student> array, int first, int last){
+	if(first < last){
+		//partition array
+		int pivot = partition1(array, first, last);
+		sortFirstName(array, first, pivot-1);
+		sortFirstName(array, pivot+1, last);
+	}
+}
+
+//sort cgpa
+void studentSort::sortCGPA(vector<Student> array, int first, int last){
+    if(last < first){
+		//partition array
+		int pivot = partition1(array, first, last);
+		sortLastName(array, first, pivot-1);
+		sortLastName(array, pivot+1, last);
+	}
+}
+
+//sort research score
+void studentSort::sortResearchScore(vector<Student> array, int first, int last){
+    if(last < first){
+		//partition array
+		int pivot = partition1(array, first, last);
+		sortLastName(array, first, pivot-1);
+		sortLastName(array, pivot+1, last);
+	}
+}
