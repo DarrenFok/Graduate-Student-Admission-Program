@@ -3,6 +3,16 @@
 #include <iostream>
 #include <string>
 
+//Default constructor
+Student::Student(){
+	firstName = "FirstName";
+	lastName = "LastName";
+	CGPA = 4.33;
+	research = 100;
+	studentID = 301123456;
+}
+
+//Non-default constructor
 Student::Student(string inputFirstName, string inputLastName, float inputCGPA, int inputResearch, int inputStudentID){
 	firstName = inputFirstName;
 	lastName = inputLastName;

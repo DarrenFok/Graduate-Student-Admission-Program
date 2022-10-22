@@ -2,7 +2,7 @@
 #include "stu_sort.hpp"
 
 void studentSort::swap(Student& input1, Student& input2){
-	Student temp; //temp student object to hold info
+	Student temp;
 	temp = input1;
 	input1 = input2;
 	input2 = temp;
