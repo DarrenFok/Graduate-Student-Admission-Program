@@ -34,6 +34,21 @@ void studentSort::sortLastName(vector<Student> array, int first, int last){
 }
 
 //sort firstname
+int studentSort::partition2(vector<Student> array, int low, int high){ //for FirstName sort
+	Student pivot = array[high]; //pivot element
+	int i = (low-1); //index of smaller element
+
+	for(int j = low; j <= high-1; j++){ //loop from low to high
+		//if current iteration is less than pivot, increment low AND swap elements at i and j
+		if(array[j].getFirstName() < pivot.getFirstName()){
+			i++; //increment index of smaller element
+			swap(array[i], array[j]);
+		}
+	}
+	swap(array[i+1], array[high]);
+	return (i+1);
+}
+
 void studentSort::sortFirstName(vector<Student> array, int first, int last){
 	if(first < last){
 		//partition array
