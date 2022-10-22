@@ -48,7 +48,7 @@ int main(){
                     continue;
                 }
                 else if(stoi(menuChoice2) > 5 || stoi(menuChoice2) < 0){ //check for valid numbers only
-                    cout << "ERROR: Invalid number, please input 0-2\n";
+                    cout << "ERROR: Invalid number, please input 0-5\n";
                     continue;
                 }
                 else{
@@ -93,7 +93,7 @@ int main(){
                     continue;
                 }
                 else if(stoi(menuChoice2) > 5 || stoi(menuChoice2) < 0){ //check for valid numbers only
-                    cout << "ERROR: Invalid number, please input 0-2\n";
+                    cout << "ERROR: Invalid number, please input 0-5\n";
                     continue;
                 }
                 else{
