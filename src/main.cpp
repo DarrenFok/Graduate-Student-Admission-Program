@@ -10,7 +10,8 @@
 using namespace std;
 
 int main(){
-	string menuChoice;
+	string menuChoice; //to choose domestic, international, exit
+    string menuChoice2; //to choose what type of sort
 
     do{
         //UI asking for user input
@@ -31,8 +32,101 @@ int main(){
             cout << "ERROR: Invalid number, please input 0-2\n";
             continue;
         }
+
+        else{ //if input is valid
+            if(menuChoice == "1"){ //domestic students
+                cout << "Please choose a way to sort Domestic Students: \n";
+                cout << "1) CGPA\n";
+                cout << "2) Research Score\n";
+                cout << "3) First Name\n";
+                cout << "4) Last Name\n";
+                cout << "5) Overall Sort (Research Score -> CGPA -> Province\n";
+                cin >> menuChoice2;
+
+                if(functions::isNumerical(menuChoice2) == false){ //check for number inputs only
+                    cout << "ERROR: Invalid input, numbers accepted only\n";
+                    continue;
+                }
+                else if(stoi(menuChoice2) > 5 || stoi(menuChoice2) < 0){ //check for valid numbers only
+                    cout << "ERROR: Invalid number, please input 0-2\n";
+                    continue;
+                }
+                else{
+                    if(menuChoice2 == "1"){
+                        cout << "Sorting by CGPA...\n";
+                        //sort by CGPA
+                        //print list
+                    }
+                    else if(menuChoice2 == "2"){
+                        cout << "Sorting by Research Score...\n";
+                        //sort by research score
+                        //print list
+                    }
+                    else if(menuChoice2 == "3"){
+                        cout << "Sorting by First Name...\n";
+                        //sort by first name
+                        //print list
+                    }
+                    else if(menuChoice2 == "4"){
+                        cout << "Sorting by Last Name...\n";
+                        //sort by last name
+                        //print list
+                    }
+                    else if(menuChoice2 == "5"){
+                        cout << "Sorting by overall attributes...\n";
+                        //overall sort
+                        //print list
+                    }
+                }
+            }
+            else if(menuChoice == "2"){ //international students
+                cout << "Please choose a way to sort International Students: \n";
+                cout << "1) CGPA\n";
+                cout << "2) Research Score\n";
+                cout << "3) First Name\n";
+                cout << "4) Last Name\n";
+                cout << "5) Overall Sort (Research Score -> CGPA -> Country\n";
+                cin >> menuChoice2;
+
+                if(functions::isNumerical(menuChoice2) == false){ //check for number inputs only
+                    cout << "ERROR: Invalid input, numbers accepted only\n";
+                    continue;
+                }
+                else if(stoi(menuChoice2) > 5 || stoi(menuChoice2) < 0){ //check for valid numbers only
+                    cout << "ERROR: Invalid number, please input 0-2\n";
+                    continue;
+                }
+                else{
+                    if(menuChoice2 == "1"){
+                        cout << "Sorting by CGPA...\n";
+                        //sort by CGPA
+                        //print list
+                    }
+                    else if(menuChoice2 == "2"){
+                        cout << "Sorting by Research Score...\n";
+                        //sort by research score
+                        //print list
+                    }
+                    else if(menuChoice2 == "3"){
+                        cout << "Sorting by First Name...\n";
+                        //sort by first name
+                        //print list
+                    }
+                    else if(menuChoice2 == "4"){
+                        cout << "Sorting by Last Name...\n";
+                        //sort by last name
+                        //print list
+                    }
+                    else if(menuChoice2 == "5"){
+                        cout << "Sorting by overall attributes...\n";
+                        //overall sort
+                        //print list
+                    }
+                }
+            }
+        }
     }
-    while(menuChoice != "0");
+    while(menuChoice != "0"); //exiting program if 0
     cout << "Thank you for using the program";
 
 
