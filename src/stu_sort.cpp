@@ -62,3 +62,27 @@ void studentSort::sortResearchScore(vector<Student> array, int first, int last){
 		sortLastName(array, pivot+1, last);
 	}
 }
+
+void studentSort::sortOverall(vector<Student> array ,int first, int last){
+    //sort ResearchScore first
+    if(last < first){
+		//partition array
+		int pivot = partition1(array, first, last);
+		sortLastName(array, first, pivot-1);
+		sortLastName(array, pivot+1, last);
+	}
+        //if the research score is the same sort cgpa
+        if(first == last){
+		//partition array
+		    int pivot = partition1(array, first, last);
+		    sortLastName(array, first, pivot-1);
+		    sortLastName(array, pivot+1, last);
+	    }   
+            //if cgpa the same sort by province/country
+            if(first == last){
+                //partition array
+		        int pivot = partition1(array, first, last);
+		        sortFirstName(array, first, pivot-1);
+		        sortFirstName(array, pivot+1, last);
+            }
+}
