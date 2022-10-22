@@ -12,24 +12,33 @@ using namespace std;
 int main(){
 	string menuChoice;
 
-	//UI asking for user input
-	cout << "Welcome to the Graduate Student Admission Program\n";
-	cout << "Choose Domestic or International Students by typing in respective number: \n";
-	cout << "1) Domestic Students\n";
-	cout << "2) International Students\n";
-	cout << "0) Exit program";
-	cin >> menuChoice;
+    do{
+        //UI asking for user input
+        cout << "Welcome to the Graduate Student Admission Program\n";
+        cout << "Choose Domestic or International Students by typing in respective number: \n";
+        cout << "1) Domestic Students\n";
+        cout << "2) International Students\n";
+        cout << "0) Exit program";
+        cin >> menuChoice;
 
-	//check user input for errors
-    if(functions::isNumerical(menuChoice)){ //check for number inputs only
-        cout << "ERROR: Invalid input, numbers accepted only";
+        //check user input for errors
+        if(functions::isNumerical(menuChoice) == false){ //check for number inputs only
+            cout << "ERROR: Invalid input, numbers accepted only\n";
+            continue;
+        }
+
+        else if(stoi(menuChoice) > 2 || stoi(menuChoice) < 0){ //check for valid numbers only
+            cout << "ERROR: Invalid number, please input 0-2\n";
+            continue;
+        }
     }
+    while(menuChoice != "0");
+    cout << "Thank you for using the program";
 
-    if(stoi(menuChoice) > 2 || stoi(menuChoice) < 0){ //check for valid numbers only
-        cout << "ERROR: Invalid number, please input 0-2";
-    }
 
-    
+
+
+
 
 
 
