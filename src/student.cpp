@@ -1,18 +1,7 @@
-//student.cpp to implement your classes
 #include "student.hpp"
 #include <iostream>
 #include <string>
 
-//Default constructor
-Student::Student(){
-	firstName = "FirstName";
-	lastName = "LastName";
-	CGPA = 4.33;
-	research = 100;
-	studentID = 301123456;
-}
-
-//Non-default constructor
 Student::Student(string inputFirstName, string inputLastName, float inputCGPA, int inputResearch, int inputStudentID){
 	firstName = inputFirstName;
 	lastName = inputLastName;
@@ -130,7 +119,6 @@ int Student::getID() const{
 	return studentID;
 }
 
-//DomesticStudent
 //overload <<
 std::ostream& operator<<(std::ostream& os, const DomesticStudent& inputDS){
 	//Example: Domestic Student #: 301461164, Fok, Darren, Province: BC, CGPA: 3.14, Research Score: 25
@@ -151,7 +139,7 @@ string DomesticStudent::getProvince() const{
 }
 
 //compare function
-string DomesticStudent::compareProvince(const DomesticStudent& DS1, const DomesticStudent& DS2){
+string compareProvince(const DomesticStudent& DS1, const DomesticStudent& DS2){
 	if(DS1.province < DS2.province){
 		return "<";
 	}
@@ -187,7 +175,7 @@ string InternationalStudent::getCountry() const{
 }
 
 //compare function
-string InternationalStudent::compareCountry(const InternationalStudent& IS1, const InternationalStudent& IS2){
+string compareCountry(const InternationalStudent& IS1, const InternationalStudent& IS2){
 	if(IS1.country < IS2.country){
 		return "<";
 	}
@@ -224,5 +212,3 @@ toefl& InternationalStudent::getTOEFL() const{
 	//after filling, then return entire object
 	return temp;
 }
-
-
