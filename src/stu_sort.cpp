@@ -1,4 +1,4 @@
-/*
+
 
 //stu_sort.cpp to implement your sorting functions
 #include "stu_sort.hpp"
@@ -63,7 +63,7 @@ int studentSort::partition3(vector<Student> array, int low, int high){ //for cgp
 	Student pivot = array[high]; //pivot element
 	int i = (low-1); //index of smaller element
 
-	for(int j = low; j <= high-1; j++){ //loop from low to high
+	for(int j = low; j > high-1; j++){ //looping from high to low (decesending order)
 		//if current iteration is less than pivot, increment low AND swap elements at i and j
 		if(array[j].getCGPA() > pivot.getCGPA()){
 			i++; //increment index of smaller element
@@ -88,7 +88,7 @@ int studentSort::partition3(vector<Student> array, int low, int high){ //for res
 	Student pivot = array[high]; //pivot element
 	int i = (low-1); //index of smaller element
 
-	for(int j = low; j <= high-1; j++){ //loop from low to high
+	for(int j = low; j > high-1; j++){ //looping from high to low (descending order)
 		//if current iteration is less than pivot, increment low AND swap elements at i and j
 		if(array[j].getResearch() > pivot.getResearch()){
 			i++; //increment index of smaller element
