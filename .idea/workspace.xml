@@ -68,11 +68,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -83,7 +78,10 @@
       <option name="presentableId" value="Default" />
       <updated>1666466209366</updated>
       <workItem from="1666466210736" duration="16224000" />
-      <workItem from="1666486394385" duration="4346000" />
+      <workItem from="1666486394385" duration="5821000" />
+      <workItem from="1666494020762" duration="3000" />
+      <workItem from="1666494034662" duration="30000" />
+      <workItem from="1666494243855" duration="729000" />
     </task>
     <servers />
   </component>
