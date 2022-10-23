@@ -107,7 +107,23 @@ int main() {
         internationalCount++;
         idCountInternational++;
     }
+    //before sort
+    for(int i = 0; i < domesticStudents.size(); i++){
+        cout << domesticStudents[i].getFirstName() <<  " " << domesticStudents[i].getLastName() << " " << domesticStudents[i].getProvince() << " " << domesticStudents[i].getCGPA() << " " <<
+        domesticStudents[i].getResearch() << endl;
+    }
 
+    //after sort
+    studentSort::sortResearchScoreDomestic(domesticStudents, 0, domesticStudents.size()-1);
+
+    cout << "\nNow sorting...\n";
+    for(int i = 0; i < domesticStudents.size(); i++){
+        cout << domesticStudents[i].getFirstName() <<  " " << domesticStudents[i].getLastName() << " " << domesticStudents[i].getProvince() << " " << domesticStudents[i].getCGPA() << " " <<
+             domesticStudents[i].getResearch() << endl;
+    }
+
+
+    /*
     cout << "Welcome to the Graduate Student Admission Program\n";
 
     //menu - loops until user wants to exit
@@ -228,7 +244,7 @@ int main() {
     }
     while(menuChoice != "0"); //exiting program if 0
     cout << "Thank you for using the program";
-
+    */
   return 0;
 
 }

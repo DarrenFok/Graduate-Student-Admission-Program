@@ -10,36 +10,37 @@ using namespace std;
 
 namespace studentSort{ //make it namespace, so that functions can be accessed outside
 	//lastName sort
-	int Domesticpartition1(vector<DomesticStudent> array, int first, int last); //from low to high
-    int Internationalpartition1(vector<InternationalStudent> array, int first, int last);
-	void sortLastNameDomestic(vector<DomesticStudent> array, int first, int last);
-    void sortLastNameInternational(vector<InternationalStudent> array, int first, int last);
+	int domesticPartition1(vector<DomesticStudent>& array, int first, int last); //from low to high
+    int internationalPartition1(vector < InternationalStudent >& array, int first, int last);
+	void sortLastNameDomestic(vector<DomesticStudent>& array, int first, int last); //works
+    void sortLastNameInternational(vector<InternationalStudent>& array, int first, int last);
 
     //firstname sort
-    int Domesticpartition2(vector<DomesticStudent> array, int low, int high);
-    int Internationalpartition2(vector<InternationalStudent> array, int low, int high);
-    void sortFirstNameDomestic(vector<DomesticStudent> array, int first, int last);
-    void sortFirstNameInternational(vector<InternationalStudent> array, int first, int last);
+    int domesticPartition2(vector < DomesticStudent >& array, int low, int high);
+    int internationalPartition2(vector < InternationalStudent >& array, int low, int high);
+    void sortFirstNameDomestic(vector<DomesticStudent>& array, int first, int last); //works
+    void sortFirstNameInternational(vector<InternationalStudent>& array, int first, int last);
 
     //cgpa sort
-    int Domesticpartition3(vector<DomesticStudent> array, int low, int high);
-    int Internationalpartition3(vector<InternationalStudent> array, int low, int high);
-    void sortCGPADomestic(vector<DomesticStudent> array, int first, int last);
-    void sortCGPAInternational(vector<InternationalStudent> array, int first, int last);
+    int domesticPartition3(vector<DomesticStudent>& array, int low, int high);
+    int internationalPartition3(vector<InternationalStudent>& array, int low, int high);
+    void sortCGPADomestic(vector<DomesticStudent>& array, int first, int last);
+    void sortCGPAInternational(vector<InternationalStudent>& array, int first, int last);
 
     //research score sort
-    int Domesticpartition4(vector<DomesticStudent> array, int low, int high);
-    int Internationalpartition4(vector<InternationalStudent> array, int low, int high);
-    void sortResearchScoreDomestic(vector<DomesticStudent> array, int first, int last);
-    void sortResearchScoreInternational(vector<InternationalStudent> array, int first, int last);
+    int domesticPartition4(vector < DomesticStudent >& array, int low, int high);
+    int internationalPartition4(vector < InternationalStudent >& array, int low, int high);
+    void sortResearchScoreDomestic(vector<DomesticStudent>& array, int first, int last);
+    void sortResearchScoreInternational(vector<InternationalStudent>& array, int first, int last);
 
     //overall sort
-    int Domesticpartition(vector<DomesticStudent> array, int low, int high);
-    int Internationalpartition(vector<InternationalStudent> array, int low, int high);
-    void sortOverallDomestic(vector<DomesticStudent> array, int first, int last);
-    void sortOverallInternational(vector<InternationalStudent> array, int first, int last);
+    int domesticPartition5(vector < DomesticStudent >& array, int low, int high);
+    int internationalPartition5(vector < InternationalStudent >& array, int low, int high);
+    void sortOverallDomestic(vector<DomesticStudent>& array, int first, int last);
+    void sortOverallInternational(vector<InternationalStudent>& array, int first, int last);
     //swap
-	void swap(Student& input1, Student& input2); //function to swap
+	void swapDomestic(DomesticStudent& input1, DomesticStudent& input2); //function to swap
+    void swapInternational(InternationalStudent& input1, InternationalStudent& input2);
 
 }
 #endif

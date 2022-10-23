@@ -36,6 +36,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
     <option name="majorVersion" value="2022" />
@@ -82,6 +85,7 @@
       <workItem from="1666494020762" duration="3000" />
       <workItem from="1666494034662" duration="30000" />
       <workItem from="1666494243855" duration="729000" />
+      <workItem from="1666510323742" duration="4682000" />
     </task>
     <servers />
   </component>
