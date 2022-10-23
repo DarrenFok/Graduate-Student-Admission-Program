@@ -9,7 +9,21 @@ void studentSort::swap(Student& input1, Student& input2){
 }
 
 //Sort lastName
-int studentSort::partition1(vector<Student> array, int low, int high){ //for lastName sort
+int studentSort::Domesticpartition1(vector<DomesticStudent> array, int low, int high){ //for lastName sort
+	Student pivot = array[high]; //pivot element
+	int i = (low-1); //index of smaller element
+	for(int j = low; j <= high-1; j++){ //loop from low to high
+		//if current iteration is less than pivot, increment low AND swap elements at i and j
+		if(compareLastName(array[j], pivot) == "<"){
+			i++; //increment index of smaller element
+			swap(array[i], array[j]);   
+		}
+	}
+	swap(array[i+1], array[high]);
+	return (i+1);
+}
+
+int studentSort::Internationalpartition1(vector<InternationalStudent> array, int low, int high){ //for lastName sort
 	Student pivot = array[high]; //pivot element
 	int i = (low-1); //index of smaller element
 	for(int j = low; j <= high-1; j++){ //loop from low to high
@@ -24,17 +38,26 @@ int studentSort::partition1(vector<Student> array, int low, int high){ //for las
 }
 
 
-void studentSort::sortLastName(vector<Student> array, int first, int last){
+void studentSort::sortLastNameDomestic(vector<DomesticStudent> array, int first, int last){
 	if(first < last){
 		//partition array
-		int pivot = partition1(array, first, last);
-		sortLastName(array, first, pivot-1);
-		sortLastName(array, pivot+1, last);
+		int pivot = Domesticpartition1(array, first, last);
+		sortLastNameDomestic(array, first, pivot-1);
+		sortLastNameDomestic(array, pivot+1, last);
+	}
+}
+
+void studentSort::sortLastNameInternational(vector<InternationalStudent> array, int first, int last){
+	if(first < last){
+		//partition array
+		int pivot = Internationalpartition1(array, first, last);
+		sortLastNameInternational(array, first, pivot-1);
+		sortLastNameInternational(array, pivot+1, last);
 	}
 }
 
 //sort firstname
-int studentSort::partition2(vector<Student> array, int low, int high){ //for lastName sort
+int studentSort::Domesticpartition2(vector<DomesticStudent> array, int low, int high){ //for lastName sort
 	Student pivot = array[high]; //pivot element
 	int i = (low-1); //index of smaller element
 	for(int j = low; j <= high-1; j++){ //loop from low to high
@@ -47,17 +70,41 @@ int studentSort::partition2(vector<Student> array, int low, int high){ //for las
 	swap(array[i+1], array[high]);
 	return (i+1);
 }
-void studentSort::sortFirstName(vector<Student> array, int first, int last){
+
+int studentSort::Internationalpartition2(vector<InternationalStudent> array, int low, int high){ //for lastName sort
+	Student pivot = array[high]; //pivot element
+	int i = (low-1); //index of smaller element
+	for(int j = low; j <= high-1; j++){ //loop from low to high
+		//if current iteration is less than pivot, increment low AND swap elements at i and j
+		if(compareFirstName(array[j], pivot) == "<"){
+			i++; //increment index of smaller element
+			swap(array[i], array[j]);   
+		}
+	}
+	swap(array[i+1], array[high]);
+	return (i+1);
+}
+
+void studentSort::sortFirstNameDomestic(vector<DomesticStudent> array, int first, int last){
 	if(first < last){
 		//partition array
-		int pivot = partition2(array, first, last);
-		sortFirstName(array, first, pivot-1);
-		sortFirstName(array, pivot+1, last);
+		int pivot = Domesticpartition2(array, first, last);
+		sortFirstNameDomestic(array, first, pivot-1);
+		sortFirstNameDomestic(array, pivot+1, last);
+	}
+}
+
+void studentSort::sortFirstNameInternational(vector<InternationalStudent> array, int first, int last){
+	if(first < last){
+		//partition array
+		int pivot = Internationalpartition2(array, first, last);
+		sortFirstNameInternational(array, first, pivot-1);
+		sortFirstNameInternational(array, pivot+1, last);
 	}
 }
 
 //sort cgpa
-int studentSort::partition3(vector<Student> array, int low, int high){ //for cgpa sort
+int studentSort::Domesticpartition3(vector<DomesticStudent> array, int low, int high){ //for cgpa sort
 	Student pivot = array[high]; //pivot element
 	int i = (low-1); //index of smaller element
 
@@ -72,17 +119,41 @@ int studentSort::partition3(vector<Student> array, int low, int high){ //for cgp
 	return (i+1);
 }
 
-void studentSort::sortCGPA(vector<Student> array, int first, int last){
+int studentSort::Internationalpartition3(vector<InternationalStudent> array, int low, int high){ //for cgpa sort
+	Student pivot = array[high]; //pivot element
+	int i = (low-1); //index of smaller element
+
+	for(int j = low; j <= high-1; j++){ //loop from low to high
+		//if current iteration is less than pivot, increment low AND swap elements at i and j
+		if(array[j].getCGPA() > pivot.getCGPA()){
+			i++; //increment index of smaller element
+			swap(array[i], array[j]);
+		}
+	}
+	swap(array[i+1], array[high]);
+	return (i+1);
+}
+
+void studentSort::sortCGPADomestic(vector<DomesticStudent> array, int first, int last){
     if(last < first){
 		//partition array
-		int pivot = partition3(array, first, last);
-		sortCGPA(array, first, pivot-1);
-		sortCGPA(array, pivot+1, last);
+		int pivot = Domesticpartition3(array, first, last);
+		sortCGPADomestic(array, first, pivot-1);
+		sortCGPADomestic(array, pivot+1, last);
+	}
+}
+
+void studentSort::sortCGPAInternational(vector<InternationalStudent> array, int first, int last){
+    if(last < first){
+		//partition array
+		int pivot = Internationalpartition3(array, first, last);
+		sortCGPAInternational(array, first, pivot-1);
+		sortCGPAInternational(array, pivot+1, last);
 	}
 }
 
 //sort research score
-int studentSort::partition4(vector<Student> array, int low, int high){ //for research score sort
+int studentSort::Domesticpartition4(vector<DomesticStudent> array, int low, int high){ //for research score sort
 	Student pivot = array[high]; //pivot element
 	int i = (low-1); //index of smaller element
 
@@ -97,17 +168,41 @@ int studentSort::partition4(vector<Student> array, int low, int high){ //for res
 	return (i+1);
 }
 
-void studentSort::sortResearchScore(vector<Student> array, int first, int last){
+int studentSort::Internationalpartition4(vector<InternationalStudent> array, int low, int high){ //for research score sort
+	Student pivot = array[high]; //pivot element
+	int i = (low-1); //index of smaller element
+
+	for(int j = low; j <= high-1; j++){ //loop from low to high
+		//if current iteration is less than pivot, increment low AND swap elements at i and j
+		if(array[j].getResearch() > pivot.getResearch()){
+			i++; //increment index of smaller element
+			swap(array[i], array[j]);
+		}
+	}
+	swap(array[i+1], array[high]);
+	return (i+1);
+}
+
+void studentSort::sortResearchScoreDomestic(vector<DomesticStudent> array, int first, int last){
     if(last < first){
 		//partition array
-		int pivot = partition4(array, first, last);
-		sortResearchScore(array, first, pivot-1);
-		sortResearchScore(array, pivot+1, last);
+		int pivot = Domesticpartition4(array, first, last);
+		sortResearchScoreDomestic(array, first, pivot-1);
+		sortResearchScoreDomestic(array, pivot+1, last);
+	}
+}
+
+void studentSort::sortResearchScoreInternational(vector<InternationalStudent> array, int first, int last){
+    if(last < first){
+		//partition array
+		int pivot = Internationalpartition4(array, first, last);
+		sortResearchScoreInternational(array, first, pivot-1);
+		sortResearchScoreInternational(array, pivot+1, last);
 	}
 }
 
 //overall sort Domestic
-int studentSort::partition5(vector<DomesticStudent> array, int low, int high){ //for province/country sort
+int studentSort::Domesticpartition(vector<DomesticStudent> array, int low, int high){ //for province/country sort
 	DomesticStudent pivot = array[high]; //pivot element
 	int i = (low-1); //index of smaller element
 	for(int j = low; j <= high-1; j++){ //loop from low to high
@@ -121,32 +216,46 @@ int studentSort::partition5(vector<DomesticStudent> array, int low, int high){ /
 	return (i+1);
 }
 
-void studentSort::sortOverallDomestic(vector<Student> array ,int first, int last){
+int studentSort::Domesticpartition(vector<DomesticStudent> array, int low, int high){ //for province/country sort
+	DomesticStudent pivot = array[high]; //pivot element
+	int i = (low-1); //index of smaller element
+	for(int j = low; j <= high-1; j++){ //loop from low to high
+		//if current iteration is less than pivot, increment low AND swap elements at i and j
+		if(compareProvince(array[j], pivot)== "<"){
+			i++; //increment index of smaller element
+			swap(array[i], array[j]);   
+		}
+	}
+	swap(array[i+1], array[high]);
+	return (i+1);
+}
+
+void studentSort::sortOverallDomestic(vector<DomesticStudent> array ,int first, int last){
     //sort ResearchScore first
     if(last < first){
 		//partition array
-		int pivot = partition4(array, first, last);
-		sortResearchScore(array, first, pivot-1);
-		sortResearchScore(array, pivot+1, last);
+		int pivot = Domesticpartition4(array, first, last);
+		sortResearchScoreDomestic(array, first, pivot-1);
+		sortResearchScoreDomestic(array, pivot+1, last);
 	}
         //if the research score is the same sort cgpa
         if(first == last){
 		//partition array
-		    int pivot = partition3(array, first, last);
-		    sortCGPA(array, first, pivot-1);
-		    sortCGPA(array, pivot+1, last);
+		    int pivot = Domesticpartition3(array, first, last);
+		    sortCGPADomestic(array, first, pivot-1);
+		    sortCGPADomestic(array, pivot+1, last);
 	    }   
             //if cgpa the same sort by province/country
             if(first == last){
                 //partition array
-		        int pivot = partition5(array, first, last);
+		        int pivot = Domesticpartition(array, first, last);
 		        sortOverallDomestic(array, first, pivot-1);
 		        sortOverallDomestic(array, pivot+1, last);
             }
 }
 
 //overall sort International
-int studentSort::partition6(vector<InternationalStudent> array, int low, int high){ //for province/country sort
+int studentSort::Internationalpartition(vector<InternationalStudent> array, int low, int high){ //for province/country sort
 	InternationalStudent pivot = array[high]; //pivot element
 	int i = (low-1); //index of smaller element
 	for(int j = low; j <= high-1; j++){ //loop from low to high
@@ -160,26 +269,26 @@ int studentSort::partition6(vector<InternationalStudent> array, int low, int hig
 	return (i+1);
 }
 
-void studentSort::sortOverallInternational(vector<Student> array ,int first, int last){
+void studentSort::sortOverallInternational(vector<InternationalStudent> array ,int first, int last){
     
     //sort ResearchScore first
     if(last < first){
 		//partition array
-		int pivot = partition4(array, first, last);
-		sortResearchScore(array, first, pivot-1);
-		sortResearchScore(array, pivot+1, last);
+		int pivot = Internationalpartition4(array, first, last);
+		sortResearchScoreInternational(array, first, pivot-1);
+		sortResearchScoreInternational(array, pivot+1, last);
 	}
         //if the research score is the same sort cgpas
         if(first == last){
 		//partition array
-		    int pivot = partition3(array, first, last);
-		    sortCGPA(array, first, pivot-1);
-		    sortCGPA(array, pivot+1, last);
+		    int pivot = Internationalpartition3(array, first, last);
+		    sortCGPAInternational(array, first, pivot-1);
+		    sortCGPAInternational(array, pivot+1, last);
 	    }   
             //if cgpa the same sort by province/country
             if(first == last){
                 //partition array
-		        int pivot = partition6(array, first, last);
+		        int pivot = Internationalpartition(array, first, last);
 		        sortOverallInternational(array, first, pivot-1);
 		        sortOverallInternational(array, pivot+1, last);
             }
