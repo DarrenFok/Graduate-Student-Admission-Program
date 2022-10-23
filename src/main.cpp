@@ -107,14 +107,16 @@ int main() {
         idCountInternational++;
     }
 
+    cout << "Welcome to the Graduate Student Admission Program\n";
+
     //menu - loops until user wants to exit
     do{
         //UI asking for user input
-        cout << "Welcome to the Graduate Student Admission Program\n";
+        cout << "MAIN MENU\n";
         cout << "Choose Domestic or International Students by typing in respective number: \n";
         cout << "1) Domestic Students\n";
         cout << "2) International Students\n";
-        cout << "0) Exit program";
+        cout << "0) Exit program\n";
         cin >> menuChoice;
 
         //check user input for errors
@@ -130,6 +132,7 @@ int main() {
 
         else{ //if input is valid
             if(menuChoice == "1"){ //domestic students
+                cout << "DOMESTIC STUDENT MENU\n";
                 cout << "Please choose a way to sort Domestic Students: \n";
                 cout << "1) CGPA\n";
                 cout << "2) Research Score\n";
@@ -175,6 +178,7 @@ int main() {
                 }
             }
             else if(menuChoice == "2"){ //international students
+                cout << "INTERNATIONAL STUDENT MENU\n";
                 cout << "Please choose a way to sort International Students: \n";
                 cout << "1) CGPA\n";
                 cout << "2) Research Score\n";
