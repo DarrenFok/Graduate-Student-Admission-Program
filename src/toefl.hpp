@@ -1,3 +1,6 @@
+#ifndef PROJECT_TOEFL_HPP
+#define PROJECT_TOEFL_HPP
+
 class toefl{
 public:
 	//getters and setters
@@ -29,3 +32,5 @@ private:
 	int total;
 
 };
+
+#endif

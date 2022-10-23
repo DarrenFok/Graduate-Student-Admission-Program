@@ -1,8 +1,11 @@
 //header file student.hpp to declare your classes
-using namespace std; //use namespace std
+#ifndef PROJECT_STUDENT_HPP
+#define PROJECT_STUDENT_HPP
+
 #include <string> //you will have to use string in C++
 #include <iostream>
 #include "toefl.hpp"
+using namespace std; //use namespace std
 
 class Student{
 public:
@@ -83,3 +86,4 @@ private:
 
 };
 
+#endif
