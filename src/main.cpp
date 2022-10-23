@@ -114,7 +114,7 @@ int main() {
     }
 
     //after sort
-    studentSort::sortResearchScoreDomestic(domesticStudents, 0, domesticStudents.size()-1);
+    studentSort::sortCGPADomestic(domesticStudents, 0, domesticStudents.size()-1);
 
     cout << "\nNow sorting...\n";
     for(int i = 0; i < domesticStudents.size(); i++){

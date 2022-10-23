@@ -117,7 +117,7 @@ int studentSort::domesticPartition3(vector<DomesticStudent>& array, int low, int
 
 	for(int j = low; j <= high-1; j++){ //loop from low to high
 		//if current iteration is less than pivot, increment low AND swap elements at i and j
-		if(array[j].getCGPA() > pivot.getCGPA()){
+		if(compareCGPA(array[j], pivot) == ">"){
 			i++; //increment index of smaller element
 			swapDomestic(array[i], array[j]);
 		}
@@ -132,7 +132,7 @@ int studentSort::internationalPartition3(vector<InternationalStudent>& array, in
 
 	for(int j = low; j <= high-1; j++){ //loop from low to high
 		//if current iteration is less than pivot, increment low AND swap elements at i and j
-		if(array[j].getCGPA() > pivot.getCGPA()){
+		if(compareCGPA(array[j], pivot) == ">"){
 			i++; //increment index of smaller element
 			swapInternational(array[i], array[j]);
 		}
@@ -142,7 +142,7 @@ int studentSort::internationalPartition3(vector<InternationalStudent>& array, in
 }
 
 void studentSort::sortCGPADomestic(vector<DomesticStudent>& array, int first, int last){
-    if(last < first){
+    if(first < last){
 		//partition array
 		int pivot = domesticPartition3(array, first, last);
 		sortCGPADomestic(array, first, pivot-1);
@@ -151,7 +151,7 @@ void studentSort::sortCGPADomestic(vector<DomesticStudent>& array, int first, in
 }
 
 void studentSort::sortCGPAInternational(vector<InternationalStudent>& array, int first, int last){
-    if(last < first){
+    if(first < last){
 		//partition array
 		int pivot = internationalPartition3(array, first, last);
 		sortCGPAInternational(array, first, pivot-1);
@@ -191,7 +191,7 @@ int studentSort::internationalPartition4(vector<InternationalStudent>& array, in
 }
 
 void studentSort::sortResearchScoreDomestic(vector<DomesticStudent>& array, int first, int last){
-    if(last < first){
+    if(first < last){
 		//partition array
 		int pivot = domesticPartition4(array, first, last);
 		sortResearchScoreDomestic(array, first, pivot-1);
@@ -200,7 +200,7 @@ void studentSort::sortResearchScoreDomestic(vector<DomesticStudent>& array, int 
 }
 
 void studentSort::sortResearchScoreInternational(vector<InternationalStudent>& array, int first, int last){
-    if(last < first){
+    if(first < last){
 		//partition array
 		int pivot = internationalPartition4(array, first, last);
 		sortResearchScoreInternational(array, first, pivot-1);
@@ -225,7 +225,7 @@ int studentSort::domesticPartition5(vector<DomesticStudent>& array, int low, int
 
 void studentSort::sortOverallDomestic(vector<DomesticStudent>& array ,int first, int last){
     //sort ResearchScore first
-    if(last < first){
+    if(first < last){
 		//partition array
 		int pivot = domesticPartition4(array, first, last);
 		sortResearchScoreDomestic(array, first, pivot-1);
@@ -265,7 +265,7 @@ int studentSort::internationalPartition5(vector<InternationalStudent>& array, in
 void studentSort::sortOverallInternational(vector<InternationalStudent>& array ,int first, int last){
     
     //sort ResearchScore first
-    if(last < first){
+    if(first < last){
 		//partition array
 		int pivot = internationalPartition4(array, first, last);
 		sortResearchScoreInternational(array, first, pivot-1);
