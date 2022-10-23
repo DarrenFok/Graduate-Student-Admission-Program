@@ -1,5 +1,3 @@
-
-
 //stu_sort.cpp to implement your sorting functions
 #include "stu_sort.hpp"
 
@@ -16,7 +14,7 @@ int studentSort::partition1(vector<Student> array, int low, int high){ //for las
 	int i = (low-1); //index of smaller element
 	for(int j = low; j <= high-1; j++){ //loop from low to high
 		//if current iteration is less than pivot, increment low AND swap elements at i and j
-		if(compareLastName(array[j], pivot) == "==" || compareLastName(array[j], pivot) == ">" ||compareLastName(array[j], pivot) == "<" ){
+		if(compareLastName(array[j], pivot) == "<"){
 			i++; //increment index of smaller element
 			swap(array[i], array[j]);   
 		}
@@ -41,7 +39,7 @@ int studentSort::partition2(vector<Student> array, int low, int high){ //for las
 	int i = (low-1); //index of smaller element
 	for(int j = low; j <= high-1; j++){ //loop from low to high
 		//if current iteration is less than pivot, increment low AND swap elements at i and j
-		if(compareFirstName(array[j], pivot) == "==" || compareFirstName(array[j], pivot) == ">" ||compareFirstName(array[j], pivot) == "<" ){
+		if(compareFirstName(array[j], pivot) == "<"){
 			i++; //increment index of smaller element
 			swap(array[i], array[j]);   
 		}
@@ -63,7 +61,7 @@ int studentSort::partition3(vector<Student> array, int low, int high){ //for cgp
 	Student pivot = array[high]; //pivot element
 	int i = (low-1); //index of smaller element
 
-	for(int j = low; j > high-1; j++){ //looping from high to low (decesending order)
+	for(int j = low; j <= high-1; j++){ //loop from low to high
 		//if current iteration is less than pivot, increment low AND swap elements at i and j
 		if(array[j].getCGPA() > pivot.getCGPA()){
 			i++; //increment index of smaller element
@@ -84,11 +82,11 @@ void studentSort::sortCGPA(vector<Student> array, int first, int last){
 }
 
 //sort research score
-int studentSort::partition3(vector<Student> array, int low, int high){ //for research score sort
+int studentSort::partition4(vector<Student> array, int low, int high){ //for research score sort
 	Student pivot = array[high]; //pivot element
 	int i = (low-1); //index of smaller element
 
-	for(int j = low; j > high-1; j++){ //looping from high to low (descending order)
+	for(int j = low; j <= high-1; j++){ //loop from low to high
 		//if current iteration is less than pivot, increment low AND swap elements at i and j
 		if(array[j].getResearch() > pivot.getResearch()){
 			i++; //increment index of smaller element
@@ -109,12 +107,12 @@ void studentSort::sortResearchScore(vector<Student> array, int first, int last){
 }
 
 //overall sort Domestic
-int studentSort::partition5(vector<Student> array, int low, int high){ //for province/country sort
-	Student pivot = array[high]; //pivot element
+int studentSort::partition5(vector<DomesticStudent> array, int low, int high){ //for province/country sort
+	DomesticStudent pivot = array[high]; //pivot element
 	int i = (low-1); //index of smaller element
 	for(int j = low; j <= high-1; j++){ //loop from low to high
 		//if current iteration is less than pivot, increment low AND swap elements at i and j
-		if(compareProvince(array[j], pivot) == "==" || compareProvince(array[j], pivot) == ">" ||compareProvince(array[j], pivot) == "<" ){
+		if(compareProvince(array[j], pivot)== "<"){
 			i++; //increment index of smaller element
 			swap(array[i], array[j]);   
 		}
@@ -148,12 +146,12 @@ void studentSort::sortOverallDomestic(vector<Student> array ,int first, int last
 }
 
 //overall sort International
-int studentSort::partition6(vector<Student> array, int low, int high){ //for province/country sort
-	Student pivot = array[high]; //pivot element
+int studentSort::partition6(vector<InternationalStudent> array, int low, int high){ //for province/country sort
+	InternationalStudent pivot = array[high]; //pivot element
 	int i = (low-1); //index of smaller element
 	for(int j = low; j <= high-1; j++){ //loop from low to high
 		//if current iteration is less than pivot, increment low AND swap elements at i and j
-		if(compareCountry(array[j], pivot) == "==" || compareCountry(array[j], pivot) == ">" ||compareCountry(array[j], pivot) == "<" ){
+		if(compareCountry(array[j], pivot) == " <"){
 			i++; //increment index of smaller element
 			swap(array[i], array[j]);   
 		}
@@ -163,6 +161,7 @@ int studentSort::partition6(vector<Student> array, int low, int high){ //for pro
 }
 
 void studentSort::sortOverallInternational(vector<Student> array ,int first, int last){
+    
     //sort ResearchScore first
     if(last < first){
 		//partition array
@@ -185,4 +184,3 @@ void studentSort::sortOverallInternational(vector<Student> array ,int first, int
 		        sortOverallInternational(array, pivot+1, last);
             }
 }
-*/
