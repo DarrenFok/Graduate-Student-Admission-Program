@@ -32,6 +32,8 @@ int main() {
     vector<DomesticStudent> domesticStudents;
     vector<InternationalStudent> internationalStudents;
 
+    //input domesticStudents
+    getline(domesticFile, line);
     int domesticCount = 0;
     int idCountDomestic = 20220000;
     while (getline(domesticFile, line)) {
@@ -56,18 +58,56 @@ int main() {
         inputDomestic.setResearch(researchScore);
         inputDomestic.setID(idCountDomestic);
 
-        domesticStudents[domesticCount] = inputDomestic;
+        domesticStudents.push_back(inputDomestic);
 
         domesticCount++;
         idCountDomestic++;
     }
 
-    //print domesticStudent list
-    for(int i  = 0; i < domesticStudents.size(); i++) {
-        cout << domesticStudents[i].getFirstName() << " " << domesticStudents[i].getLastName() << " " << domesticStudents[i].getProvince() << " " <<
-        domesticStudents[i].getCGPA() << " " << domesticStudents[i].getResearch() << endl;
+    //input internationalStudents
+    getline(internationalFile, line);
+    int internationalCount = 0;
+    int idCountInternational = 20220000;
+    while (getline(internationalFile, line)){
+        istringstream ss(line);
+        string firstName, lastName, country, s_cgpa, s_researchScore, reading, listening, speaking, writing;
+        float cgpa;
+        int researchScore;
+
+        getline(ss, firstName, ','); //get firstName
+        getline(ss, lastName, ','); //get lastName
+        getline(ss, country, ','); //get province
+        getline(ss, s_cgpa, ','); //get cgpa
+        cgpa = stof(s_cgpa);
+        getline(ss, s_researchScore, ','); //get researchScore
+        researchScore = stoi(s_researchScore);
+        getline(ss, reading, ',');
+        getline(ss, listening, ',');
+        getline(ss, speaking, ',');
+        getline(ss, writing, ',');
+
+        toefl score;
+        score.setReading(stoi(reading));
+        score.setListening(stoi(listening));
+        score.setSpeaking(stoi(speaking));
+        score.setWriting(stoi(writing));
+        score.setTotal();
+
+        InternationalStudent inputInternational;
+        inputInternational.setFirstName(firstName);
+        inputInternational.setLastName(lastName);
+        inputInternational.setCountry(country);
+        inputInternational.setCGPA(cgpa);
+        inputInternational.setResearch(researchScore);
+        inputInternational.setTOEFL(score);
+
+        internationalStudents.push_back(inputInternational);
+
+        internationalCount++;
+        idCountInternational++;
     }
-/*
+
+    /*
     //menu - loops until user wants to exit
     do{
         //UI asking for user input
