@@ -1,11 +1,11 @@
 //header file student.hpp to declare your classes
 #ifndef PROJECT_STUDENT_HPP
 #define PROJECT_STUDENT_HPP
-
+using namespace std; //use namespace std
 #include <string> //you will have to use string in C++
 #include <iostream>
 #include "toefl.hpp"
-using namespace std; //use namespace std
+using namespace std;
 
 class Student{
 public:
@@ -57,7 +57,7 @@ public:
 	string getProvince() const;
 
 	//compare function
-	string compareProvince(const DomesticStudent& DS1, const DomesticStudent& DS2);
+	friend string compareProvince(const DomesticStudent& DS1, const DomesticStudent& DS2);
 
 private:
 	string province;
@@ -74,7 +74,7 @@ public:
 	string getCountry() const;
 
 	//compare
-	string compareCountry(const InternationalStudent& IS1, const InternationalStudent& IS2);
+	friend string compareCountry(const InternationalStudent& IS1, const InternationalStudent& IS2);
 
 	void setTOEFL(const toefl input);
 	toefl& getTOEFL() const;
@@ -85,5 +85,4 @@ private:
 	toefl TOEFL;
 
 };
-
 #endif
