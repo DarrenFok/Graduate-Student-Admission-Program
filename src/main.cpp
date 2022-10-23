@@ -9,24 +9,65 @@
 #include "functions.hpp" //user created functions
 using namespace std;
 
-int main(){
-	string menuChoice; //to choose domestic, international, exit
+int main() {
+    string menuChoice; //to choose domestic, international, exit
     string menuChoice2; //to choose what type of sort
+    string line;
 
     //read .txt files
     ifstream domesticFile("domestic-stu.txt");
     ifstream internationalFile("international-stu.txt");
 
     //check if files read properly
-    if(!domesticFile.is_open()) {
+    if (!domesticFile.is_open()) {
         cout << "ERROR: Unable to open file domestic-stu.txt" << endl;
         return -1;
     }
-    if(!internationalFile.is_open()){
+    if (!internationalFile.is_open()) {
         cout << "ERROR: Unable to open file international-stu.txt";
         return -1;
     }
 
+    //put .txt files into arrays
+    vector<DomesticStudent> domesticStudents;
+    vector<InternationalStudent> internationalStudents;
+
+    int domesticCount = 0;
+    int idCountDomestic = 20220000;
+    while (getline(domesticFile, line)) {
+        istringstream ss(line);
+        string firstName, lastName, province, s_cgpa, s_researchScore; //strings
+        float cgpa; //to convert string cgpa to
+        int researchScore; //to convert string researchScore to
+
+        getline(ss, firstName, ','); //get firstName
+        getline(ss, lastName, ','); //get lastName
+        getline(ss, province, ','); //get province
+        getline(ss, s_cgpa, ','); //get cgpa
+        cgpa = stof(s_cgpa);
+        getline(ss, s_researchScore, ','); //get researchScore
+        researchScore = stoi(s_researchScore);
+
+        DomesticStudent inputDomestic;
+        inputDomestic.setFirstName(firstName);
+        inputDomestic.setLastName(lastName);
+        inputDomestic.setProvince(province);
+        inputDomestic.setCGPA(cgpa);
+        inputDomestic.setResearch(researchScore);
+        inputDomestic.setID(idCountDomestic);
+
+        domesticStudents[domesticCount] = inputDomestic;
+
+        domesticCount++;
+        idCountDomestic++;
+    }
+
+    //print domesticStudent list
+    for(int i  = 0; i < domesticStudents.size(); i++) {
+        cout << domesticStudents[i].getFirstName() << " " << domesticStudents[i].getLastName() << " " << domesticStudents[i].getProvince() << " " <<
+        domesticStudents[i].getCGPA() << " " << domesticStudents[i].getResearch() << endl;
+    }
+/*
     //menu - loops until user wants to exit
     do{
         //UI asking for user input

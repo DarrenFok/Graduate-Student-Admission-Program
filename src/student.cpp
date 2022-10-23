@@ -130,6 +130,7 @@ int Student::getID() const{
 	return studentID;
 }
 
+//DomesticStudent
 //overload <<
 std::ostream& operator<<(std::ostream& os, const DomesticStudent& inputDS){
 	//Example: Domestic Student #: 301461164, Fok, Darren, Province: BC, CGPA: 3.14, Research Score: 25
