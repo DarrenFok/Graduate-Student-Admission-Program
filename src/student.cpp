@@ -1,218 +1,304 @@
-#include "student.hpp"
-#include <iostream>
-#include <string>
+//stu_sort.cpp to implement your sorting functions
+#include "stu_sort.hpp"
 
-//Default constructor
-Student::Student(){
-    firstName = "FirstName";
-    lastName = "LastName";
-    CGPA = 4.33;
-    research = 100;
-    studentID = 301123456;
+void studentSort::swapDomestic(DomesticStudent& input1, DomesticStudent& input2){
+	DomesticStudent temp; //temp student object to hold info
+	temp = input1;
+	input1 = input2;
+	input2 = temp;
 }
 
-//non-default constructor
-Student::Student(string inputFirstName, string inputLastName, float inputCGPA, int inputResearch, int inputStudentID){
-	firstName = inputFirstName;
-	lastName = inputLastName;
-	CGPA = inputCGPA;
-	research = inputResearch;
-	studentID = inputStudentID;
+void studentSort::swapInternational(InternationalStudent &input1, InternationalStudent &input2) {
+    InternationalStudent temp; //temp student object to hold info
+    temp = input1;
+    input1 = input2;
+    input2 = temp;
 }
 
-//compare functions
-string compareCGPA(const Student& student1, const Student& student2){
-	if(student1.CGPA < student2.CGPA){
-		return "<";
+//Sort lastName
+int studentSort::domesticPartition1(vector<DomesticStudent>& array, int first, int last){ //for lastName sort
+	DomesticStudent pivot = array[last]; //pivot element
+	int i = (first - 1); //index of smaller element
+	for(int j = first; j <= last - 1; j++){ //loop from low to high
+		//if current iteration is less than pivot, increment low AND swap elements at i and j
+		if(compareLastName(array[j], pivot) == "<"){
+			i++; //increment index of smaller element
+			swapDomestic(array[i], array[j]);
+		}
 	}
-	else if(student1.CGPA == student2.CGPA){
-		return "==";
-	}
-	else if(student1.CGPA > student2.CGPA){
-		return ">";
-	}
-	else{
-		cout << "ERROR: compareCGPA";
-		exit(1);
-	}
+	swapDomestic(array[i+1], array[last]);
+	return (i+1);
 }
 
-string compareResearchScore(const Student& student1, const Student& student2){
-	if(student1.research < student2.research){
-		return "<";
+int studentSort::internationalPartition1(vector<InternationalStudent>& array, int first, int last){ //for lastName sort
+	InternationalStudent pivot = array[last]; //pivot element
+	int i = (first - 1); //index of smaller element
+	for(int j = first; j <= last - 1; j++){ //loop from low to high
+		//if current iteration is less than pivot, increment low AND swap elements at i and j
+		if(compareLastName(array[j], pivot) == "<"){
+			i++; //increment index of smaller element
+			swapInternational(array[i], array[j]);
+		}
 	}
-	else if(student1.research == student2.research){
-		return "==";
-	}
-	else if(student1.research > student2.research){
-		return ">";
-	}
-	else{
-		cout <<"ERROR: compareResearchScore";
-		exit(1);
-	}
+	swapInternational(array[i+1], array[last]);
+	return (i+1);
 }
 
-string compareFirstName(const Student& student1, const Student& student2){
-	if(student1.firstName < student2.firstName){
-		return "<";
-	}
-	else if(student1.firstName == student2.firstName){
-		return "==";
-	}
-	else if(student1.firstName > student2.firstName){
-		return ">";
-	}
-	else{
-		cout << "ERROR: compareFirstName";
-		exit(1);
+
+void studentSort::sortLastNameDomestic(vector<DomesticStudent>& array, int first, int last){
+	if(first < last){
+		//partition array
+		int pivot = domesticPartition1(array, first, last);
+		sortLastNameDomestic(array, first, pivot-1);
+		sortLastNameDomestic(array, pivot+1, last);
 	}
 }
 
-string compareLastName(const Student& student1, const Student& student2){
-	if(student1.lastName < student2.lastName){
-		return "<";
-	}
-	else if(student1.lastName == student2.lastName){
-		return "==";
-	}
-	else if(student1.lastName > student2.lastName){
-		return ">";
-	}
-	else{
-		cout << "ERROR: compareLastName";
-		exit(1);
+void studentSort::sortLastNameInternational(vector<InternationalStudent>& array, int first, int last){
+	if(first < last){
+		//partition array
+		int pivot = internationalPartition1(array, first, last);
+		sortLastNameInternational(array, first, pivot-1);
+		sortLastNameInternational(array, pivot+1, last);
 	}
 }
 
-
-
-
-//getters and setters
-//firstName
-void Student::setFirstName(string input){
-	firstName = input;
-}
-string Student::getFirstName() const{
-	return firstName;
-}
-
-//lastName
-void Student::setLastName(string input){
-	lastName = input;
-}
-string Student::getLastName() const{
-	return lastName;
-}
-
-//CGPA
-void Student::setCGPA(float input){
-	CGPA = input;
-}
-float Student::getCGPA() const{
-	return CGPA;
-}
-
-//research
-void Student::setResearch(int input){
-	research = input;
-}
-int Student::getResearch() const{
-	return research;
-}
-
-//studentID
-void Student::setID(int input){
-	studentID = input;
-}
-int Student::getID() const{
-	return studentID;
-}
-
-//overload <<
-std::ostream& operator<<(std::ostream& os, const DomesticStudent& inputDS){
-	//Example: Domestic Student #: 301461164, Fok, Darren, Province: BC, CGPA: 3.14, Research Score: 25
-	//output
-	os << "Domestic Student #: " << inputDS.getID() << ", " << inputDS.getLastName() << ", " << inputDS.getFirstName() << ", Province: " <<
-			inputDS.getProvince() << ", CGPA: " << inputDS.getCGPA() << ", Research Score: " << inputDS.getResearch() << endl;
-
-	return os;
-}
-
-//getter and setter
-void DomesticStudent::setProvince(string input){
-	province = input;
-}
-
-string DomesticStudent::getProvince() const{
-	return province;
-}
-
-//compare function
-string compareProvince(const DomesticStudent& DS1, const DomesticStudent& DS2){
-	if(DS1.province < DS2.province){
-		return "<";
+//sort firstname
+int studentSort::domesticPartition2(vector<DomesticStudent>& array, int low, int high){ //for lastName sort
+	DomesticStudent pivot = array[high]; //pivot element
+	int i = (low-1); //index of smaller element
+	for(int j = low; j <= high-1; j++){ //loop from low to high
+		//if current iteration is less than pivot, increment low AND swap elements at i and j
+		if(compareFirstName(array[j], pivot) == "<"){
+			i++; //increment index of smaller element
+			swapDomestic(array[i], array[j]);
+		}
 	}
-	else if(DS1.province == DS2.province){
-		return "==";
+	swapDomestic(array[i+1], array[high]);
+	return (i+1);
+}
+
+int studentSort::internationalPartition2(vector<InternationalStudent>& array, int low, int high){ //for lastName sort
+	InternationalStudent pivot = array[high]; //pivot element
+	int i = (low-1); //index of smaller element
+	for(int j = low; j <= high-1; j++){ //loop from low to high
+		//if current iteration is less than pivot, increment low AND swap elements at i and j
+		if(compareFirstName(array[j], pivot) == "<"){
+			i++; //increment index of smaller element
+			swapInternational(array[i], array[j]);
+		}
 	}
-	else if(DS1.province > DS2.province){
-		return ">";
-	}
-	else{
-		cout << "ERROR: DomesticStudent.compareProince";
-		exit(1);
+	swapInternational(array[i+1], array[high]);
+	return (i+1);
+}
+
+void studentSort::sortFirstNameDomestic(vector<DomesticStudent>& array, int first, int last){
+	if(first < last){
+		//partition array
+		int pivot = domesticPartition2(array, first, last);
+		sortFirstNameDomestic(array, first, pivot-1);
+		sortFirstNameDomestic(array, pivot+1, last);
 	}
 }
 
-//overload <<
-std::ostream& operator<<(std::ostream& os, const InternationalStudent& inputIS){
-	//Example: Domestic Student #: 301461164, Fok, Darren, Province: BC, CGPA: 3.14, Research Score: 25
-	//output
-	os << "International Student #: " << inputIS.getID() << ", " << inputIS.getLastName() << ", " << inputIS.getFirstName() << ", Country: " <<
-			inputIS.getCountry() << ", CGPA: " << inputIS.getCGPA() << ", Research Score: " << inputIS.getResearch() << endl;
-
-	return os;
-}
-
-//country getter and setter
-void InternationalStudent::setCountry(string input){
-	country = input;
-}
-
-string InternationalStudent::getCountry() const{
-	return country;
-}
-
-//compare function
-string compareCountry(const InternationalStudent& IS1, const InternationalStudent& IS2){
-	if(IS1.country < IS2.country){
-		return "<";
-	}
-	else if(IS1.country == IS2.country){
-		return "==";
-	}
-	else if(IS1.country > IS2.country){
-		return ">";
-	}
-	else{
-		cout << "ERROR: InternationalStudent.compareCountry";
-		exit(1);
+void studentSort::sortFirstNameInternational(vector<InternationalStudent>& array, int first, int last){
+	if(first < last){
+		//partition array
+		int pivot = internationalPartition2(array, first, last);
+		sortFirstNameInternational(array, first, pivot-1);
+		sortFirstNameInternational(array, pivot+1, last);
 	}
 }
 
-//TOEFL score getter and setter
-//replace old toefl scores with the "new" input ones
-void InternationalStudent::setTOEFL(const toefl& input){
-	TOEFL.setReading(input.getReading());
-	TOEFL.setListening(input.getListening());
-	TOEFL.setSpeaking(input.getSpeaking());
-	TOEFL.setWriting(input.getWriting());
-	//after setting all new scores, set new total
-	TOEFL.setTotal();
+//sort cgpa
+int studentSort::domesticPartition3(vector<DomesticStudent>& array, int low, int high){ //for cgpa sort
+	DomesticStudent pivot = array[high]; //pivot element
+	int i = (low-1); //index of smaller element
+
+	for(int j = low; j <= high-1; j++){ //loop from low to high
+		//if current iteration is less than pivot, increment low AND swap elements at i and j
+		if(compareCGPA(array[j], pivot) == ">"){
+			i++; //increment index of smaller element
+			swapDomestic(array[i], array[j]);
+		}
+	}
+	swapDomestic(array[i+1], array[high]);
+	return (i+1);
 }
 
-toefl InternationalStudent::getTOEFL() const{
-	//create toefl object to fill and return
-	return TOEFL;
+int studentSort::internationalPartition3(vector<InternationalStudent>& array, int low, int high){ //for cgpa sort
+	InternationalStudent pivot = array[high]; //pivot element
+	int i = (low-1); //index of smaller element
+
+	for(int j = low; j <= high-1; j++){ //loop from low to high
+		//if current iteration is less than pivot, increment low AND swap elements at i and j
+		if(compareCGPA(array[j], pivot) == ">"){
+			i++; //increment index of smaller element
+			swapInternational(array[i], array[j]);
+		}
+	}
+	swapInternational(array[i+1], array[high]);
+	return (i+1);
+}
+
+void studentSort::sortCGPADomestic(vector<DomesticStudent>& array, int first, int last){
+    if(first < last){
+		//partition array
+		int pivot = domesticPartition3(array, first, last);
+		sortCGPADomestic(array, first, pivot-1);
+		sortCGPADomestic(array, pivot+1, last);
+	}
+}
+
+void studentSort::sortCGPAInternational(vector<InternationalStudent>& array, int first, int last){
+    if(first < last){
+		//partition array
+		int pivot = internationalPartition3(array, first, last);
+		sortCGPAInternational(array, first, pivot-1);
+		sortCGPAInternational(array, pivot+1, last);
+	}
+}
+
+//sort research score
+int studentSort::domesticPartition4(vector<DomesticStudent>& array, int low, int high){ //for research score sort
+	DomesticStudent pivot = array[high]; //pivot element
+	int i = (low-1); //index of smaller element
+
+	for(int j = low; j <= high-1; j++){ //loop from low to high
+		//if current iteration is less than pivot, increment low AND swap elements at i and j
+		if(array[j].getResearch() > pivot.getResearch()){
+			i++; //increment index of smaller element
+			swapDomestic(array[i], array[j]);
+		}
+	}
+	swapDomestic(array[i+1], array[high]);
+	return (i+1);
+}
+
+int studentSort::internationalPartition4(vector<InternationalStudent>& array, int low, int high){ //for research score sort
+	InternationalStudent pivot = array[high]; //pivot element
+	int i = (low-1); //index of smaller element
+
+	for(int j = low; j <= high-1; j++){ //loop from low to high
+		//if current iteration is less than pivot, increment low AND swap elements at i and j
+		if(array[j].getResearch() > pivot.getResearch()){
+			i++; //increment index of smaller element
+			swapInternational(array[i], array[j]);
+		}
+	}
+	swapInternational(array[i+1], array[high]);
+	return (i+1);
+}
+
+void studentSort::sortResearchScoreDomestic(vector<DomesticStudent>& array, int first, int last){
+    if(first < last){
+		//partition array
+		int pivot = domesticPartition4(array, first, last);
+		sortResearchScoreDomestic(array, first, pivot-1);
+		sortResearchScoreDomestic(array, pivot+1, last);
+	}
+}
+
+void studentSort::sortResearchScoreInternational(vector<InternationalStudent>& array, int first, int last){
+    if(first < last){
+		//partition array
+		int pivot = internationalPartition4(array, first, last);
+		sortResearchScoreInternational(array, first, pivot-1);
+		sortResearchScoreInternational(array, pivot+1, last);
+	}
+}
+
+
+void studentSort::sortOverallDomestic(vector<DomesticStudent>& array ,int first, int last){
+    //sort ResearchScore first
+    if(first < last){
+		//partition array
+        int pivot = domesticPartition8(array, first, last);
+        sortOverallDomestic(array, first, pivot-1);
+        sortOverallDomestic(array, pivot+1, last);
+	}
+}
+
+int studentSort::domesticPartition8(vector<DomesticStudent>& array, int low, int high){ //for cgpa sort
+    DomesticStudent pivot = array[high]; //pivot element
+    int i = (low-1); //index of smaller element
+
+    for(int j = low; j <= high-1; j++){ //loop from low to high
+        //if current iteration is less than pivot, increment low AND swap elements at i and j
+        if(compareResearchScore(array[j], pivot) == ">"){
+            i++; //increment index of smaller element
+            swapDomestic(array[i], array[j]);
+        }
+    }
+
+    for(int j = low; j <= high-1; j++){ //loop from low to high
+        //if current iteration is less than pivot, increment low AND swap elements at i and j
+        if(compareResearchScore(array[j], pivot) == "=="){
+            if(compareCGPA(array[j], pivot) == ">"){
+                i++; //increment index of smaller element
+                swapDomestic(array[i], array[j]);
+            }
+        }
+    }
+
+    for(int j = low; j <= high-1; j++){ //loop from low to high
+        //if current iteration is less than pivot, increment low AND swap elements at i and j
+        if(compareResearchScore(array[j], pivot) == "=="){
+            if(compareCGPA(array[j], pivot) == "=="){
+                if(compareProvince(array[j], pivot) == "<"){
+                    i++; //increment index of smaller element
+                    swapDomestic(array[i], array[j]);
+                }
+            }
+        }
+    }
+    swapDomestic(array[i+1], array[high]);
+    return (i+1);
+}
+
+void studentSort::sortOverallInternational(vector<InternationalStudent>& input, int first, int last){
+    //sort ResearchScore first
+    if(first < last){
+		//partition array
+		int pivot = internationalPartition8(input, first, last);
+		sortResearchScoreInternational(input, first, pivot-1);
+		sortResearchScoreInternational(input, pivot+1, last);
+	}
+}
+
+int studentSort::internationalPartition8(vector<InternationalStudent>& array, int low, int high){ //for cgpa sort
+    InternationalStudent pivot = array[high]; //pivot element
+    int i = (low-1); //index of smaller element
+
+    for(int j = low; j <= high-1; j++){ //loop from low to high
+        //if current iteration is less than pivot, increment low AND swap elements at i and j
+        if(compareResearchScore(array[j], pivot) == ">"){
+            i++; //increment index of smaller element
+            swapInternational(array[i], array[j]);
+        }
+    }
+
+    for(int j = low; j <= high-1; j++){ //loop from low to high
+        //if current iteration is less than pivot, increment low AND swap elements at i and j
+        if(compareResearchScore(array[j], pivot) == "=="){
+            if(compareCGPA(array[j], pivot) == ">"){
+                i++; //increment index of smaller element
+                swapInternational(array[i], array[j]);
+            }
+        }
+    }
+
+    for(int j = low; j <= high-1; j++){ //loop from low to high
+        //if current iteration is less than pivot, increment low AND swap elements at i and j
+        if(compareResearchScore(array[j], pivot) == "=="){
+            if(compareCGPA(array[j], pivot) == "=="){
+                if(compareCountry(array[j], pivot) == "<"){
+                    i++; //increment index of smaller element
+                    swapInternational(array[i], array[j]);
+                }
+            }
+        }
+    }
+    swapInternational(array[i+1], array[high]);
+    return (i+1);
 }
