@@ -101,15 +101,21 @@ int main() {
         inputInternational.setCGPA(cgpa);
         inputInternational.setResearch(researchScore);
         inputInternational.setTOEFL(score);
+        inputInternational.setID(idCountInternational);
 
         internationalStudents.push_back(inputInternational);
 
         internationalCount++;
         idCountInternational++;
     }
+
     //before sort
     for(int i = 0; i < domesticStudents.size(); i++){
         cout << domesticStudents[i];
+    }
+
+        for(int i = 0; i < internationalStudents.size(); i++){
+        cout << internationalStudents[i];
     }
 
 /*
@@ -128,6 +134,12 @@ int main() {
         cout << domesticStudents[i];
     }
 
+    studentSort::sortOverallInternational(internationalStudents, 0 , internationalStudents.size()-1);
+
+    cout << "\nNow sorting...\n";
+    for(int i = 0; i < internationalStudents.size(); i++){
+        cout << internationalStudents[i];
+    }
 /*
 
     cout << "Welcome to the Graduate Student Admission Program\n";
