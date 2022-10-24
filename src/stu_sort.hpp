@@ -9,10 +9,10 @@
 using namespace std;
 
 namespace studentSort{ //make it namespace, so that functions can be accessed outside
-	//lastName sort
-	int domesticPartition1(vector<DomesticStudent>& array, int first, int last); //from low to high
+    //lastName sort
+    int domesticPartition1(vector<DomesticStudent>& array, int first, int last); //from low to high
     int internationalPartition1(vector < InternationalStudent >& array, int first, int last);
-	void sortLastNameDomestic(vector<DomesticStudent>& array, int first, int last); //works
+    void sortLastNameDomestic(vector<DomesticStudent>& array, int first, int last); //works
     void sortLastNameInternational(vector<InternationalStudent>& array, int first, int last);
 
     //firstname sort
