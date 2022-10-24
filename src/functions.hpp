@@ -19,4 +19,4 @@ namespace functions{
     }
 }
 
-#endif PROJECT_FUNCTIONS_HPP
+#endif //PROJECT_FUNCTIONS_HPP
