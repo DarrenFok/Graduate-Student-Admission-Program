@@ -38,9 +38,14 @@ namespace studentSort{ //make it namespace, so that functions can be accessed ou
     int internationalPartition5(vector < InternationalStudent >& array, int low, int high);
     void sortOverallDomestic(vector<DomesticStudent>& array, int first, int last);
     void sortOverallInternational(vector<InternationalStudent>& array, int first, int last);
+    //
+    int internationalPartition7(vector < InternationalStudent >& array, int low, int high);
+    int internationalPartition8(vector < InternationalStudent >& array, int low, int high);
     //swap
 	void swapDomestic(DomesticStudent& input1, DomesticStudent& input2); //function to swap
     void swapInternational(InternationalStudent& input1, InternationalStudent& input2);
+
+
 
 }
 #endif

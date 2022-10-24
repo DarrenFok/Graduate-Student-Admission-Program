@@ -76,8 +76,8 @@ public:
 	//compare
 	friend string compareCountry(const InternationalStudent& IS1, const InternationalStudent& IS2);
 
-	void setTOEFL(const toefl input);
-	toefl& getTOEFL() const;
+	void setTOEFL(const toefl& input);
+	toefl getTOEFL() const;
 
 
 private:

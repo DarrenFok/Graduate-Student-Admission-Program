@@ -169,7 +169,7 @@ string compareProvince(const DomesticStudent& DS1, const DomesticStudent& DS2){
 std::ostream& operator<<(std::ostream& os, const InternationalStudent& inputIS){
 	//Example: Domestic Student #: 301461164, Fok, Darren, Province: BC, CGPA: 3.14, Research Score: 25
 	//output
-	os << "Domestic Student #: " << inputIS.getID() << ", " << inputIS.getLastName() << ", " << inputIS.getFirstName() << ", Country: " <<
+	os << "International Student #: " << inputIS.getID() << ", " << inputIS.getLastName() << ", " << inputIS.getFirstName() << ", Country: " <<
 			inputIS.getCountry() << ", CGPA: " << inputIS.getCGPA() << ", Research Score: " << inputIS.getResearch() << endl;
 
 	return os;
@@ -203,7 +203,7 @@ string compareCountry(const InternationalStudent& IS1, const InternationalStuden
 
 //TOEFL score getter and setter
 //replace old toefl scores with the "new" input ones
-void InternationalStudent::setTOEFL(const toefl input){
+void InternationalStudent::setTOEFL(const toefl& input){
 	TOEFL.setReading(input.getReading());
 	TOEFL.setListening(input.getListening());
 	TOEFL.setSpeaking(input.getSpeaking());
@@ -212,13 +212,7 @@ void InternationalStudent::setTOEFL(const toefl input){
 	TOEFL.setTotal();
 }
 
-toefl& InternationalStudent::getTOEFL() const{
+toefl InternationalStudent::getTOEFL() const{
 	//create toefl object to fill and return
-	toefl temp;
-	temp.setReading(TOEFL.getReading());
-	temp.setListening(TOEFL.getListening());
-	temp.setSpeaking(TOEFL.getSpeaking());
-	temp.setWriting(TOEFL.getWriting());
-	//after filling, then return entire object
-	return temp;
+	return TOEFL;
 }
