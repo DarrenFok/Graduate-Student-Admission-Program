@@ -19,7 +19,7 @@ student.o: student.cpp student.hpp
 
 
 #compile the stu_sort.cpp to stu_sort.o
-stu_sort.o: stu_sort.cpp student.hpp
+stu_sort.o: stu_sort.cpp stu_sort.hpp
 	g++ -g -c stu_sort.cpp
 
 #compile the toefl.cpp to toefl.0
