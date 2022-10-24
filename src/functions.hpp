@@ -1,7 +1,7 @@
 #ifndef PROJECT_FUNCTIONS_HPP
 #define PROJECT_FUNCTIONS_HPP
 
-#endif //PROJECT_FUNCTIONS_HPP
+
 
 #include <string>
 #include <iostream>
@@ -19,3 +19,4 @@ namespace functions{
     }
 }
 
+#endif //PROJECT_FUNCTIONS_HPP
