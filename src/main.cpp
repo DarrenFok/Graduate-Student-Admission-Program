@@ -122,8 +122,8 @@ int main() {
              domesticStudents[i].getResearch() << endl;
     }
 
+/*
 
-    /*
     cout << "Welcome to the Graduate Student Admission Program\n";
 
     //menu - loops until user wants to exit
@@ -155,7 +155,8 @@ int main() {
                 cout << "2) Research Score\n";
                 cout << "3) First Name\n";
                 cout << "4) Last Name\n";
-                cout << "5) Overall Sort (Research Score -> CGPA -> Province\n";
+                cout << "5) Overall Sort (Research Score -> CGPA -> Province)\n";
+                cout << "0) Go back to main menu";
                 cin >> menuChoice2;
 
                 if(functions::isNumerical(menuChoice2) == false){ //check for number inputs only
@@ -201,7 +202,8 @@ int main() {
                 cout << "2) Research Score\n";
                 cout << "3) First Name\n";
                 cout << "4) Last Name\n";
-                cout << "5) Overall Sort (Research Score -> CGPA -> Country\n";
+                cout << "5) Overall Sort (Research Score -> CGPA -> Country)\n";
+                cout << "0) Go back to main menu";
                 cin >> menuChoice2;
 
                 if(functions::isNumerical(menuChoice2) == false){ //check for number inputs only
@@ -244,7 +246,9 @@ int main() {
     }
     while(menuChoice != "0"); //exiting program if 0
     cout << "Thank you for using the program";
+
     */
+
   return 0;
 
 }
