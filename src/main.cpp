@@ -101,12 +101,14 @@ int main() {
         inputInternational.setCGPA(cgpa);
         inputInternational.setResearch(researchScore);
         inputInternational.setTOEFL(score);
+        inputInternational.setID(idCountInternational);
 
         internationalStudents.push_back(inputInternational);
 
         internationalCount++;
         idCountInternational++;
     }
+
     //before sort
     for(int i = 0; i < internationalStudents.size(); i++){
         cout << internationalStudents[i];
