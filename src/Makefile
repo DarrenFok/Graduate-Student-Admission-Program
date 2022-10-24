@@ -17,7 +17,6 @@ main.o: main.cpp student.cpp stu_sort.cpp toefl.cpp
 student.o: student.cpp student.hpp
 	g++ -g -c student.cpp
 
-
 #compile the stu_sort.cpp to stu_sort.o
 stu_sort.o: stu_sort.cpp stu_sort.hpp
 	g++ -g -c stu_sort.cpp

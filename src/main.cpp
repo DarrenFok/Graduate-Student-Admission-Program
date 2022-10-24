@@ -108,23 +108,24 @@ int main() {
         idCountInternational++;
     }
     //before sort
-    for(int i = 0; i < internationalStudents.size(); i++){
-        cout << internationalStudents[i];
+    for(int i = 0; i < domesticStudents.size(); i++){
+        cout << domesticStudents[i];
     }
 
+/*
     //after sort
     vector<InternationalStudent> final;
     for(int i = 0; i < internationalStudents.size(); i++){ //takes out internationalStudent objects that do not fulfill the TOEFL requirements
         if(internationalStudents.at(i).getTOEFL().getTotal() > 92 && internationalStudents[i].getTOEFL().getReading() > 19 && internationalStudents[i].getTOEFL().getListening() > 19 && internationalStudents[i].getTOEFL().getSpeaking() > 19 && internationalStudents[i].getTOEFL().getWriting() > 19){
             final.push_back(internationalStudents[i]);
         }
-    }
+    }*/
 
-    studentSort::sortOverallInternational(final, 0, final.size()-1);
+    studentSort::sortOverallDomestic(domesticStudents, 0, domesticStudents.size()-1);
 
     cout << "\nNow sorting...\n";
-    for(int i = 0; i < final.size(); i++){
-        cout << final[i];
+    for(int i = 0; i < domesticStudents.size(); i++){
+        cout << domesticStudents[i];
     }
 
 /*

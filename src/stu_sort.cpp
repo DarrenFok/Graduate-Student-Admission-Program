@@ -208,58 +208,52 @@ void studentSort::sortResearchScoreInternational(vector<InternationalStudent>& a
 	}
 }
 
-//overall sort Domestic
-int studentSort::domesticPartition5(vector<DomesticStudent>& array, int low, int high){ //for province/country sort
-	DomesticStudent pivot = array[high]; //pivot element
-	int i = (low-1); //index of smaller element
-	for(int j = low; j <= high-1; j++){ //loop from low to high
-		//if current iteration is less than pivot, increment low AND swap elements at i and j
-		if(compareProvince(array[j], pivot)== "<"){
-			i++; //increment index of smaller element
-			swapDomestic(array[i], array[j]);
-		}
-	}
-	swapDomestic(array[i+1], array[high]);
-	return (i+1);
-}
 
 void studentSort::sortOverallDomestic(vector<DomesticStudent>& array ,int first, int last){
     //sort ResearchScore first
     if(first < last){
 		//partition array
-		int pivot = domesticPartition4(array, first, last);
-		sortResearchScoreDomestic(array, first, pivot-1);
-		sortResearchScoreDomestic(array, pivot+1, last);
+        int pivot3 = domesticPartition8(array, first, last);
+        sortOverallDomestic(array, first, pivot3-1);
+        sortOverallDomestic(array, pivot3+1, last);
 	}
-        //if the research score is the same sort cgpa
-        if(first == last){
-		//partition array
-		    int pivot = domesticPartition3(array, first, last);
-		    sortCGPADomestic(array, first, pivot-1);
-		    sortCGPADomestic(array, pivot+1, last);
-	    }   
-            //if cgpa the same sort by province/country
-            if(first == last){
-                //partition array
-		        int pivot = domesticPartition5(array, first, last);
-		        sortOverallDomestic(array, first, pivot-1);
-		        sortOverallDomestic(array, pivot+1, last);
-            }
 }
 
-//overall sort International
-int studentSort::internationalPartition5(vector<InternationalStudent>& array, int low, int high){ //for province/country sort
-	InternationalStudent pivot = array[high]; //pivot element
-	int i = (low-1); //index of smaller element
-	for(int j = low; j <= high-1; j++){ //loop from low to high
-		//if current iteration is less than pivot, increment low AND swap elements at i and j
-		if(compareCountry(array[j], pivot) == "<"){
-			i++; //increment index of smaller element
-			swapInternational(array[i], array[j]);
-		}
-	}
-	swapInternational(array[i+1], array[high]);
-	return (i+1);
+int studentSort::domesticPartition8(vector<DomesticStudent>& array, int low, int high){ //for cgpa sort
+    DomesticStudent pivot = array[high]; //pivot element
+    int i = (low-1); //index of smaller element
+
+    for(int j = low; j <= high-1; j++){ //loop from low to high
+        //if current iteration is less than pivot, increment low AND swap elements at i and j
+        if(compareResearchScore(array[j], pivot) == ">"){
+            i++; //increment index of smaller element
+            swapDomestic(array[i], array[j]);
+        }
+    }
+
+    for(int j = low; j <= high-1; j++){ //loop from low to high
+        //if current iteration is less than pivot, increment low AND swap elements at i and j
+        if(compareResearchScore(array[j], pivot) == "=="){
+            if(compareCGPA(array[j], pivot) == ">"){
+                i++; //increment index of smaller element
+                swapDomestic(array[i], array[j]);
+            }
+        }
+    }
+
+    for(int j = low; j <= high-1; j++){ //loop from low to high
+        //if current iteration is less than pivot, increment low AND swap elements at i and j
+        if(compareResearchScore(array[j], pivot) == "=="){
+            if(compareCGPA(array[j], pivot) == "=="){
+                if(compareProvince(array[j], pivot) == "<"){
+                    i++; //increment index of smaller element
+                    swapDomestic(array[i], array[j]);
+                }
+            }
+        }
+    }
+    swapDomestic(array[i+1], array[high]);
+    return (i+1);
 }
 
 void studentSort::sortOverallInternational(vector<InternationalStudent>& input, int first, int last){
@@ -267,41 +261,10 @@ void studentSort::sortOverallInternational(vector<InternationalStudent>& input, 
     //sort ResearchScore first
     if(first < last){
 		//partition array
-		int pivot = internationalPartition4(input, first, last);
+		int pivot = internationalPartition8(input, first, last);
 		sortResearchScoreInternational(input, first, pivot-1);
 		sortResearchScoreInternational(input, pivot+1, last);
 	}
-        //if the research score is the same sort cgpas
-        if(first < last){
-		//partition array
-		    int pivot = internationalPartition7(input, first, last);
-		    sortCGPAInternational(input, first, pivot-1);
-		    sortCGPAInternational(input, pivot+1, last);
-	    }   
-            //if cgpa the same sort by province/country
-            if(first < last){
-                //partition array
-		        int pivot = internationalPartition8(input, first, last);
-		        sortOverallInternational(input, first, pivot-1);
-		        sortOverallInternational(input, pivot+1, last);
-            }
-}
-
-int studentSort::internationalPartition7(vector<InternationalStudent>& array, int low, int high){ //for cgpa sort
-    InternationalStudent pivot = array[high]; //pivot element
-    int i = (low-1); //index of smaller element
-
-    for(int j = low; j <= high-1; j++){ //loop from low to high
-        //if current iteration is less than pivot, increment low AND swap elements at i and j
-        if(compareCGPA(array[j], pivot) == "=="){
-            if(compareResearchScore(array[j], pivot) == "<"){
-                i++; //increment index of smaller element
-                swapInternational(array[i], array[j]);
-            }
-        }
-    }
-    swapInternational(array[i+1], array[high]);
-    return (i+1);
 }
 
 int studentSort::internationalPartition8(vector<InternationalStudent>& array, int low, int high){ //for cgpa sort
@@ -310,10 +273,29 @@ int studentSort::internationalPartition8(vector<InternationalStudent>& array, in
 
     for(int j = low; j <= high-1; j++){ //loop from low to high
         //if current iteration is less than pivot, increment low AND swap elements at i and j
-        if(compareCGPA(array[j], pivot) == "=="){
-            if(compareResearchScore(array[j], pivot) == "=="){
-                if(compareCountry(array[j], pivot) == ">"){
+        if(compareResearchScore(array[j], pivot) == ">"){
+            i++; //increment index of smaller element
+            swapInternational(array[i], array[j]);
+        }
+    }
 
+    for(int j = low; j <= high-1; j++){ //loop from low to high
+        //if current iteration is less than pivot, increment low AND swap elements at i and j
+        if(compareResearchScore(array[j], pivot) == "=="){
+            if(compareCGPA(array[j], pivot) == ">"){
+                i++; //increment index of smaller element
+                swapInternational(array[i], array[j]);
+            }
+        }
+    }
+
+    for(int j = low; j <= high-1; j++){ //loop from low to high
+        //if current iteration is less than pivot, increment low AND swap elements at i and j
+        if(compareResearchScore(array[j], pivot) == "=="){
+            if(compareCGPA(array[j], pivot) == "=="){
+                if(compareCountry(array[j], pivot) == "<"){
+                    i++; //increment index of smaller element
+                    swapInternational(array[i], array[j]);
                 }
             }
         }
