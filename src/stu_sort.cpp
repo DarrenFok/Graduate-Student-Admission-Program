@@ -261,9 +261,9 @@ void studentSort::sortOverallInternational(vector<InternationalStudent>& input, 
     //sort ResearchScore first
     if(first < last){
 		//partition array
-		int pivot4 = internationalPartition8(input, first, last);
-		sortOverallInternational(input, first, pivot4-1);
-		sortOverallInternational(input, pivot4+1, last);
+		int pivot = internationalPartition8(input, first, last);
+		sortOverallInternational(input, first, pivot-1);
+		sortOverallInternational(input, pivot+1, last);
 	}
 }
 
