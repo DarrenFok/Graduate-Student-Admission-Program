@@ -7,7 +7,9 @@
 #include <cstdlib> //atof and atoi
 #include <string>
 #include "stu_sort.hpp"
-#include "functions.hpp" //user created functions
+#include "functions.hpp"
+#include "toefl.hpp"
+#include "student.hpp"
 using namespace std;
 
 int main() {
@@ -101,70 +103,44 @@ int main() {
         inputInternational.setCGPA(cgpa);
         inputInternational.setResearch(researchScore);
         inputInternational.setTOEFL(score);
+        inputInternational.setID(idCountInternational);
 
         internationalStudents.push_back(inputInternational);
 
         internationalCount++;
         idCountInternational++;
     }
-    //before sort
-    for(int i = 0; i < internationalStudents.size(); i++){
-        cout << internationalStudents[i];
-    }
 
-
-    //after sort
-    vector<InternationalStudent> final;
-    for(int i = 0; i < internationalStudents.size(); i++){ //takes out internationalStudent objects that do not fulfill the TOEFL requirements
-        if(internationalStudents.at(i).getTOEFL().getTotal() > 92 && internationalStudents[i].getTOEFL().getReading() > 19 && internationalStudents[i].getTOEFL().getListening() > 19 && internationalStudents[i].getTOEFL().getSpeaking() > 19 && internationalStudents[i].getTOEFL().getWriting() > 19){
-            final.push_back(internationalStudents[i]);
-        }
-    }
-
-    studentSort::sortOverallInternational(final, 0, final.size()-1);
-
-    cout << "\nNow sorting...\n";
-    for(int i = 0; i < final.size(); i++){
-        cout << final[i];
-    }
-
-/*
-
-    cout << "Welcome to the Graduate Student Admission Program\n";
-
+    cout << "\nWelcome to the Graduate Student Admission Program\n";
     //menu - loops until user wants to exit
     do{
         //UI asking for user input
-        cout << "MAIN MENU\n";
+        cout << "\nMAIN MENU\n";
         cout << "Choose Domestic or International Students by typing in respective number: \n";
         cout << "1) Domestic Students\n";
         cout << "2) International Students\n";
         cout << "0) Exit program\n";
         cin >> menuChoice;
-
         //check user input for errors
         if(functions::isNumerical(menuChoice) == false){ //check for number inputs only
             cout << "ERROR: Invalid input, numbers accepted only\n";
             continue;
         }
-
         else if(stoi(menuChoice) > 2 || stoi(menuChoice) < 0){ //check for valid numbers only
             cout << "ERROR: Invalid number, please input 0-2\n";
             continue;
         }
-
         else{ //if input is valid
             if(menuChoice == "1"){ //domestic students
-                cout << "DOMESTIC STUDENT MENU\n";
+                cout << "\nDOMESTIC STUDENT MENU\n";
                 cout << "Please choose a way to sort Domestic Students: \n";
                 cout << "1) CGPA\n";
                 cout << "2) Research Score\n";
                 cout << "3) First Name\n";
                 cout << "4) Last Name\n";
                 cout << "5) Overall Sort (Research Score -> CGPA -> Province)\n";
-                cout << "0) Go back to main menu";
+                cout << "0) Go back to main menu\n";
                 cin >> menuChoice2;
-
                 if(functions::isNumerical(menuChoice2) == false){ //check for number inputs only
                     cout << "ERROR: Invalid input, numbers accepted only\n";
                     continue;
@@ -178,40 +154,64 @@ int main() {
                         cout << "Sorting by CGPA...\n";
                         //sort by CGPA
                         //print list
+                        studentSort::sortCGPADomestic(domesticStudents, 0, domesticStudents.size()-1);
+                        cout << "\nNow sorting...\n";
+                        for(int i = 0; i < domesticStudents.size(); i++){
+                            cout << domesticStudents[i];
+                        }
                     }
                     else if(menuChoice2 == "2"){
                         cout << "Sorting by Research Score...\n";
                         //sort by research score
                         //print list
+                        studentSort::sortResearchScoreDomestic(domesticStudents, 0, domesticStudents.size()-1);
+                        cout << "\nNow sorting...\n";
+                        for(int i = 0; i < domesticStudents.size(); i++){
+                            cout << domesticStudents[i];
+                        }
                     }
                     else if(menuChoice2 == "3"){
                         cout << "Sorting by First Name...\n";
                         //sort by first name
                         //print list
+                        studentSort::sortFirstNameDomestic(domesticStudents, 0, domesticStudents.size()-1);
+                        cout << "\nNow sorting...\n";
+                        for(int i = 0; i < domesticStudents.size(); i++){
+                            cout << domesticStudents[i];
+                        }
                     }
                     else if(menuChoice2 == "4"){
                         cout << "Sorting by Last Name...\n";
                         //sort by last name
                         //print list
+                        studentSort::sortLastNameDomestic(domesticStudents, 0, domesticStudents.size()-1);
+                        cout << "\nNow sorting...\n";
+                        for(int i = 0; i < domesticStudents.size(); i++){
+                            cout << domesticStudents[i];
+                        }
                     }
                     else if(menuChoice2 == "5"){
                         cout << "Sorting by overall attributes...\n";
                         //overall sort
                         //print list
+                        studentSort::sortOverallDomestic(domesticStudents, 0, domesticStudents.size()-1);
+                        cout << "\nNow sorting...\n";
+                        for(int i = 0; i < domesticStudents.size(); i++){
+                            cout << domesticStudents[i];
+                        }
                     }
                 }
             }
             else if(menuChoice == "2"){ //international students
-                cout << "INTERNATIONAL STUDENT MENU\n";
+                cout << "\nINTERNATIONAL STUDENT MENU\n";
                 cout << "Please choose a way to sort International Students: \n";
                 cout << "1) CGPA\n";
                 cout << "2) Research Score\n";
                 cout << "3) First Name\n";
                 cout << "4) Last Name\n";
                 cout << "5) Overall Sort (Research Score -> CGPA -> Country)\n";
-                cout << "0) Go back to main menu";
+                cout << "0) Go back to main menu\n";
                 cin >> menuChoice2;
-
                 if(functions::isNumerical(menuChoice2) == false){ //check for number inputs only
                     cout << "ERROR: Invalid input, numbers accepted only\n";
                     continue;
@@ -225,26 +225,52 @@ int main() {
                         cout << "Sorting by CGPA...\n";
                         //sort by CGPA
                         //print list
+                        studentSort::sortCGPAInternational(internationalStudents, 0 , internationalStudents.size()-1);
+                            cout << "\nNow sorting...\n";
+                            for(int i = 0; i < internationalStudents.size(); i++){
+                            cout << internationalStudents[i];
+                            }
                     }
                     else if(menuChoice2 == "2"){
                         cout << "Sorting by Research Score...\n";
                         //sort by research score
                         //print list
+                        studentSort::sortResearchScoreInternational(internationalStudents, 0 , internationalStudents.size()-1);
+                            cout << "\nNow sorting...\n";
+                            for(int i = 0; i < internationalStudents.size(); i++){
+                            cout << internationalStudents[i];
+                            }
                     }
                     else if(menuChoice2 == "3"){
                         cout << "Sorting by First Name...\n";
                         //sort by first name
                         //print list
+                        studentSort::sortFirstNameInternational(internationalStudents, 0 , internationalStudents.size()-1);
+                            cout << "\nNow sorting...\n";
+                            for(int i = 0; i < internationalStudents.size(); i++){
+                            cout << internationalStudents[i];
+                            }
                     }
                     else if(menuChoice2 == "4"){
                         cout << "Sorting by Last Name...\n";
                         //sort by last name
                         //print list
+                        studentSort::sortLastNameInternational(internationalStudents, 0 , internationalStudents.size()-1);
+                        cout << "\nNow sorting...\n";
+                        for(int i = 0; i < internationalStudents.size(); i++){
+                        cout << internationalStudents[i];
+                        }
                     }
                     else if(menuChoice2 == "5"){
                         cout << "Sorting by overall attributes...\n";
                         //overall sort
                         //print list
+                        studentSort::sortOverallInternational(internationalStudents, 0 , internationalStudents.size()-1);
+                        cout << "\nNow sorting...\n";
+                        for(int i = 0; i < internationalStudents.size(); i++){
+                        cout << internationalStudents[i];
+                        }
+                        
                     }
                 }
             }
@@ -253,7 +279,6 @@ int main() {
     while(menuChoice != "0"); //exiting program if 0
     cout << "Thank you for using the program";
 
-    */
 
   return 0;
 
