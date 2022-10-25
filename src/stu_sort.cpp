@@ -181,7 +181,7 @@ int studentSort::internationalPartition4(vector<InternationalStudent>& array, in
 
 	for(int j = low; j <= high-1; j++){ //loop from low to high
 		//if current iteration is less than pivot, increment low AND swap elements at i and j
-		if(array[j].getResearch() < pivot.getResearch()){
+		if(array[j].getResearch() > pivot.getResearch()){
 			i++; //increment index of smaller element
 			swapInternational(array[i], array[j]);
 		}
