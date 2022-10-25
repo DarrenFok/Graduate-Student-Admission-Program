@@ -155,7 +155,6 @@ int main() {
                         //sort by CGPA
                         //print list
                         studentSort::sortCGPADomestic(domesticStudents, 0, domesticStudents.size()-1);
-                        cout << "\nNow sorting...\n";
                         for(int i = 0; i < domesticStudents.size(); i++){
                             cout << domesticStudents[i];
                         }
@@ -165,7 +164,6 @@ int main() {
                         //sort by research score
                         //print list
                         studentSort::sortResearchScoreDomestic(domesticStudents, 0, domesticStudents.size()-1);
-                        cout << "\nNow sorting...\n";
                         for(int i = 0; i < domesticStudents.size(); i++){
                             cout << domesticStudents[i];
                         }
@@ -175,7 +173,6 @@ int main() {
                         //sort by first name
                         //print list
                         studentSort::sortFirstNameDomestic(domesticStudents, 0, domesticStudents.size()-1);
-                        cout << "\nNow sorting...\n";
                         for(int i = 0; i < domesticStudents.size(); i++){
                             cout << domesticStudents[i];
                         }
@@ -185,7 +182,6 @@ int main() {
                         //sort by last name
                         //print list
                         studentSort::sortLastNameDomestic(domesticStudents, 0, domesticStudents.size()-1);
-                        cout << "\nNow sorting...\n";
                         for(int i = 0; i < domesticStudents.size(); i++){
                             cout << domesticStudents[i];
                         }
@@ -195,14 +191,12 @@ int main() {
                         //overall sort
                         //print list
                         studentSort::sortOverallDomestic(domesticStudents, 0, domesticStudents.size()-1);
-                        cout << "\nNow sorting...\n";
                         for(int i = 0; i < domesticStudents.size(); i++){
                             cout << domesticStudents[i];
                         }
                     }
-                }
-            }
-            else if(menuChoice == "2"){ //international students
+                } 
+            } else if(menuChoice == "2"){ //international students
                 cout << "\nINTERNATIONAL STUDENT MENU\n";
                 cout << "Please choose a way to sort International Students: \n";
                 cout << "1) CGPA\n";
@@ -226,7 +220,6 @@ int main() {
                         //sort by CGPA
                         //print list
                         studentSort::sortCGPAInternational(internationalStudents, 0 , internationalStudents.size()-1);
-                            cout << "\nNow sorting...\n";
                             for(int i = 0; i < internationalStudents.size(); i++){
                             cout << internationalStudents[i];
                             }
@@ -236,7 +229,6 @@ int main() {
                         //sort by research score
                         //print list
                         studentSort::sortResearchScoreInternational(internationalStudents, 0 , internationalStudents.size()-1);
-                            cout << "\nNow sorting...\n";
                             for(int i = 0; i < internationalStudents.size(); i++){
                             cout << internationalStudents[i];
                             }
@@ -246,7 +238,6 @@ int main() {
                         //sort by first name
                         //print list
                         studentSort::sortFirstNameInternational(internationalStudents, 0 , internationalStudents.size()-1);
-                            cout << "\nNow sorting...\n";
                             for(int i = 0; i < internationalStudents.size(); i++){
                             cout << internationalStudents[i];
                             }
@@ -256,7 +247,6 @@ int main() {
                         //sort by last name
                         //print list
                         studentSort::sortLastNameInternational(internationalStudents, 0 , internationalStudents.size()-1);
-                        cout << "\nNow sorting...\n";
                         for(int i = 0; i < internationalStudents.size(); i++){
                         cout << internationalStudents[i];
                         }
@@ -266,7 +256,6 @@ int main() {
                         //overall sort
                         //print list
                         studentSort::sortOverallInternational(internationalStudents, 0 , internationalStudents.size()-1);
-                        cout << "\nNow sorting...\n";
                         for(int i = 0; i < internationalStudents.size(); i++){
                         cout << internationalStudents[i];
                         }
