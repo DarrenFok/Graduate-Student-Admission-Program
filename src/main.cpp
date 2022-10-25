@@ -221,7 +221,7 @@ int main() {
                         //print list
                         studentSort::sortCGPAInternational(internationalStudents, 0 , internationalStudents.size()-1);
                             for(int i = 0; i < internationalStudents.size(); i++){
-                            cout << internationalStudents[i];
+                                cout << internationalStudents[i];
                             }
                     }
                     else if(menuChoice2 == "2"){
@@ -230,7 +230,7 @@ int main() {
                         //print list
                         studentSort::sortResearchScoreInternational(internationalStudents, 0 , internationalStudents.size()-1);
                             for(int i = 0; i < internationalStudents.size(); i++){
-                            cout << internationalStudents[i];
+                                cout << internationalStudents[i];
                             }
                     }
                     else if(menuChoice2 == "3"){
@@ -239,7 +239,7 @@ int main() {
                         //print list
                         studentSort::sortFirstNameInternational(internationalStudents, 0 , internationalStudents.size()-1);
                             for(int i = 0; i < internationalStudents.size(); i++){
-                            cout << internationalStudents[i];
+                                cout << internationalStudents[i];
                             }
                     }
                     else if(menuChoice2 == "4"){
@@ -248,7 +248,7 @@ int main() {
                         //print list
                         studentSort::sortLastNameInternational(internationalStudents, 0 , internationalStudents.size()-1);
                         for(int i = 0; i < internationalStudents.size(); i++){
-                        cout << internationalStudents[i];
+                            cout << internationalStudents[i];
                         }
                     }
                     else if(menuChoice2 == "5"){
