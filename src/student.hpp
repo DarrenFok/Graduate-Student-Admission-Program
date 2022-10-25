@@ -5,7 +5,6 @@ using namespace std; //use namespace std
 #include <string> //you will have to use string in C++
 #include <iostream>
 #include "toefl.hpp"
-using namespace std;
 
 class Student{
 public:

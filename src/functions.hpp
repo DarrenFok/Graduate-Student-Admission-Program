@@ -1,7 +1,6 @@
 #ifndef PROJECT_FUNCTIONS_HPP
 #define PROJECT_FUNCTIONS_HPP
-
-
+//self-made functions by Darren
 
 #include <string>
 #include <iostream>

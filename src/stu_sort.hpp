@@ -1,7 +1,7 @@
 //header file stu_sort.hpp to declare your sorting functions
 #ifndef PROJECT_STU_SORT_HPP
 #define PROJECT_STU_SORT_HPP
-//header file stu_sort.hpp to declare your sorting functions
+
 #include <string> //you will have to use string in C++
 #include "vector" //vectors
 #include "student.hpp"

@@ -84,18 +84,18 @@ int main() {
         cgpa = stof(s_cgpa);
         getline(ss, s_researchScore, ','); //get researchScore
         researchScore = stoi(s_researchScore);
-        getline(ss, reading, ',');
-        getline(ss, listening, ',');
-        getline(ss, speaking, ',');
-        getline(ss, writing, ',');
-
+        getline(ss, reading, ','); //set toefl reading
+        getline(ss, listening, ','); //set toefl listening
+        getline(ss, speaking, ','); //set toefl speaking
+        getline(ss, writing, ','); //set toefl writing
+        //create toefl object
         toefl score;
         score.setReading(stoi(reading));
         score.setListening(stoi(listening));
         score.setSpeaking(stoi(speaking));
         score.setWriting(stoi(writing));
         score.setTotal();
-
+        //input everything into InternationalStudent object
         InternationalStudent inputInternational;
         inputInternational.setFirstName(firstName);
         inputInternational.setLastName(lastName);
@@ -253,13 +253,17 @@ int main() {
                     }
                     else if(menuChoice2 == "5"){
                         cout << "Sorting by overall attributes...\n";
+                        cout << "Filtering out students that don't meet TOEFL requirements...\n";
                         //overall sort
                         //print list
                         studentSort::sortOverallInternational(internationalStudents, 0 , internationalStudents.size()-1);
                         for(int i = 0; i < internationalStudents.size(); i++){
-                        cout << internationalStudents[i];
+                            //filter out students that don't meet TOEFL requirements
+                            if(internationalStudents[i].getTOEFL().getTotal() > 92 && internationalStudents[i].getTOEFL().getWriting() > 19 && internationalStudents[i].getTOEFL().getSpeaking() > 19 &&
+                            internationalStudents[i].getTOEFL().getListening() > 19 && internationalStudents[i].getTOEFL().getReading() > 19){
+                                cout << internationalStudents[i];
+                            }
                         }
-                        
                     }
                 }
             }
