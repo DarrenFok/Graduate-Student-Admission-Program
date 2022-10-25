@@ -277,7 +277,7 @@ int main() {
         }
     }
     while(menuChoice != "0"); //exiting program if 0
-    cout << "Thank you for using the program";
+    cout << "Thank you for using the program\n";
 
 
   return 0;
