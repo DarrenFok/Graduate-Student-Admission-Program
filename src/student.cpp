@@ -1,12 +1,14 @@
 #include "student.hpp"
 #include <iostream>
 #include <string>
+using namespace std;
+
 
 //Default constructor
 Student::Student(){
     firstName = "FirstName";
     lastName = "LastName";
-    CGPA = 4.33;
+    cgpa = 4.33;
     research = 100;
     studentID = 301123456;
 }
@@ -15,20 +17,21 @@ Student::Student(){
 Student::Student(string inputFirstName, string inputLastName, float inputCGPA, int inputResearch, int inputStudentID){
 	firstName = inputFirstName;
 	lastName = inputLastName;
-	CGPA = inputCGPA;
+	cgpa = inputCGPA;
 	research = inputResearch;
 	studentID = inputStudentID;
 }
 
+
 //compare functions
 string compareCGPA(const Student& student1, const Student& student2){
-	if(student1.CGPA < student2.CGPA){
+	if(student1.cgpa < student2.cgpa){
 		return "<";
 	}
-	else if(student1.CGPA == student2.CGPA){
+	else if(student1.cgpa == student2.cgpa){
 		return "==";
 	}
-	else if(student1.CGPA > student2.CGPA){
+	else if(student1.cgpa > student2.cgpa){
 		return ">";
 	}
 	else{
@@ -105,12 +108,12 @@ string Student::getLastName() const{
 	return lastName;
 }
 
-//CGPA
+//cgpa
 void Student::setCGPA(float input){
-	CGPA = input;
+	cgpa = input;
 }
 float Student::getCGPA() const{
-	return CGPA;
+	return cgpa;
 }
 
 //research
@@ -131,10 +134,10 @@ int Student::getID() const{
 
 //overload <<
 std::ostream& operator<<(std::ostream& os, const DomesticStudent& inputDS){
-	//Example: Domestic Student #: 301461164, Fok, Darren, Province: BC, CGPA: 3.14, Research Score: 25
+	//Example: Domestic Student #: 301461164, Fok, Darren, Province: BC, cgpa: 3.14, Research Score: 25
 	//output
 	os << "Domestic Student #: " << inputDS.getID() << ", " << inputDS.getLastName() << ", " << inputDS.getFirstName() << ", Province: " <<
-			inputDS.getProvince() << ", CGPA: " << inputDS.getCGPA() << ", Research Score: " << inputDS.getResearch() << endl;
+			inputDS.getProvince() << ", cgpa: " << inputDS.getCGPA() << ", Research Score: " << inputDS.getResearch() << endl;
 
 	return os;
 }
@@ -148,29 +151,119 @@ string DomesticStudent::getProvince() const{
 	return province;
 }
 
-//compare function
-string compareProvince(const DomesticStudent& DS1, const DomesticStudent& DS2){
-	if(DS1.province < DS2.province){
-		return "<";
+void DomesticStudent::sortedInsert(string firstName, string lastName, float cgpa,
+	int research, int studentID, string province) {
+		domesticNode* current;
+		domesticNode* before;
+		domesticNode* newNode = new domesticNode(firstName, lastName, cgpa, research, studentID, province);
+		if(head == NULL) {
+			head = newNode;
+			tail = newNode;
+		} else if (head->nresearch < newNode->nresearch) {
+			newNode->next = head;
+			head = newNode;
+		} else {
+			current = head;
+			before = head;
+			while(current->next != NULL && current->next->nresearch >= newNode->nresearch) {
+				current = current->next;
+			}
+			if(current != head) {
+				while (before->next != current) {
+					before = before->next;
+				}
+			}
+			if(newNode->nresearch < tail->nresearch) {
+				tail = newNode;
+			}
+			if( current->next->nresearch > newNode->nresearch) {
+				newNode->next = current->next;
+				current->next = newNode;
+			} else if (current->nresearch == newNode->nresearch){
+				if(current->ncgpa > newNode->ncgpa) {
+					newNode->next = current->next;
+					current->next = newNode;
+				} else if (current->ncgpa < newNode->ncgpa) {
+					newNode->next = before->next;
+					before->next = newNode;
+				} else if(current->ncgpa == newNode->ncgpa) {
+					if(current->nprovince < newNode->nprovince) {
+						newNode->next = current->next;
+						current->next = newNode;
+					} else if(current->nprovince > newNode->nprovince) {
+						newNode->next = before->next;
+						before->next = newNode;
+					}
+				}
+			} 
+			
+		}
 	}
-	else if(DS1.province == DS2.province){
-		return "==";
-	}
-	else if(DS1.province > DS2.province){
-		return ">";
-	}
-	else{
-		cout << "ERROR: DomesticStudent.compareProince";
-		exit(1);
+
+
+
+void DomesticStudent::display() const {
+	if(!empty()) {
+		domesticNode* temp = head;
+		cout << "Linked list: \n";
+		while(temp != NULL) {
+			cout << temp-> nstudentID << ", " << temp->nfirstName << ", " << temp->nlastName << ", " << temp->nresearch << ", " 
+			 	 << temp->ncgpa << ", " << temp->nprovince << ", " << endl;
+			temp = temp->next;
+		}
 	}
 }
 
+DomesticStudent::~DomesticStudent() {
+	domesticNode* current = head;
+	while(current != NULL) {
+		domesticNode* temp = current;
+		current = current->next;
+		delete temp;
+	}
+}
+
+int DomesticStudent::pop() {
+	int result;
+	if(!empty()) {
+		domesticNode* temp;
+		temp = new domesticNode();
+		temp = head;
+		head = head->next;
+		delete temp;
+		result = head->nresearch;
+	}
+	return result;
+}
+
+
+bool DomesticStudent::empty() const {
+	return (head == NULL);
+}
+
+// //compare function
+// string compareProvince(const DomesticStudent& DS1, const DomesticStudent& DS2){
+// 	if(DS1.province < DS2.province){
+// 		return "<";
+// 	}
+// 	else if(DS1.province == DS2.province){
+// 		return "==";
+// 	}
+// 	else if(DS1.province > DS2.province){
+// 		return ">";
+// 	}
+// 	else{
+// 		cout << "ERROR: DomesticStudent.compareProince";
+// 		exit(1);
+// 	}
+// }
+
 //overload <<
 std::ostream& operator<<(std::ostream& os, const InternationalStudent& inputIS){
-	//Example: Domestic Student #: 301461164, Fok, Darren, Province: BC, CGPA: 3.14, Research Score: 25
+	//Example: Domestic Student #: 301461164, Fok, Darren, Province: BC, cgpa: 3.14, Research Score: 25
 	//output
 	os << "International Student #: " << inputIS.getID() << ", " << inputIS.getLastName() << ", " << inputIS.getFirstName() << ", Country: " <<
-			inputIS.getCountry() << ", CGPA: " << inputIS.getCGPA() << ", Research Score: " << inputIS.getResearch() << endl;
+			inputIS.getCountry() << ", cgpa: " << inputIS.getCGPA() << ", Research Score: " << inputIS.getResearch() << endl;
 
 	return os;
 }
