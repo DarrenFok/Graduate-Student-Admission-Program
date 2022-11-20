@@ -1,153 +1,49 @@
-//header file student.hpp to declare your classes
-#ifndef PROJECT_STUDENT_HPP
-#define PROJECT_STUDENT_HPP
-using namespace std; //use namespace std
+//header file stu_sort.hpp to declare your sorting functions
+#ifndef PROJECT_STU_SORT_HPP
+#define PROJECT_STU_SORT_HPP
+
 #include <string> //you will have to use string in C++
-#include <iostream>
+#include "vector" //vectors
+#include "student.hpp"
 #include "toefl.hpp"
 using namespace std;
 
-//DomesticStudent node class
-class domesticNode {
-	public:
-	string nfirstName;
-	string nlastName;
-	float ncgpa;
-	int nresearch;
-	int nstudentID;
-	string nprovince;
-	domesticNode* next;
+namespace studentSort{ //make it namespace, so that functions can be accessed outside
+    //lastName sort
+    int domesticPartition1(vector<DomesticStudent>& array, int first, int last); //from low to high
+    int internationalPartition1(vector < InternationalStudent >& array, int first, int last);
+    void sortLastNameDomestic(vector<DomesticStudent>& array, int first, int last); //works
+    void sortLastNameInternational(vector<InternationalStudent>& array, int first, int last);
 
-	domesticNode() {
-	nfirstName = "FirstName";
-	nlastName = "LastName";
-	ncgpa = 4.33;
-	nresearch = 100;
-	nstudentID = 301123456;
-	nprovince = "ProvinceOrTerritory";
-	next = NULL;
-	}
+    //firstname sort
+    int domesticPartition2(vector < DomesticStudent >& array, int low, int high);
+    int internationalPartition2(vector < InternationalStudent >& array, int low, int high);
+    void sortFirstNameDomestic(vector<DomesticStudent>& array, int first, int last); //works
+    void sortFirstNameInternational(vector<InternationalStudent>& array, int first, int last);
 
-	domesticNode(string newFirstName, string newLastName, float newCGPA,
-	int newResearch, int newStudentID, string newProvince) {
-	nfirstName = newFirstName;
-	nlastName = newLastName;
-	ncgpa = newCGPA;
-	nresearch = newResearch;
-	nprovince = newProvince;
-	next = NULL;
-	}
+    //cgpa sort
+    int domesticPartition3(vector<DomesticStudent>& array, int low, int high);
+    int internationalPartition3(vector<InternationalStudent>& array, int low, int high);
+    void sortCGPADomestic(vector<DomesticStudent>& array, int first, int last);
+    void sortCGPAInternational(vector<InternationalStudent>& array, int first, int last);
 
-};
+    //research score sort
+    int domesticPartition4(vector < DomesticStudent >& array, int low, int high);
+    int internationalPartition4(vector < InternationalStudent >& array, int low, int high);
+    void sortResearchScoreDomestic(vector<DomesticStudent>& array, int first, int last);
+    void sortResearchScoreInternational(vector<InternationalStudent>& array, int first, int last);
 
-//InternationStudent node class
-class internationalNode {
-	public:
-	string firstName;
-	string lastName;
-	float cgpa;
-	int research;
-	int studentID;
-	string country;
-	string TOEFL;
-	internationalNode* next;
-};
-
-class Student{
-public:
-	//Default constructor
-	Student();
-
-	//Constructor
-	Student(string firstName, string lastName, float cgpa, int research, int studentID);
-
-	//set
-	void setFirstName(string firstName);
-	void setLastName(string lastName);
-	void setCGPA(float cgpa);
-	void setResearch(int research);
-	void setID(int studentID);
-
-	//get
-	string getFirstName() const;
-	string getLastName() const;
-	float getCGPA() const;
-	int getResearch() const;
-	int getID() const;
-
-	//compare friend functions, either returns less, equal or greater
-	friend string compareCGPA(const Student& student1, const Student& student2);
-	friend string compareResearchScore(const Student& student1, const Student& student2);
-	friend string compareFirstName(const Student& student1, const Student& student2);
-	friend string compareLastName(const Student& student1, const Student& student2);
+    //overall sort
+    void sortOverallDomestic(vector<DomesticStudent>& array, int first, int last);
+    void sortOverallInternational(vector<InternationalStudent>& array, int first, int last);
+    //
+    int domesticPartition8(vector < DomesticStudent >& array, int low, int high);
+    int internationalPartition8(vector < InternationalStudent >& array, int low, int high);
+    //swap
+	void swapDomestic(DomesticStudent& input1, DomesticStudent& input2); //function to swap
+    void swapInternational(InternationalStudent& input1, InternationalStudent& input2);
 
 
-private:
-	//fields
-	string firstName;
-	string lastName;
-	float cgpa;
-	int research;
-	int studentID;
 
-};
-
-//DomesticStudent child class of Student
-class DomesticStudent : public Student{
-public:
-	//overload <<
-	friend std::ostream& operator<<(std::ostream& os, const DomesticStudent& inputDS);
-
-	//province
-	void setProvince(string province);
-	string getProvince() const;
-
-	//compare function
-	friend string compareProvince(const DomesticStudent& DS1, const DomesticStudent& DS2);
-
-	~DomesticStudent();
-	
-	//Insert in an overall sorted order
-	void sortedInsert(string firstName, string lastName, float cgpa,
-				 int research, int studentID, string province);
-
-	//display
-	void display() const;
-
-	bool empty() const;
-
-	int pop();
-
-	
-private:
-	string province;
-	domesticNode* head;
-	domesticNode* tail;
-
-};
-
-class InternationalStudent : public Student{
-public:
-	//overload the operator
-	friend std::ostream& operator<<(std::ostream& os, const InternationalStudent& inputIS);
-
-	//getter, setter
-	void setCountry(string input);
-	string getCountry() const;
-
-	//compare
-	friend string compareCountry(const InternationalStudent& IS1, const InternationalStudent& IS2);
-
-	void setTOEFL(const toefl& input);
-	toefl getTOEFL() const;
-
-	//Insert in an overall sorted order
-
-
-private:
-	string country;
-	toefl TOEFL;
-	internationalNode* head;
-	internationalNode* tail;
-};
+}
 #endif
