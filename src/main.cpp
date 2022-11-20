@@ -34,11 +34,12 @@ int main() {
     //put .txt files into arrays
     vector<DomesticStudent> domesticStudents;
     vector<InternationalStudent> internationalStudents;
-
+    
     //input domesticStudents
     getline(domesticFile, line);
     int domesticCount = 0;
     int idCountDomestic = 20220000;
+    DomesticStudent domesticList;
     while (getline(domesticFile, line)) {
         istringstream ss(line);
         string firstName, lastName, province, s_cgpa, s_researchScore; //strings
@@ -53,19 +54,22 @@ int main() {
         getline(ss, s_researchScore, ','); //get researchScore
         researchScore = stoi(s_researchScore);
 
-        DomesticStudent inputDomestic;
-        inputDomestic.setFirstName(firstName);
-        inputDomestic.setLastName(lastName);
-        inputDomestic.setProvince(province);
-        inputDomestic.setCGPA(cgpa);
-        inputDomestic.setResearch(researchScore);
-        inputDomestic.setID(idCountDomestic);
-
-        domesticStudents.push_back(inputDomestic);
-
-        domesticCount++;
+        // DomesticStudent inputDomestic;
+        // inputDomestic.setFirstName(firstName);
+        // inputDomestic.setLastName(lastName);
+        // inputDomestic.setProvince(province);
+        // inputDomestic.setCGPA(cgpa);
+        // inputDomestic.setResearch(researchScore);
+        // inputDomestic.setID(idCountDomestic);
+        // domesticStudents.push_back(inputDomestic);
+        domesticList.sortedInsert(firstName, lastName, cgpa, researchScore, idCountDomestic,province);
+        // domesticCount++;
         idCountDomestic++;
+        
     }
+
+    // domesticList.pop();
+    // domesticList.display();
 
     //input internationalStudents
     getline(internationalFile, line);
@@ -111,165 +115,165 @@ int main() {
         idCountInternational++;
     }
 
-    cout << "\nWelcome to the Graduate Student Admission Program\n";
-    //menu - loops until user wants to exit
-    do{
-        //UI asking for user input
-        cout << "\nMAIN MENU\n";
-        cout << "Choose Domestic or International Students by typing in respective number: \n";
-        cout << "1) Domestic Students\n";
-        cout << "2) International Students\n";
-        cout << "0) Exit program\n";
-        cin >> menuChoice;
-        //check user input for errors
-        if(functions::isNumerical(menuChoice) == false){ //check for number inputs only
-            cout << "ERROR: Invalid input, numbers accepted only\n";
-            continue;
-        }
-        else if(stoi(menuChoice) > 2 || stoi(menuChoice) < 0){ //check for valid numbers only
-            cout << "ERROR: Invalid number, please input 0-2\n";
-            continue;
-        }
-        else{ //if input is valid
-            if(menuChoice == "1"){ //domestic students
-                cout << "\nDOMESTIC STUDENT MENU\n";
-                cout << "Please choose a way to sort Domestic Students: \n";
-                cout << "1) CGPA\n";
-                cout << "2) Research Score\n";
-                cout << "3) First Name\n";
-                cout << "4) Last Name\n";
-                cout << "5) Overall Sort (Research Score -> CGPA -> Province)\n";
-                cout << "0) Go back to main menu\n";
-                cin >> menuChoice2;
-                if(functions::isNumerical(menuChoice2) == false){ //check for number inputs only
-                    cout << "ERROR: Invalid input, numbers accepted only\n";
-                    continue;
-                }
-                else if(stoi(menuChoice2) > 5 || stoi(menuChoice2) < 0){ //check for valid numbers only
-                    cout << "ERROR: Invalid number, please input 0-5\n";
-                    continue;
-                }
-                else{
-                    if(menuChoice2 == "1"){
-                        cout << "Sorting by CGPA...\n";
-                        //sort by CGPA
-                        //print list
-                        studentSort::sortCGPADomestic(domesticStudents, 0, domesticStudents.size()-1);
-                        for(int i = 0; i < domesticStudents.size(); i++){
-                            cout << domesticStudents[i];
-                        }
-                    }
-                    else if(menuChoice2 == "2"){
-                        cout << "Sorting by Research Score...\n";
-                        //sort by research score
-                        //print list
-                        studentSort::sortResearchScoreDomestic(domesticStudents, 0, domesticStudents.size()-1);
-                        for(int i = 0; i < domesticStudents.size(); i++){
-                            cout << domesticStudents[i];
-                        }
-                    }
-                    else if(menuChoice2 == "3"){
-                        cout << "Sorting by First Name...\n";
-                        //sort by first name
-                        //print list
-                        studentSort::sortFirstNameDomestic(domesticStudents, 0, domesticStudents.size()-1);
-                        for(int i = 0; i < domesticStudents.size(); i++){
-                            cout << domesticStudents[i];
-                        }
-                    }
-                    else if(menuChoice2 == "4"){
-                        cout << "Sorting by Last Name...\n";
-                        //sort by last name
-                        //print list
-                        studentSort::sortLastNameDomestic(domesticStudents, 0, domesticStudents.size()-1);
-                        for(int i = 0; i < domesticStudents.size(); i++){
-                            cout << domesticStudents[i];
-                        }
-                    }
-                    else if(menuChoice2 == "5"){
-                        cout << "Sorting by overall attributes...\n";
-                        //overall sort
-                        //print list
-                        studentSort::sortOverallDomestic(domesticStudents, 0, domesticStudents.size()-1);
-                        for(int i = 0; i < domesticStudents.size(); i++){
-                            cout << domesticStudents[i];
-                        }
-                    }
-                } 
-            } else if(menuChoice == "2"){ //international students
-                cout << "\nINTERNATIONAL STUDENT MENU\n";
-                cout << "Please choose a way to sort International Students: \n";
-                cout << "1) CGPA\n";
-                cout << "2) Research Score\n";
-                cout << "3) First Name\n";
-                cout << "4) Last Name\n";
-                cout << "5) Overall Sort (Research Score -> CGPA -> Country)\n";
-                cout << "0) Go back to main menu\n";
-                cin >> menuChoice2;
-                if(functions::isNumerical(menuChoice2) == false){ //check for number inputs only
-                    cout << "ERROR: Invalid input, numbers accepted only\n";
-                    continue;
-                }
-                else if(stoi(menuChoice2) > 5 || stoi(menuChoice2) < 0){ //check for valid numbers only
-                    cout << "ERROR: Invalid number, please input 0-5\n";
-                    continue;
-                }
-                else{
-                    if(menuChoice2 == "1"){
-                        cout << "Sorting by CGPA...\n";
-                        //sort by CGPA
-                        //print list
-                        studentSort::sortCGPAInternational(internationalStudents, 0 , internationalStudents.size()-1);
-                            for(int i = 0; i < internationalStudents.size(); i++){
-                                cout << internationalStudents[i];
-                            }
-                    }
-                    else if(menuChoice2 == "2"){
-                        cout << "Sorting by Research Score...\n";
-                        //sort by research score
-                        //print list
-                        studentSort::sortResearchScoreInternational(internationalStudents, 0 , internationalStudents.size()-1);
-                            for(int i = 0; i < internationalStudents.size(); i++){
-                                cout << internationalStudents[i];
-                            }
-                    }
-                    else if(menuChoice2 == "3"){
-                        cout << "Sorting by First Name...\n";
-                        //sort by first name
-                        //print list
-                        studentSort::sortFirstNameInternational(internationalStudents, 0 , internationalStudents.size()-1);
-                            for(int i = 0; i < internationalStudents.size(); i++){
-                                cout << internationalStudents[i];
-                            }
-                    }
-                    else if(menuChoice2 == "4"){
-                        cout << "Sorting by Last Name...\n";
-                        //sort by last name
-                        //print list
-                        studentSort::sortLastNameInternational(internationalStudents, 0 , internationalStudents.size()-1);
-                        for(int i = 0; i < internationalStudents.size(); i++){
-                            cout << internationalStudents[i];
-                        }
-                    }
-                    else if(menuChoice2 == "5"){
-                        cout << "Sorting by overall attributes...\n";
-                        cout << "Filtering out students that don't meet TOEFL requirements...\n";
-                        //overall sort
-                        //print list
-                        studentSort::sortOverallInternational(internationalStudents, 0 , internationalStudents.size()-1);
-                        for(int i = 0; i < internationalStudents.size(); i++){
-                            //filter out students that don't meet TOEFL requirements
-                            if(internationalStudents[i].getTOEFL().getTotal() > 92 && internationalStudents[i].getTOEFL().getWriting() > 19 && internationalStudents[i].getTOEFL().getSpeaking() > 19 &&
-                            internationalStudents[i].getTOEFL().getListening() > 19 && internationalStudents[i].getTOEFL().getReading() > 19){
-                                cout << internationalStudents[i];
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    while(menuChoice != "0"); //exiting program if 0
+    // cout << "\nWelcome to the Graduate Student Admission Program\n";
+    // //menu - loops until user wants to exit
+    // do{
+    //     //UI asking for user input
+    //     cout << "\nMAIN MENU\n";
+    //     cout << "Choose Domestic or International Students by typing in respective number: \n";
+    //     cout << "1) Domestic Students\n";
+    //     cout << "2) International Students\n";
+    //     cout << "0) Exit program\n";
+    //     cin >> menuChoice;
+    //     //check user input for errors
+    //     if(functions::isNumerical(menuChoice) == false){ //check for number inputs only
+    //         cout << "ERROR: Invalid input, numbers accepted only\n";
+    //         continue;
+    //     }
+    //     else if(stoi(menuChoice) > 2 || stoi(menuChoice) < 0){ //check for valid numbers only
+    //         cout << "ERROR: Invalid number, please input 0-2\n";
+    //         continue;
+    //     }
+    //     else{ //if input is valid
+    //         if(menuChoice == "1"){ //domestic students
+    //             cout << "\nDOMESTIC STUDENT MENU\n";
+    //             cout << "Please choose a way to sort Domestic Students: \n";
+    //             cout << "1) cgpa\n";
+    //             cout << "2) Research Score\n";
+    //             cout << "3) First Name\n";
+    //             cout << "4) Last Name\n";
+    //             cout << "5) Overall Sort (Research Score -> cgpa -> Province)\n";
+    //             cout << "0) Go back to main menu\n";
+    //             cin >> menuChoice2;
+    //             if(functions::isNumerical(menuChoice2) == false){ //check for number inputs only
+    //                 cout << "ERROR: Invalid input, numbers accepted only\n";
+    //                 continue;
+    //             }
+    //             else if(stoi(menuChoice2) > 5 || stoi(menuChoice2) < 0){ //check for valid numbers only
+    //                 cout << "ERROR: Invalid number, please input 0-5\n";
+    //                 continue;
+    //             }
+    //             else{
+    //                 if(menuChoice2 == "1"){
+    //                     cout << "Sorting by cgpa...\n";
+    //                     //sort by cgpa
+    //                     //print list
+    //                     studentSort::sortCGPADomestic(domesticStudents, 0, domesticStudents.size()-1);
+    //                     for(int i = 0; i < domesticStudents.size(); i++){
+    //                         cout << domesticStudents[i];
+    //                     }
+    //                 }
+    //                 else if(menuChoice2 == "2"){
+    //                     cout << "Sorting by Research Score...\n";
+    //                     //sort by research score
+    //                     //print list
+    //                     studentSort::sortResearchScoreDomestic(domesticStudents, 0, domesticStudents.size()-1);
+    //                     for(int i = 0; i < domesticStudents.size(); i++){
+    //                         cout << domesticStudents[i];
+    //                     }
+    //                 }
+    //                 else if(menuChoice2 == "3"){
+    //                     cout << "Sorting by First Name...\n";
+    //                     //sort by first name
+    //                     //print list
+    //                     studentSort::sortFirstNameDomestic(domesticStudents, 0, domesticStudents.size()-1);
+    //                     for(int i = 0; i < domesticStudents.size(); i++){
+    //                         cout << domesticStudents[i];
+    //                     }
+    //                 }
+    //                 else if(menuChoice2 == "4"){
+    //                     cout << "Sorting by Last Name...\n";
+    //                     //sort by last name
+    //                     //print list
+    //                     studentSort::sortLastNameDomestic(domesticStudents, 0, domesticStudents.size()-1);
+    //                     for(int i = 0; i < domesticStudents.size(); i++){
+    //                         cout << domesticStudents[i];
+    //                     }
+    //                 }
+    //                 else if(menuChoice2 == "5"){
+    //                     cout << "Sorting by overall attributes...\n";
+    //                     //overall sort
+    //                     //print list
+    //                     studentSort::sortOverallDomestic(domesticStudents, 0, domesticStudents.size()-1);
+    //                     for(int i = 0; i < domesticStudents.size(); i++){
+    //                         cout << domesticStudents[i];
+    //                     }
+    //                 }
+    //             } 
+    //         } else if(menuChoice == "2"){ //international students
+    //             cout << "\nINTERNATIONAL STUDENT MENU\n";
+    //             cout << "Please choose a way to sort International Students: \n";
+    //             cout << "1) cgpa\n";
+    //             cout << "2) Research Score\n";
+    //             cout << "3) First Name\n";
+    //             cout << "4) Last Name\n";
+    //             cout << "5) Overall Sort (Research Score -> cgpa -> Country)\n";
+    //             cout << "0) Go back to main menu\n";
+    //             cin >> menuChoice2;
+    //             if(functions::isNumerical(menuChoice2) == false){ //check for number inputs only
+    //                 cout << "ERROR: Invalid input, numbers accepted only\n";
+    //                 continue;
+    //             }
+    //             else if(stoi(menuChoice2) > 5 || stoi(menuChoice2) < 0){ //check for valid numbers only
+    //                 cout << "ERROR: Invalid number, please input 0-5\n";
+    //                 continue;
+    //             }
+    //             else{
+    //                 if(menuChoice2 == "1"){
+    //                     cout << "Sorting by cgpa...\n";
+    //                     //sort by cgpa
+    //                     //print list
+    //                     studentSort::sortCGPAInternational(internationalStudents, 0 , internationalStudents.size()-1);
+    //                         for(int i = 0; i < internationalStudents.size(); i++){
+    //                             cout << internationalStudents[i];
+    //                         }
+    //                 }
+    //                 else if(menuChoice2 == "2"){
+    //                     cout << "Sorting by Research Score...\n";
+    //                     //sort by research score
+    //                     //print list
+    //                     studentSort::sortResearchScoreInternational(internationalStudents, 0 , internationalStudents.size()-1);
+    //                         for(int i = 0; i < internationalStudents.size(); i++){
+    //                             cout << internationalStudents[i];
+    //                         }
+    //                 }
+    //                 else if(menuChoice2 == "3"){
+    //                     cout << "Sorting by First Name...\n";
+    //                     //sort by first name
+    //                     //print list
+    //                     studentSort::sortFirstNameInternational(internationalStudents, 0 , internationalStudents.size()-1);
+    //                         for(int i = 0; i < internationalStudents.size(); i++){
+    //                             cout << internationalStudents[i];
+    //                         }
+    //                 }
+    //                 else if(menuChoice2 == "4"){
+    //                     cout << "Sorting by Last Name...\n";
+    //                     //sort by last name
+    //                     //print list
+    //                     studentSort::sortLastNameInternational(internationalStudents, 0 , internationalStudents.size()-1);
+    //                     for(int i = 0; i < internationalStudents.size(); i++){
+    //                         cout << internationalStudents[i];
+    //                     }
+    //                 }
+    //                 else if(menuChoice2 == "5"){
+    //                     cout << "Sorting by overall attributes...\n";
+    //                     cout << "Filtering out students that don't meet TOEFL requirements...\n";
+    //                     //overall sort
+    //                     //print list
+    //                     studentSort::sortOverallInternational(internationalStudents, 0 , internationalStudents.size()-1);
+    //                     for(int i = 0; i < internationalStudents.size(); i++){
+    //                         //filter out students that don't meet TOEFL requirements
+    //                         if(internationalStudents[i].getTOEFL().getTotal() > 92 && internationalStudents[i].getTOEFL().getWriting() > 19 && internationalStudents[i].getTOEFL().getSpeaking() > 19 &&
+    //                         internationalStudents[i].getTOEFL().getListening() > 19 && internationalStudents[i].getTOEFL().getReading() > 19){
+    //                             cout << internationalStudents[i];
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+    // while(menuChoice != "0"); //exiting program if 0
     cout << "Thank you for using the program\n";
 
 
