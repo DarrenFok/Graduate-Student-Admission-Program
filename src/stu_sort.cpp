@@ -64,7 +64,7 @@ void studentSort::sortLastNameInternational(vector<InternationalStudent>& array,
 }
 
 //sort firstname
-int studentSort::domesticPartition2(vector<DomesticStudent>& array, int low, int high){ //for firstName sort
+int studentSort::domesticPartition2(vector<DomesticStudent>& array, int low, int high){ //for lastName sort
 	DomesticStudent pivot = array[high]; //pivot element
 	int i = (low-1); //index of smaller element
 	for(int j = low; j <= high-1; j++){ //loop from low to high
@@ -78,7 +78,7 @@ int studentSort::domesticPartition2(vector<DomesticStudent>& array, int low, int
 	return (i+1);
 }
 
-int studentSort::internationalPartition2(vector<InternationalStudent>& array, int low, int high){ //for firstName sort
+int studentSort::internationalPartition2(vector<InternationalStudent>& array, int low, int high){ //for lastName sort
 	InternationalStudent pivot = array[high]; //pivot element
 	int i = (low-1); //index of smaller element
 	for(int j = low; j <= high-1; j++){ //loop from low to high
@@ -219,7 +219,7 @@ void studentSort::sortOverallDomestic(vector<DomesticStudent>& array ,int first,
 	}
 }
 
-int studentSort::domesticPartition8(vector<DomesticStudent>& array, int low, int high){ //for overallDomestic sort
+int studentSort::domesticPartition8(vector<DomesticStudent>& array, int low, int high){ //for cgpa sort
     DomesticStudent pivot = array[high]; //pivot element
     int i = (low-1); //index of smaller element
 
@@ -267,7 +267,7 @@ void studentSort::sortOverallInternational(vector<InternationalStudent>& input, 
 	}
 }
 
-int studentSort::internationalPartition8(vector<InternationalStudent>& array, int low, int high){ //for overallInternational sort
+int studentSort::internationalPartition8(vector<InternationalStudent>& array, int low, int high){ //for cgpa sort
     InternationalStudent pivot = array[high]; //pivot element
     int i = (low-1); //index of smaller element
 

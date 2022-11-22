@@ -39,7 +39,7 @@ int main() {
     getline(domesticFile, line);
     int domesticCount = 0;
     int idCountDomestic = 20220000;
-    DomesticStudent domesticList;
+    DomesticList DL1;
     while (getline(domesticFile, line)) {
         istringstream ss(line);
         string firstName, lastName, province, s_cgpa, s_researchScore; //strings
@@ -54,66 +54,70 @@ int main() {
         getline(ss, s_researchScore, ','); //get researchScore
         researchScore = stoi(s_researchScore);
 
-        // DomesticStudent inputDomestic;
-        // inputDomestic.setFirstName(firstName);
-        // inputDomestic.setLastName(lastName);
-        // inputDomestic.setProvince(province);
-        // inputDomestic.setCGPA(cgpa);
-        // inputDomestic.setResearch(researchScore);
-        // inputDomestic.setID(idCountDomestic);
-        // domesticStudents.push_back(inputDomestic);
-        domesticList.sortedInsert(firstName, lastName, cgpa, researchScore, idCountDomestic,province);
-        // domesticCount++;
+        DomesticStudent inputDomestic;
+        inputDomestic.setFirstName(firstName);
+        inputDomestic.setLastName(lastName);
+        inputDomestic.setProvince(province);
+        inputDomestic.setCGPA(cgpa);
+        inputDomestic.setResearch(researchScore);
+        inputDomestic.setID(idCountDomestic);
+        domesticStudents.push_back(inputDomestic);
+        DL1.sortedInsert(firstName, lastName, cgpa, researchScore, idCountDomestic,province);
+        domesticCount++;
         idCountDomestic++;
         
     }
 
-    // domesticList.pop();
-    // domesticList.display();
+    DL1.display();
+    
 
-    //input internationalStudents
-    getline(internationalFile, line);
-    int internationalCount = 0;
-    int idCountInternational = 20220000;
-    while (getline(internationalFile, line)){
-        istringstream ss(line);
-        string firstName, lastName, country, s_cgpa, s_researchScore, reading, listening, speaking, writing;
-        float cgpa;
-        int researchScore;
+//    //input internationalStudents
+//    getline(internationalFile, line);
+//    int internationalCount = 0;
+//    int idCountInternational = 20220000;
+//    InternationalList LI;
+//    while (getline(internationalFile, line)){
+//        istringstream ss(line);
+//        string firstName, lastName, country, s_cgpa, s_researchScore, reading, listening, speaking, writing;
+//        float cgpa;
+//        int researchScore;
 
-        getline(ss, firstName, ','); //get firstName
-        getline(ss, lastName, ','); //get lastName
-        getline(ss, country, ','); //get province
-        getline(ss, s_cgpa, ','); //get cgpa
-        cgpa = stof(s_cgpa);
-        getline(ss, s_researchScore, ','); //get researchScore
-        researchScore = stoi(s_researchScore);
-        getline(ss, reading, ','); //set toefl reading
-        getline(ss, listening, ','); //set toefl listening
-        getline(ss, speaking, ','); //set toefl speaking
-        getline(ss, writing, ','); //set toefl writing
-        //create toefl object
-        toefl score;
-        score.setReading(stoi(reading));
-        score.setListening(stoi(listening));
-        score.setSpeaking(stoi(speaking));
-        score.setWriting(stoi(writing));
-        score.setTotal();
-        //input everything into InternationalStudent object
-        InternationalStudent inputInternational;
-        inputInternational.setFirstName(firstName);
-        inputInternational.setLastName(lastName);
-        inputInternational.setCountry(country);
-        inputInternational.setCGPA(cgpa);
-        inputInternational.setResearch(researchScore);
-        inputInternational.setTOEFL(score);
-        inputInternational.setID(idCountInternational);
+//        getline(ss, firstName, ','); //get firstName
+//        getline(ss, lastName, ','); //get lastName
+//        getline(ss, country, ','); //get province
+//        getline(ss, s_cgpa, ','); //get cgpa
+//        cgpa = stof(s_cgpa);
+//        getline(ss, s_researchScore, ','); //get researchScore
+//        researchScore = stoi(s_researchScore);
+//        getline(ss, reading, ','); //set toefl reading
+//        getline(ss, listening, ','); //set toefl listening
+//        getline(ss, speaking, ','); //set toefl speaking
+//        getline(ss, writing, ','); //set toefl writing
+//        //create toefl object
+//        toefl score;
+//        score.setReading(stoi(reading));
+//        score.setListening(stoi(listening));
+//        score.setSpeaking(stoi(speaking));
+//        score.setWriting(stoi(writing));
+//        score.setTotal();
+//        //input everything into InternationalStudent object
+//        InternationalStudent inputInternational;
+//        inputInternational.setFirstName(firstName);
+//        inputInternational.setLastName(lastName);
+//        inputInternational.setCountry(country);
+//        inputInternational.setCGPA(cgpa);
+//        inputInternational.setResearch(researchScore);
+//        inputInternational.setTOEFL(score);
+//        inputInternational.setID(idCountInternational);
 
-        internationalStudents.push_back(inputInternational);
+//        internationalStudents.push_back(inputInternational);
+//        LI.sortedInsert(firstName, lastName, cgpa, researchScore, idCountInternational, country, score);
+//        cout << "hello\n";
+//        internationalCount++;
+//        idCountInternational++;
+//    }
 
-        internationalCount++;
-        idCountInternational++;
-    }
+//    LI.display();
 
     // cout << "\nWelcome to the Graduate Student Admission Program\n";
     // //menu - loops until user wants to exit
@@ -274,7 +278,7 @@ int main() {
     //     }
     // }
     // while(menuChoice != "0"); //exiting program if 0
-    cout << "Thank you for using the program\n";
+    //cout << "Thank you for using the program\n";
 
 
   return 0;
