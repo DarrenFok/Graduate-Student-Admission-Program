@@ -7,51 +7,6 @@ using namespace std; //use namespace std
 #include "toefl.hpp"
 using namespace std;
 
-//DomesticStudent node class
-class domesticNode {
-	public:
-	string nfirstName;
-	string nlastName;
-	float ncgpa;
-	int nresearch;
-	int nstudentID;
-	string nprovince;
-	domesticNode* next;
-
-	domesticNode() {
-	nfirstName = "FirstName";
-	nlastName = "LastName";
-	ncgpa = 4.33;
-	nresearch = 100;
-	nstudentID = 301123456;
-	nprovince = "ProvinceOrTerritory";
-	next = NULL;
-	}
-
-	domesticNode(string newFirstName, string newLastName, float newCGPA,
-	int newResearch, int newStudentID, string newProvince) {
-	nfirstName = newFirstName;
-	nlastName = newLastName;
-	ncgpa = newCGPA;
-	nresearch = newResearch;
-	nprovince = newProvince;
-	next = NULL;
-	}
-
-};
-
-//InternationStudent node class
-class internationalNode {
-	public:
-	string firstName;
-	string lastName;
-	float cgpa;
-	int research;
-	int studentID;
-	string country;
-	string TOEFL;
-	internationalNode* next;
-};
 
 class Student{
 public:
@@ -95,39 +50,51 @@ private:
 //DomesticStudent child class of Student
 class DomesticStudent : public Student{
 public:
+    //Default constructor
+    DomesticStudent();
 	//overload <<
 	friend std::ostream& operator<<(std::ostream& os, const DomesticStudent& inputDS);
 
 	//province
 	void setProvince(string province);
 	string getProvince() const;
+    void setNext(DomesticStudent *input);
+    DomesticStudent* getNext() const;
 
 	//compare function
 	friend string compareProvince(const DomesticStudent& DS1, const DomesticStudent& DS2);
 
-	~DomesticStudent();
-	
-	//Insert in an overall sorted order
-	void sortedInsert(string firstName, string lastName, float cgpa,
-				 int research, int studentID, string province);
-
-	//display
-	void display() const;
-
-	bool empty() const;
-
-	int pop();
-
-	
 private:
 	string province;
-	domesticNode* head;
-	domesticNode* tail;
+    DomesticStudent *next;
 
+};
+
+class DomesticList{
+public:
+    //insert functions, search functions, everything goes here
+    ~DomesticList();
+
+    //Insert in an overall sorted order
+    void sortedInsert(string firstName, string lastName, float cgpa,
+                      int research, int studentID, string province);
+
+    //display
+    void display() const;
+
+    bool empty() const;
+
+    int pop();
+
+private:
+    DomesticStudent *head;
+    DomesticStudent *tail;
 };
 
 class InternationalStudent : public Student{
 public:
+	//default constructor
+	InternationalStudent();
 	//overload the operator
 	friend std::ostream& operator<<(std::ostream& os, const InternationalStudent& inputIS);
 
@@ -140,14 +107,33 @@ public:
 
 	void setTOEFL(const toefl& input);
 	toefl getTOEFL() const;
-
-	//Insert in an overall sorted order
+	void setNext(InternationalStudent *input);
+    InternationalStudent* getNext() const;
 
 
 private:
 	string country;
 	toefl TOEFL;
-	internationalNode* head;
-	internationalNode* tail;
+    InternationalStudent *next;
+};
+
+class InternationalList{
+public:
+    //insert functions, search functions, everything goes here
+	~InternationalList();
+	
+	void sortedInsert(string firstName, string lastName, float cgpa,
+                      int research, int studentID, string country, toefl TOEFL);
+
+    //display
+    void display() const;
+
+    bool empty() const;
+
+    int pop();
+
+private:
+    InternationalStudent *head;
+    InternationalStudent *tail;
 };
 #endif
