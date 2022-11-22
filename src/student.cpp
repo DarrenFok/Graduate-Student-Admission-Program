@@ -159,6 +159,7 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 	int research, int studentID, string province) {
 		DomesticStudent *current;
 		DomesticStudent *before;
+		DomesticStudent *temp;
 		DomesticStudent *newNode = new DomesticStudent;
         newNode->setFirstName(firstName);
         newNode->setLastName(lastName);
@@ -171,7 +172,9 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 		if(head == NULL) {
 			head = newNode;
 			tail = newNode;
-		} else if (head->getResearch() < newNode->getResearch()) { //if current head research score is less, replace it with the new top
+		} else if (head->getResearch() < newNode->getResearch() || head->getResearch() == newNode->getResearch() 
+			&& head->getCGPA() < newNode->getCGPA() || head->getResearch() == newNode->getResearch() && head->getCGPA() == newNode->getCGPA()
+			&& head->getProvince() > newNode->getProvince()) { //if current head research score is less, replace it with the new top
             //setting old head as the next of newnode
 			newNode->setNext(head);
             //setting newnode as new head
@@ -200,13 +203,6 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 				current->setNext(newNode);
 			}
             else if (current->getResearch() == newNode->getResearch()){ //CGPA is descending order
-				if(head->getCGPA() < newNode->getCGPA()) {
-						DomesticStudent *temp = new DomesticStudent;
-						temp = head;
-						temp->setNext(head->getNext());
-						newNode->setNext(head);
-						head = newNode;
-					}
 				while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch() 
 					&& current->getNext()->getCGPA()  >= newNode->getCGPA()) { //looping through
 						current = current->getNext();
@@ -229,12 +225,6 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
                     before->setNext(newNode);
 				}
                 else if(current->getCGPA() == newNode->getCGPA()) {
-					// if(head->getProvince() > newNode->getProvince()) {
-					// 	DomesticStudent *temp;
-					// 	temp = head;
-					// 	newNode->setNext(temp);
-					// 	head = newNode;
-					// }
 					while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch() 
 						&& current->getNext()->getCGPA()  == newNode->getCGPA() && current->getNext()->getProvince() > newNode->getProvince()) { //looping through
 							current = current->getNext();
