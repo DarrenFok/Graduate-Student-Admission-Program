@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
-  <component name="CMakePresetLoader">{
-  &quot;useNewFormat&quot;: true
-}</component>
+  <component name="CMakePresetLoader"><![CDATA[{
+  "useNewFormat": true
+}]]></component>
   <component name="CMakeReloadState">
     <option name="reloaded" value="true" />
   </component>
@@ -20,7 +17,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f171734-16cd-4a4a-bfe5-ada13491d423" name="Changes" comment="" />
+    <list default="true" id="21fd5c2d-aa75-4c4a-b992-5b5d540d9848" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,43 +33,37 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
     <option name="majorVersion" value="2022" />
     <option name="minorVersion" value="2.4" />
   </component>
-  <component name="ProjectId" id="2GVGCNUmToiDLhyQg6T7wLPdjVv" />
+  <component name="ProjectId" id="2Hv7rI1VtGQhVKDHnmfQ3k02993" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ren_f/Documents/GitHub/Project/src/CMakeLists.txt&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "C:/Users/ren_f/Documents/GitHub/Project/src/CMakeLists.txt"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ren_f\Documents\GitHub\Project\src" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Project" type="CMakeRunConfiguration" factoryName="Application" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$PROJECT_DIR$/src" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="Project" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="Project">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Project" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$PROJECT_DIR$/src" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="Project" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="Project">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -81,31 +72,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3f171734-16cd-4a4a-bfe5-ada13491d423" name="Changes" comment="" />
-      <created>1666466209366</created>
+      <changelist id="21fd5c2d-aa75-4c4a-b992-5b5d540d9848" name="Changes" comment="" />
+      <created>1669153900899</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1666466209366</updated>
-      <workItem from="1666466210736" duration="16224000" />
-      <workItem from="1666486394385" duration="5821000" />
-      <workItem from="1666494020762" duration="3000" />
-      <workItem from="1666494034662" duration="30000" />
-      <workItem from="1666494243855" duration="729000" />
-      <workItem from="1666510323742" duration="6202000" />
-      <workItem from="1666543540309" duration="5525000" />
-      <workItem from="1666600105088" duration="1164000" />
-      <workItem from="1666632732869" duration="3205000" />
-      <workItem from="1666646541661" duration="1902000" />
-      <workItem from="1666648548350" duration="436000" />
-      <workItem from="1666649030838" duration="63000" />
-      <workItem from="1666649130128" duration="355000" />
-      <workItem from="1666657854940" duration="1156000" />
-      <workItem from="1666659108195" duration="681000" />
-      <workItem from="1666659920930" duration="599000" />
-      <workItem from="1666660544818" duration="22000" />
-      <workItem from="1666660607615" duration="3000" />
-      <workItem from="1666668813503" duration="1407000" />
-      <workItem from="1666671405777" duration="2126000" />
+      <updated>1669153900899</updated>
+      <workItem from="1669153902321" duration="120000" />
     </task>
     <servers />
   </component>
