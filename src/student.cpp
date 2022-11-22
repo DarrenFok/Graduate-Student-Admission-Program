@@ -151,48 +151,109 @@ string DomesticStudent::getProvince() const{
 	return province;
 }
 
-void DomesticStudent::sortedInsert(string firstName, string lastName, float cgpa,
+DomesticStudent* DomesticStudent::getNext() const {
+    return next;
+}
+
+void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 	int research, int studentID, string province) {
-		domesticNode* current;
-		domesticNode* before;
-		domesticNode* newNode = new domesticNode(firstName, lastName, cgpa, research, studentID, province);
+		DomesticStudent *current;
+		DomesticStudent *before;
+		DomesticStudent *newNode = new DomesticStudent;
+        newNode->setFirstName(firstName);
+        newNode->setLastName(lastName);
+        newNode->setCGPA(cgpa);
+        newNode->setResearch(research);
+        newNode->setID(studentID);
+        newNode->setProvince(province);
+        newNode->setNext(NULL);
+
 		if(head == NULL) {
 			head = newNode;
 			tail = newNode;
-		} else if (head->nresearch < newNode->nresearch) {
-			newNode->next = head;
+		} else if (head->getResearch() < newNode->getResearch()) { //if current head research score is less, replace it with the new top
+            //setting old head as the next of newnode
+			newNode->setNext(head);
+            //setting newnode as new head
 			head = newNode;
 		} else {
 			current = head;
 			before = head;
-			while(current->next != NULL && current->next->nresearch >= newNode->nresearch) {
-				current = current->next;
+			while(current->getNext() != NULL && current->getNext()->getResearch() >= newNode->getResearch()) { //looping through
+				current = current->getNext();
 			}
 			if(current != head) {
-				while (before->next != current) {
-					before = before->next;
+				while (before->getNext() != current) {
+					before = before->getNext();
 				}
 			}
-			if(newNode->nresearch < tail->nresearch) {
+			if(newNode->getResearch() < tail->getResearch()) {
 				tail = newNode;
 			}
-			if( current->next->nresearch > newNode->nresearch) {
-				newNode->next = current->next;
-				current->next = newNode;
-			} else if (current->nresearch == newNode->nresearch){
-				if(current->ncgpa > newNode->ncgpa) {
-					newNode->next = current->next;
-					current->next = newNode;
-				} else if (current->ncgpa < newNode->ncgpa) {
-					newNode->next = before->next;
-					before->next = newNode;
-				} else if(current->ncgpa == newNode->ncgpa) {
-					if(current->nprovince < newNode->nprovince) {
-						newNode->next = current->next;
-						current->next = newNode;
-					} else if(current->nprovince > newNode->nprovince) {
-						newNode->next = before->next;
-						before->next = newNode;
+            if(current->getNext() == NULL){
+                current->setNext(newNode);
+            }
+			else if((current->getResearch()) > (newNode->getResearch())){
+                //set newNode next to current next
+				newNode->setNext(current->getNext());
+                //set current next to newnode
+				current->setNext(newNode);
+			}
+            else if (current->getResearch() == newNode->getResearch()){ //CGPA is descending order
+				if(head->getCGPA() < newNode->getCGPA()) {
+						DomesticStudent *temp;
+						temp = head;
+						newNode->setNext(temp);
+						head = newNode;
+					}
+				while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch() 
+					&& current->getNext()->getCGPA()  >= newNode->getCGPA()) { //looping through
+						current = current->getNext();
+				}
+				if(current != head) {
+					while (before->getNext() != current) {
+						before = before->getNext();
+					}
+				}
+				if(current->getCGPA() > newNode->getCGPA()) { //correct
+                    //set newNode next to current next
+                    newNode->setNext(current->getNext());
+                    //set current next to newnode
+                    current->setNext(newNode);
+				}
+                else if (current->getCGPA() < newNode->getCGPA()) { //Right now, this line does not work, whenever the current CGPA is less than newNode's
+                    //set newNode next to current next
+                    newNode->setNext(before->getNext());
+                    //set current next to newnode
+                    before->setNext(newNode);
+				}
+                else if(current->getCGPA() == newNode->getCGPA()) {
+					// if(head->getProvince() > newNode->getProvince()) {
+					// 	DomesticStudent *temp;
+					// 	temp = head;
+					// 	newNode->setNext(temp);
+					// 	head = newNode;
+					// }
+					while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch() 
+						&& current->getNext()->getCGPA()  == newNode->getCGPA() && current->getNext()->getProvince() > newNode->getProvince()) { //looping through
+							current = current->getNext();
+					}
+					if(current != head) {
+						while (before->getNext() != current) {
+							before = before->getNext();
+						}
+					}
+					if(current->getProvince() < newNode->getProvince()) {
+                        //set newNode next to current next
+                        newNode->setNext(current->getNext());
+                        //set current next to newnode
+                        current->setNext(newNode);
+					}
+                    else if(current->getProvince() > newNode->getProvince()) { //Also similar to line 209, doesn't work when current's province is greater than newNode's
+                        //set newNode next to current next
+                        newNode->setNext(before->getNext());
+                        //set current next to newnode
+                        before->setNext(newNode);
 					}
 				}
 			} 
@@ -202,61 +263,69 @@ void DomesticStudent::sortedInsert(string firstName, string lastName, float cgpa
 
 
 
-void DomesticStudent::display() const {
+void DomesticList::display() const {
 	if(!empty()) {
-		domesticNode* temp = head;
+		DomesticStudent *temp = head;
 		cout << "Linked list: \n";
 		while(temp != NULL) {
-			cout << temp-> nstudentID << ", " << temp->nfirstName << ", " << temp->nlastName << ", " << temp->nresearch << ", " 
-			 	 << temp->ncgpa << ", " << temp->nprovince << ", " << endl;
-			temp = temp->next;
+			cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+			 	 << temp->getCGPA() << ", " << temp->getProvince() << endl;
+			temp = temp->getNext();
 		}
 	}
 }
 
-DomesticStudent::~DomesticStudent() {
-	domesticNode* current = head;
+DomesticList::~DomesticList() {
+	DomesticStudent *current = head;
 	while(current != NULL) {
-		domesticNode* temp = current;
-		current = current->next;
+		DomesticStudent *temp = current;
+		current = current->getNext();
 		delete temp;
 	}
 }
 
-int DomesticStudent::pop() {
+int DomesticList::pop() {
 	int result;
 	if(!empty()) {
-		domesticNode* temp;
-		temp = new domesticNode();
+		DomesticStudent *temp;
+		temp = new DomesticStudent;
 		temp = head;
-		head = head->next;
+		head = head->getNext();
 		delete temp;
-		result = head->nresearch;
+		result = head->getResearch();
 	}
 	return result;
 }
 
 
-bool DomesticStudent::empty() const {
+bool DomesticList::empty() const {
 	return (head == NULL);
 }
 
-// //compare function
-// string compareProvince(const DomesticStudent& DS1, const DomesticStudent& DS2){
-// 	if(DS1.province < DS2.province){
-// 		return "<";
-// 	}
-// 	else if(DS1.province == DS2.province){
-// 		return "==";
-// 	}
-// 	else if(DS1.province > DS2.province){
-// 		return ">";
-// 	}
-// 	else{
-// 		cout << "ERROR: DomesticStudent.compareProince";
-// 		exit(1);
-// 	}
-// }
+ //compare function
+ string compareProvince(const DomesticStudent& DS1, const DomesticStudent& DS2){
+ 	if(DS1.province < DS2.province){
+ 		return "<";
+ 	}
+ 	else if(DS1.province == DS2.province){
+ 		return "==";
+ 	}
+ 	else if(DS1.province > DS2.province){
+ 		return ">";
+ 	}
+ 	else{
+ 		cout << "ERROR: DomesticStudent.compareProince";
+ 		exit(1);
+ 	}
+ }
+
+DomesticStudent::DomesticStudent() {
+    next = NULL;
+}
+
+void DomesticStudent::setNext(DomesticStudent *input) {
+    next = input;
+}
 
 //overload <<
 std::ostream& operator<<(std::ostream& os, const InternationalStudent& inputIS){
@@ -268,6 +337,9 @@ std::ostream& operator<<(std::ostream& os, const InternationalStudent& inputIS){
 	return os;
 }
 
+InternationalStudent::InternationalStudent() {
+	next = NULL;
+}
 //country getter and setter
 void InternationalStudent::setCountry(string input){
 	country = input;
