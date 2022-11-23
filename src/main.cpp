@@ -68,6 +68,7 @@ int main() {
      }
 
      DL1.create();
+     DL1.display();
 
      //DL1.searchOne();
     

@@ -189,7 +189,7 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 		} else {
 			current = head;
 			before = head;
-			while(current->getNext() != NULL && current->getNext()->getResearch() >= newNode->getResearch()) { //looping through
+			while(current->getNext() != NULL && current->getNext()->getResearch() > newNode->getResearch()) { //looping through
 				current = current->getNext();
 			}
 			if(current != head) {
@@ -467,7 +467,9 @@ bool DomesticList::create(){
         cout << "ERROR: Province input is invalid" << endl;
         return false;
     }
-    sortedInsert(firstInput, lastInput, stof(cgpaInput), stoi(researchInput), idDomestic, provinceInput);
+    float CGPA = stof(cgpaInput);
+    int research = stoi(researchInput);
+    sortedInsert(firstInput, lastInput, CGPA, research, idDomestic, provinceInput);
     idDomestic++;
     return true;
 }
