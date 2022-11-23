@@ -7,7 +7,6 @@
 #include <cstdlib> //atof and atoi
 #include <string>
 #include "stu_sort.hpp"
-#include "functions.hpp"
 #include "toefl.hpp"
 #include "student.hpp"
 using namespace std;
@@ -68,7 +67,7 @@ int main() {
         
      }
 
-     DL1.searchOne();
+     DL1.searchTwo();
 
     // DL1.display();
     

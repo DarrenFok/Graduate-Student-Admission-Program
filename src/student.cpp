@@ -3,6 +3,7 @@
 #include <string>
 #include "functions.hpp"
 using namespace std;
+using namespace functions;
 
 
 //Default constructor
@@ -301,7 +302,7 @@ void DomesticList::searchOne() const {
     cout << "2) Research Score" << endl;
     cout << "3) Application ID" << endl;
     cin >> inputSearchOne1;
-    if(functions::isNumerical(inputSearchOne1) == false){
+    if(isNumerical(inputSearchOne1) == false){
         cout << "ERROR: Invalid input, integers accepted only" << endl;
     }
 
@@ -309,8 +310,9 @@ void DomesticList::searchOne() const {
         cout << "ERROR: Invalid integer, please input 1-3" << endl;
     }
     else{
-        if(stoi(inputSearchOne1) == 1){ //cgpa is data type double
+        if(stoi(inputSearchOne1) == 1){ //cgpa is data type double, NEED TO CREATE A FUNCTION TO CHECK IF VALID DOUBLE
             string inputSearchOne2;
+            int count = 0;
             //output prompt
             cout << "Please input a CGPA to search by" << endl;
             //user input
@@ -321,36 +323,83 @@ void DomesticList::searchOne() const {
                 if(temp->getCGPA() == stod(inputSearchOne2)){
                     cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
                          << temp->getCGPA() << ", " << temp->getProvince() << endl;
+                    count++;
                 }
                 temp = temp->getNext();
+            }
+            if(count == 0){
+                cout << "No matches found" << endl;
             }
         }
         else if(stoi(inputSearchOne1) == 2){ //research score is data type int
             string inputSearchOne2;
+            int count = 0;
             cout << "Please input a Research Score to search by" << endl;
             cin >> inputSearchOne2;
             DomesticStudent *temp = head;
-            while(temp != NULL){
-                if(temp->getResearch() == stoi(inputSearchOne2)){
-                    cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
-                         << temp->getCGPA() << ", " << temp->getProvince() << endl;
+            if(isNumerical(inputSearchOne2) == false){
+                cout << "ERROR: Invalid input, integers accepted only" << endl;
+            }
+            else{
+                while(temp != NULL){
+                    if(temp->getResearch() == stoi(inputSearchOne2)){
+                        cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+                             << temp->getCGPA() << ", " << temp->getProvince() << endl;
+                        count++;
+                    }
+                    temp = temp->getNext();
                 }
-                temp = temp->getNext();
+                if(count == 0){
+                    cout << "No matches found" << endl;
+                }
             }
         }
         else if(stoi(inputSearchOne1) == 3){ //id is data type int
             string inputSearchOne2;
+            int count = 0;
             cout << "Please input an Application ID to search by" << endl;
             cin >> inputSearchOne2;
             DomesticStudent *temp = head;
-            while(temp != NULL){
-                if(temp->getID() == stoi(inputSearchOne2)){
-                    cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
-                         << temp->getCGPA() << ", " << temp->getProvince() << endl;
+            if(isNumerical(inputSearchOne2) == false){
+                cout << "ERROR: Invalid input, integers accepted only" << endl;
+            }
+            else{
+                while(temp != NULL){
+                    if(temp->getID() == stoi(inputSearchOne2)){
+                        cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+                             << temp->getCGPA() << ", " << temp->getProvince() << endl;
+                        count ++;
+                    }
+                    temp = temp->getNext();
                 }
-                temp = temp->getNext();
+                if(count == 0){
+                    cout << "No matches found" << endl;
+                }
             }
         }
+    }
+}
+
+void DomesticList::searchTwo() const {
+    string firstNameInput;
+    string lastNameInput;
+    int count = 0;
+    cout << "Please input a first name: " << endl;
+    cin >> firstNameInput;
+    cout << "Please input a last name: " << endl;
+    cin >> lastNameInput;
+    DomesticStudent *temp = head;
+    while(temp!= NULL){
+        if((toLowerCase(temp->getFirstName()) == toLowerCase(firstNameInput)) && (toLowerCase(temp->getLastName()) ==
+                toLowerCase(lastNameInput))){
+            cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+                 << temp->getCGPA() << ", " << temp->getProvince() << endl;
+            count++;
+        }
+        temp = temp->getNext();
+    }
+    if(count == 0){
+        cout << "No matches found" << endl;
     }
 }
 
@@ -366,7 +415,7 @@ void DomesticList::searchOne() const {
  		return ">";
  	}
  	else{
- 		cout << "ERROR: DomesticStudent.compareProince";
+ 		cout << "ERROR: DomesticStudent.compareProvince";
  		exit(1);
  	}
  }
