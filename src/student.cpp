@@ -285,6 +285,14 @@ DomesticList::~DomesticList() {
 	}
 }
 
+void DomesticList::setDomesticID(int input) {
+    idDomestic = input;
+}
+
+int DomesticList::getDomesticID() const {
+    return idDomestic;
+}
+
 int DomesticList::pop() {
 	int result;
 	if(!empty()) {
@@ -426,6 +434,36 @@ void DomesticList::searchTwo() const {
     if(count == 0){
         cout << "No matches found" << endl;
     }
+}
+
+bool DomesticList::create(){
+    //fields
+    string firstInput; string lastInput; string researchInput; string cgpaInput; string provinceInput;
+    //prompts
+    cout << "Creating a domestic student to insert into list..." << endl;
+    cout << "Please input a first namne: " << endl;
+    cin >> firstInput;
+    cout << "Please input a last name: " << endl;
+    cin >> lastInput;
+    cout << "PLease input a research score: " << endl;
+    cin >> researchInput;
+    cout << "Please input a CGPA: " << endl;
+    cin >> cgpaInput;
+    cout << "Please input a province: " << endl;
+    cin >> provinceInput;
+
+    //error checking for research score (int only), and research score (double only)
+    if(isNumerical(researchInput) == false){ //if not int type
+        cout << "ERROR: Research score input is not an integer" << endl;
+        return false;
+    }
+    if(isDouble(cgpaInput) == false){
+        cout << "ERROR: CGPA input is not a double" << endl;
+        return false;
+    }
+    sortedInsert(firstInput, lastInput, stof(cgpaInput), stoi(researchInput), idDomestic, provinceInput);
+    idDomestic++;
+    return true;
 }
 
 //compare function
