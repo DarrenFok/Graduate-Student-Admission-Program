@@ -35,41 +35,43 @@ int main() {
     vector<InternationalStudent> internationalStudents;
     
     //input domesticStudents
-//     getline(domesticFile, line);
-//     int domesticCount = 0;
-//     int idCountDomestic = 20220000;
-//     DomesticList DL1;
-//     while (getline(domesticFile, line)) {
-//         istringstream ss(line);
-//         string firstName, lastName, province, s_cgpa, s_researchScore; //strings
-//         float cgpa; //to convert string cgpa to
-//         int researchScore; //to convert string researchScore to
-//
-//         getline(ss, firstName, ','); //get firstName
-//         getline(ss, lastName, ','); //get lastName
-//         getline(ss, province, ','); //get province
-//         getline(ss, s_cgpa, ','); //get cgpa
-//         cgpa = stof(s_cgpa);
-//         getline(ss, s_researchScore, ','); //get researchScore
-//         researchScore = stoi(s_researchScore);
-//
-//         DomesticStudent inputDomestic;
-//         inputDomestic.setFirstName(firstName);
-//         inputDomestic.setLastName(lastName);
-//         inputDomestic.setProvince(province);
-//         inputDomestic.setCGPA(cgpa);
-//         inputDomestic.setResearch(researchScore);
-//         inputDomestic.setID(idCountDomestic);
-//         domesticStudents.push_back(inputDomestic);
-//         DL1.sortedInsert(firstName, lastName, cgpa, researchScore, idCountDomestic,province);
-//         domesticCount++;
-//         idCountDomestic++;
-//
-//     }
+    // getline(domesticFile, line);
+    // int domesticCount = 0;
+    // int idCountDomestic = 20220000;
+    // DomesticList DL1;
+    // while (getline(domesticFile, line)) {
+    //     istringstream ss(line);
+    //     string firstName, lastName, province, s_cgpa, s_researchScore; //strings
+    //     float cgpa; //to convert string cgpa to
+    //     int researchScore; //to convert string researchScore to
 
-     //DL1.searchOne();
+    //     getline(ss, firstName, ','); //get firstName
+    //     getline(ss, lastName, ','); //get lastName
+    //     getline(ss, province, ','); //get province
+    //     getline(ss, s_cgpa, ','); //get cgpa
+    //     cgpa = stof(s_cgpa);
+    //     getline(ss, s_researchScore, ','); //get researchScore
+    //     researchScore = stoi(s_researchScore);
+
+    //     DomesticStudent inputDomestic;
+    //     inputDomestic.setFirstName(firstName);
+    //     inputDomestic.setLastName(lastName);
+    //     inputDomestic.setProvince(province);
+    //     inputDomestic.setCGPA(cgpa);
+    //     inputDomestic.setResearch(researchScore);
+    //     inputDomestic.setID(idCountDomestic);
+    //     domesticStudents.push_back(inputDomestic);
+    //     DL1.sortedInsert(firstName, lastName, cgpa, researchScore, idCountDomestic,province);
+    //     domesticCount++;
+    //     idCountDomestic++;
+
+    // }
+
+    //  //DL1.searchOne();
 
     // DL1.display();
+    // DL1.displayHead();
+    // DL1.displayTail();
     
 
    //input internationalStudents
@@ -119,8 +121,11 @@ int main() {
        internationalCount++;
        idCountInternational++;
    }
+    LI.display();
+    LI.displayHead();
+    LI.displayTail();
 
-   LI.searchTwo();
+//    LI.searchTwo();
 
     // cout << "\nWelcome to the Graduate Student Admission Program\n";
     // //menu - loops until user wants to exit
