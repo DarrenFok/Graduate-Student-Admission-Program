@@ -293,7 +293,27 @@ bool DomesticList::empty() const {
 	return (head == NULL);
 }
 
- //compare function
+//void DomesticList::searchOne() const {
+//    string inputSearchOne1;
+//    string inputSearchOne2;
+//    cout << "Please input number corresponding to which field you would like to search" << endl;
+////    cout << "1) CGPA" << endl;
+//    cout << "2) Research Score" << endl;
+//    cout << "3) Application ID" << endl;
+//    cin >> inputSearchOne1;
+//    if(stoi(inputSearchOne1) == 1){
+//
+//    }
+//    else if(stoi(inputSearchOne1) == 2){
+//
+//    }
+//    else if(stoi(inputSearchOne1) == 3){
+//
+//    }
+//
+//}
+
+//compare function
  string compareProvince(const DomesticStudent& DS1, const DomesticStudent& DS2){
  	if(DS1.province < DS2.province){
  		return "<";
