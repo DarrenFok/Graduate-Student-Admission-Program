@@ -132,6 +132,10 @@ public:
     //display
     void display() const;
 
+    //search and print functions
+    void searchOne() const; //for research, cgpa, id
+    void searchTwo() const; //for firstname and last name (both)
+
     bool empty() const;
 
     int pop();

@@ -40,7 +40,7 @@ namespace functions{
             return false;
         }
     }
-
+    //only use when comparing doubles, sometimes extra decimal places are added on
     bool compareDoubles(double a, double b){
         if ( (a < b + 0.001) &&
              (b < a + 0.001) )
