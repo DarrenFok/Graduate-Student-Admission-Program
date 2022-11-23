@@ -392,3 +392,134 @@ toefl InternationalStudent::getTOEFL() const{
 	//create toefl object to fill and return
 	return TOEFL;
 }
+
+void InternationalStudent::setNext(InternationalStudent *input) {
+    next = input;
+}
+
+InternationalStudent* InternationalStudent::getNext() const {
+    return next;
+}
+
+void InternationalList::sortedInsert(string firstName, string lastName, float cgpa,
+	int research, int studentID, string country, toefl TOEFL) {
+		InternationalStudent *current;
+		InternationalStudent *before;
+		InternationalStudent *temp;
+		InternationalStudent *newNode = new InternationalStudent;
+        newNode->setFirstName(firstName);
+        newNode->setLastName(lastName);
+        newNode->setCGPA(cgpa);
+        newNode->setResearch(research);
+        newNode->setID(studentID);
+        newNode->setCountry(country);
+		newNode->setTOEFL(TOEFL);
+        newNode->setNext(NULL);
+
+		if(head == NULL) {
+			head = newNode;
+			tail = newNode;
+		} else if (head->getResearch() < newNode->getResearch() || head->getResearch() == newNode->getResearch() 
+			&& head->getCGPA() < newNode->getCGPA() || head->getResearch() == newNode->getResearch() && head->getCGPA() == newNode->getCGPA()
+				&& head->getCountry() > newNode->getCountry()) { //if current head research score is less, replace it with the new top
+            //setting old head as the next of newnode
+			newNode->setNext(head);
+            //setting newnode as new head
+			head = newNode;
+		} else {
+			current = head;
+			before = head;
+			while(current->getNext() != NULL && current->getNext()->getResearch() >= newNode->getResearch()) { //looping through
+				current = current->getNext();
+			}
+			if(current != head) {
+				while (before->getNext() != current) {
+					before = before->getNext();
+				}
+			}
+			if(newNode->getResearch() < tail->getResearch()) {
+				tail = newNode;
+			}
+            if(current->getNext() == NULL){
+                current->setNext(newNode);
+            }
+			else if((current->getResearch()) > (newNode->getResearch())){
+                //set newNode next to current next
+				newNode->setNext(current->getNext());
+                //set current next to newnode
+				current->setNext(newNode);
+			}
+            else if (current->getResearch() == newNode->getResearch()){ //CGPA is descending order
+				while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch() 
+					&& current->getNext()->getCGPA()  >= newNode->getCGPA()) { //looping through
+						current = current->getNext();
+				}
+				if(current != head) {
+					while (before->getNext() != current) {
+						before = before->getNext();
+					}
+				}
+				if(current->getCGPA() > newNode->getCGPA()) { //correct
+                    //set newNode next to current next
+                    newNode->setNext(current->getNext());
+                    //set current next to newnode
+                    current->setNext(newNode);
+				}
+                else if (current->getCGPA() < newNode->getCGPA()) { //Right now, this line does not work, whenever the current CGPA is less than newNode's
+                    //set newNode next to current next
+                    newNode->setNext(before->getNext());
+                    //set current next to newnode
+                    before->setNext(newNode);
+				}
+                else if(current->getCGPA() == newNode->getCGPA()) {
+					while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch() 
+						&& current->getNext()->getCGPA()  == newNode->getCGPA() && current->getNext()->getCountry() > newNode->getCountry()) { //looping through
+							current = current->getNext();
+					}
+					if(current != head) {
+						while (before->getNext() != current) {
+							before = before->getNext();
+						}
+					}
+					if(current->getCountry() < newNode->getCountry()) {
+                        //set newNode next to current next
+                        newNode->setNext(current->getNext());
+                        //set current next to newnode
+                        current->setNext(newNode);
+					}
+                    else if(current->getCountry() > newNode->getCountry()) { //Also similar to line 209, doesn't work when current's province is greater than newNode's
+                        //set newNode next to current next
+                        newNode->setNext(before->getNext());
+                        //set current next to newnode
+                        before->setNext(newNode);
+					}
+				}
+			} 
+		}
+	}
+
+
+InternationalList::~InternationalList() {
+	InternationalStudent *current = head;
+	while(current != NULL) {
+		InternationalStudent *temp = current;
+		current = current->getNext();
+		delete temp;
+	}
+}
+
+void InternationalList::display() const {
+	if(!empty()) {
+		InternationalStudent *temp = head;
+		cout << "Linked list: \n";
+		while(temp != NULL) {
+			cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+			 	 << temp->getCGPA() << ", " << temp->getCountry()  << endl;
+			temp = temp->getNext();
+		}
+	}
+}
+
+bool InternationalList::empty() const {
+	return (head == NULL);
+}
