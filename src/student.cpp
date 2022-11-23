@@ -174,7 +174,7 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 			tail = newNode;
 		} else if (head->getResearch() < newNode->getResearch() || head->getResearch() == newNode->getResearch() 
 			&& head->getCGPA() < newNode->getCGPA() || head->getResearch() == newNode->getResearch() && head->getCGPA() == newNode->getCGPA()
-				&& head->getProvince() > newNode->getProvince()) { //if current head research score is less, replace it with the new top
+			&& head->getProvince() > newNode->getProvince()) { //if current head research score is less, replace it with the new top
             //setting old head as the next of newnode
 			newNode->setNext(head);
             //setting newnode as new head
@@ -248,6 +248,7 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 					}
 				}
 			} 
+			
 		}
 	}
 
@@ -271,12 +272,7 @@ DomesticList::~DomesticList() {
 		DomesticStudent *temp = current;
 		current = current->getNext();
 		delete temp;
-		if(current->getNext() == NULL) {
-			delete head;
-			delete tail;
-		}
 	}
-
 }
 
 int DomesticList::pop() {
