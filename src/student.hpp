@@ -82,6 +82,9 @@ public:
     //display
     void display() const;
 
+//    //search and print all that match inputted CGPA, research, ID
+//    void searchOne() const; //part 2b
+
     bool empty() const;
 
     int pop();
