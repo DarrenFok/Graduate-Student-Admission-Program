@@ -179,9 +179,9 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 		if(head == NULL) {
 			head = newNode;
 			tail = newNode;
-		} else if (head->getResearch() < newNode->getResearch() || head->getResearch() == newNode->getResearch() 
-			&& head->getCGPA() < newNode->getCGPA() || head->getResearch() == newNode->getResearch() && head->getCGPA() == newNode->getCGPA()
-			&& head->getProvince() > newNode->getProvince()) { //if current head research score is less, replace it with the new top
+		} else if (head->getResearch() < newNode->getResearch() 
+            || head->getResearch() == newNode->getResearch() && head->getCGPA() < newNode->getCGPA() 
+                || head->getResearch() == newNode->getResearch() && head->getCGPA() == newNode->getCGPA() && head->getProvince() > newNode->getProvince()) { //if current head research score is less, replace it with the new top
             //setting old head as the next of newnode
 			newNode->setNext(head);
             //setting newnode as new head
@@ -197,7 +197,10 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 					before = before->getNext();
 				}
 			}
-			if(newNode->getResearch() < tail->getResearch()) {
+			if(newNode->getResearch() < tail->getResearch() 
+                || tail->getResearch() == newNode->getResearch() && tail->getCGPA() < newNode->getCGPA() 
+                    || tail->getResearch() == newNode->getResearch() && tail->getCGPA() == newNode->getCGPA() && tail->getProvince() > newNode->getProvince()) {
+                tail->setNext(newNode->getNext());
                 tail = newNode;
 			}
             if(current->getNext() == NULL){
@@ -225,9 +228,6 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
                     //set current next to newnode
                     current->setNext(newNode);
 				}
-                if(tail->getCGPA() < newNode->getCGPA()) {
-                    tail = newNode;
-                }
                 else if (current->getCGPA() < newNode->getCGPA()) { //Right now, this line does not work, whenever the current CGPA is less than newNode's
                     //set newNode next to current next
                     newNode->setNext(before->getNext());
@@ -256,9 +256,6 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
                         //set current next to newnode
                         before->setNext(newNode);
 					}
-                    if(tail->getProvince() > newNode->getProvince()) {
-                        tail = newNode;
-                    }
 				}
 			} 
 			
@@ -270,11 +267,8 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 void DomesticList::display() const {
 	if(!empty()) {
 		DomesticStudent *temp = head;
-        int debugInt = 0;
-		cout << "Linked list: \n";
+		cout << "Displaying Domestic List: \n";
 		while(temp != NULL) {
-			debugInt++;
-            cout << debugInt << ", ";
             cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
 			 	 << temp->getCGPA() << ", " << temp->getProvince() << endl;
 			temp = temp->getNext();
@@ -310,11 +304,13 @@ bool DomesticList::empty() const {
 }
 
 void DomesticList::displayHead() const {
+    cout << "Domestic Head Pointer: ";
     cout << head->getID() << ", " << head->getFirstName() << ", " << head->getLastName() << ", " << head->getResearch() << ", "
 			 	 << head->getCGPA() << ", " << head->getProvince() << endl; 
 }
 
 void DomesticList::displayTail() const {
+    cout << "Domestic Tail Pointer: ";
     cout << tail->getID() << ", " << tail->getFirstName() << ", " << tail->getLastName() << ", " << tail->getResearch() << ", "
 			 	 << tail->getCGPA() << ", " << head->getProvince() << endl;
 }
@@ -541,9 +537,9 @@ void InternationalList::sortedInsert(string firstName, string lastName, float cg
 		if(head == NULL) {
 			head = newNode;
 			tail = newNode;
-		} else if (head->getResearch() < newNode->getResearch() || head->getResearch() == newNode->getResearch() 
-			&& head->getCGPA() < newNode->getCGPA() || head->getResearch() == newNode->getResearch() && head->getCGPA() == newNode->getCGPA()
-				&& head->getCountry() > newNode->getCountry()) { //if current head research score is less, replace it with the new top
+		} else if (head->getResearch() < newNode->getResearch() 
+            || head->getResearch() == newNode->getResearch() && head->getCGPA() < newNode->getCGPA() 
+                || head->getResearch() == newNode->getResearch() && head->getCGPA() == newNode->getCGPA()&& head->getCountry() > newNode->getCountry()) { //if current head research score is less, replace it with the new top
             //setting old head as the next of newnode
 			newNode->setNext(head);
             //setting newnode as new head
@@ -560,6 +556,7 @@ void InternationalList::sortedInsert(string firstName, string lastName, float cg
 				}
 			}
 			if(newNode->getResearch() < tail->getResearch()) {
+                tail->setNext(newNode->getNext());
                 tail = newNode;
 			}
             if(current->getNext() == NULL){
@@ -595,7 +592,7 @@ void InternationalList::sortedInsert(string firstName, string lastName, float cg
 				}
                 else if(current->getCGPA() == newNode->getCGPA()) {
 					while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch() 
-						&& current->getNext()->getCGPA()  == newNode->getCGPA() && current->getNext()->getCountry() > newNode->getCountry()) { //looping through
+                        && current->getNext()->getCGPA()  == newNode->getCGPA() && current->getNext()->getCountry() > newNode->getCountry()) { //looping through
 							current = current->getNext();
 					}
 					if(current != head) {
@@ -633,7 +630,7 @@ InternationalList::~InternationalList() {
 void InternationalList::display() const {
 	if(!empty()) {
 		InternationalStudent *temp = head;
-		cout << "Linked list: \n";
+		cout << "Displaying International List: \n";
 		while(temp != NULL) {
 			cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
 			 	 << temp->getCGPA() << ", " << temp->getCountry()  << endl;
@@ -647,11 +644,13 @@ bool InternationalList::empty() const {
 }
 
 void InternationalList::displayHead() const {
+    cout << "International Head Pointer: ";
     cout << head->getID() << ", " << head->getFirstName() << ", " << head->getLastName() << ", " << head->getResearch() << ", "
 			 	 << head->getCGPA() << ", " << head->getCountry() << endl; 
 }
 
 void InternationalList::displayTail() const {
+    cout << "International Tail Pointer: ";
     cout << tail->getID() << ", " << tail->getFirstName() << ", " << tail->getLastName() << ", " << tail->getResearch() << ", "
 			 	 << tail->getCGPA() << ", " << head->getCountry() << endl;
 }
