@@ -75,6 +75,10 @@ public:
     //insert functions, search functions, everything goes here
     ~DomesticList();
 
+    //getter
+    void setDomesticID(int input);
+    int getDomesticID() const;
+
     //Insert in an overall sorted order
     void sortedInsert(string firstName, string lastName, float cgpa,
                       int research, int studentID, string province);
@@ -86,13 +90,18 @@ public:
     void searchOne() const; //cgpa, research score, id
     void searchTwo() const; //first name and last name
 
+    //create node
+    bool create(); //create new domesticStudent object, and insert them into list..
+
+
     bool empty() const;
 
     int pop();
 
 private:
-    DomesticStudent *head;
-    DomesticStudent *tail;
+    DomesticStudent *head = NULL;
+    DomesticStudent *tail = NULL;
+    int idDomestic = 20220000;
 };
 
 class InternationalStudent : public Student{
