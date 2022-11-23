@@ -270,11 +270,8 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 void DomesticList::display() const {
 	if(!empty()) {
 		DomesticStudent *temp = head;
-        int debugInt = 0;
 		cout << "Linked list: \n";
 		while(temp != NULL) {
-			debugInt++;
-            cout << debugInt << ", ";
             cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
 			 	 << temp->getCGPA() << ", " << temp->getProvince() << endl;
 			temp = temp->getNext();
@@ -463,6 +460,12 @@ bool DomesticList::create(){
     }
     if(isDouble(cgpaInput) == false){
         cout << "ERROR: CGPA input is not a double" << endl;
+        return false;
+    }
+    if(provinceInput != "NL" && provinceInput != "PE" && provinceInput != "NS" && provinceInput != "NB" && provinceInput != "QC" &&
+    provinceInput != "ON" && provinceInput != "MB" && provinceInput != "SK" && provinceInput != "AB" && provinceInput != "BC" &&
+    provinceInput != "YT" && provinceInput != "NT" && provinceInput != "NU"){ //checks if one of the valid provinces
+        cout << "ERROR: Province input is invalid" << endl;
         return false;
     }
     sortedInsert(firstInput, lastInput, stof(cgpaInput), stoi(researchInput), idDomestic, provinceInput);

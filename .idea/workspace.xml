@@ -58,11 +58,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Project" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$PROJECT_DIR$/src" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="Project" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="Project">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -84,7 +79,10 @@
       <workItem from="1669193355510" duration="646000" />
       <workItem from="1669194173580" duration="200000" />
       <workItem from="1669194913091" duration="171000" />
-      <workItem from="1669229598513" duration="4716000" />
+      <workItem from="1669229598513" duration="5584000" />
+      <workItem from="1669239794032" duration="1000" />
+      <workItem from="1669239932316" duration="5000" />
+      <workItem from="1669240037158" duration="3236000" />
     </task>
     <servers />
   </component>
@@ -101,5 +99,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/main.cpp</url>
+          <line>69</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -77,7 +77,7 @@ public:
 	//insert functions, search functions, everything goes here
     ~DomesticList();
 
-    //getter
+    //getter for create function
     void setDomesticID(int input);
     int getDomesticID() const;
 
