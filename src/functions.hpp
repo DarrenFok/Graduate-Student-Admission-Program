@@ -22,6 +22,24 @@ namespace functions{
         }
         return in;
     }
+    //checks if inputted string is a double
+    bool isDouble(const string in){
+        int point=0;
+        for (int i = 0; i < in.length(); i++){
+            if (in[i]=='.'){
+                point++;
+            }
+            else if (!isdigit(in[i])){
+                return false;
+            }
+        }
+        if (point<=1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
 }
 

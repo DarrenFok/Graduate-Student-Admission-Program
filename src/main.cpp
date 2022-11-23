@@ -67,7 +67,7 @@ int main() {
         
      }
 
-     DL1.searchTwo();
+     DL1.searchOne();
 
     // DL1.display();
     

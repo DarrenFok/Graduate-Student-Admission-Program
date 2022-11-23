@@ -319,16 +319,21 @@ void DomesticList::searchOne() const {
             cin >> inputSearchOne2;
             //print the ones that meet the requirement
             DomesticStudent *temp = head;
-            while(temp != NULL){
-                if(temp->getCGPA() == stod(inputSearchOne2)){
-                    cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
-                         << temp->getCGPA() << ", " << temp->getProvince() << endl;
-                    count++;
-                }
-                temp = temp->getNext();
+            if(isDouble(inputSearchOne2) == false){ //always false because extra decimal places are added...? not sure why
+                cout << "ERROR: Invalid input, doubles accepted only" << endl;
             }
-            if(count == 0){
-                cout << "No matches found" << endl;
+            else{
+                while(temp != NULL){
+                    if(temp->getCGPA() == stod(inputSearchOne2)){
+                        cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+                             << temp->getCGPA() << ", " << temp->getProvince() << endl;
+                        count++;
+                    }
+                    temp = temp->getNext();
+                }
+                if(count == 0){
+                    cout << "No matches found" << endl;
+                }
             }
         }
         else if(stoi(inputSearchOne1) == 2){ //research score is data type int
