@@ -72,7 +72,9 @@ private:
 
 class DomesticList{
 public:
-    //insert functions, search functions, everything goes here
+    DomesticList();
+	
+	//insert functions, search functions, everything goes here
     ~DomesticList();
 
     //getter
@@ -97,6 +99,10 @@ public:
     bool empty() const;
 
     int pop();
+
+	void displayHead() const;
+
+	void displayTail() const;
 
 private:
     DomesticStudent *head = NULL;
@@ -132,7 +138,9 @@ private:
 
 class InternationalList{
 public:
-    //insert functions, search functions, everything goes here
+    InternationalList();
+	
+	//insert functions, search functions, everything goes here
 	~InternationalList();
 	
 	void sortedInsert(string firstName, string lastName, float cgpa,
@@ -148,6 +156,10 @@ public:
     bool empty() const;
 
     int pop();
+
+	void displayHead() const;
+
+	void displayTail() const;
 
 private:
     InternationalStudent *head;

@@ -157,6 +157,11 @@ DomesticStudent* DomesticStudent::getNext() const {
     return next;
 }
 
+DomesticList::DomesticList() {
+    head = NULL;
+    tail = NULL;
+}
+
 void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 	int research, int studentID, string province) {
 		DomesticStudent *current;
@@ -193,7 +198,7 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 				}
 			}
 			if(newNode->getResearch() < tail->getResearch()) {
-				tail = newNode;
+                tail = newNode;
 			}
             if(current->getNext() == NULL){
                 current->setNext(newNode);
@@ -220,6 +225,9 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
                     //set current next to newnode
                     current->setNext(newNode);
 				}
+                if(tail->getCGPA() < newNode->getCGPA()) {
+                    tail = newNode;
+                }
                 else if (current->getCGPA() < newNode->getCGPA()) { //Right now, this line does not work, whenever the current CGPA is less than newNode's
                     //set newNode next to current next
                     newNode->setNext(before->getNext());
@@ -248,6 +256,9 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
                         //set current next to newnode
                         before->setNext(newNode);
 					}
+                    if(tail->getProvince() > newNode->getProvince()) {
+                        tail = newNode;
+                    }
 				}
 			} 
 			
@@ -259,9 +270,12 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 void DomesticList::display() const {
 	if(!empty()) {
 		DomesticStudent *temp = head;
+        int debugInt = 0;
 		cout << "Linked list: \n";
 		while(temp != NULL) {
-			cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+			debugInt++;
+            cout << debugInt << ", ";
+            cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
 			 	 << temp->getCGPA() << ", " << temp->getProvince() << endl;
 			temp = temp->getNext();
 		}
@@ -301,6 +315,16 @@ int DomesticList::pop() {
 
 bool DomesticList::empty() const {
 	return (head == NULL);
+}
+
+void DomesticList::displayHead() const {
+    cout << head->getID() << ", " << head->getFirstName() << ", " << head->getLastName() << ", " << head->getResearch() << ", "
+			 	 << head->getCGPA() << ", " << head->getProvince() << endl; 
+}
+
+void DomesticList::displayTail() const {
+    cout << tail->getID() << ", " << tail->getFirstName() << ", " << tail->getLastName() << ", " << tail->getResearch() << ", "
+			 	 << tail->getCGPA() << ", " << head->getProvince() << endl;
 }
 
 void DomesticList::searchOne() const {
@@ -533,7 +557,10 @@ void InternationalStudent::setNext(InternationalStudent *input) {
 InternationalStudent* InternationalStudent::getNext() const {
     return next;
 }
-
+InternationalList::InternationalList() {
+    head = NULL;
+    tail = NULL;
+}
 void InternationalList::sortedInsert(string firstName, string lastName, float cgpa,
 	int research, int studentID, string country, toefl TOEFL) {
 		InternationalStudent *current;
@@ -571,7 +598,7 @@ void InternationalList::sortedInsert(string firstName, string lastName, float cg
 				}
 			}
 			if(newNode->getResearch() < tail->getResearch()) {
-				tail = newNode;
+                tail = newNode;
 			}
             if(current->getNext() == NULL){
                 current->setNext(newNode);
@@ -656,6 +683,18 @@ void InternationalList::display() const {
 bool InternationalList::empty() const {
 	return (head == NULL);
 }
+
+void InternationalList::displayHead() const {
+    cout << head->getID() << ", " << head->getFirstName() << ", " << head->getLastName() << ", " << head->getResearch() << ", "
+			 	 << head->getCGPA() << ", " << head->getCountry() << endl; 
+}
+
+void InternationalList::displayTail() const {
+    cout << tail->getID() << ", " << tail->getFirstName() << ", " << tail->getLastName() << ", " << tail->getResearch() << ", "
+			 	 << tail->getCGPA() << ", " << head->getCountry() << endl;
+}
+
+
 
 void InternationalList::searchOne() const {
     string inputSearchOne1;
