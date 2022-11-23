@@ -41,6 +41,17 @@ namespace functions{
         }
     }
 
+    bool compareDoubles(double a, double b){
+        if ( (a < b + 0.001) &&
+             (b < a + 0.001) )
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 }
 
 #endif //PROJECT_FUNCTIONS_HPP
