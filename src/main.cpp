@@ -111,7 +111,10 @@ int main() {
        inputInternational.setID(idCountInternational);
 
        internationalStudents.push_back(inputInternational);
-       LI.sortedInsert(firstName, lastName, cgpa, researchScore, idCountInternational, country, score);
+       if(score.getReading() > 19 && score.getListening() > 19 && score.getSpeaking() > 19 &&
+                score.getWriting() > 19 && score.getTotal() > 91) {
+            LI.sortedInsert(firstName, lastName, cgpa, researchScore, idCountInternational, country, score);
+       }
        internationalCount++;
        idCountInternational++;
    }
