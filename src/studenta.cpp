@@ -1,7 +1,9 @@
 #include "student.hpp"
 #include <iostream>
 #include <string>
+#include "functions.hpp"
 using namespace std;
+using namespace functions;
 
 
 //Default constructor
@@ -155,10 +157,16 @@ DomesticStudent* DomesticStudent::getNext() const {
     return next;
 }
 
+DomesticList::DomesticList() {
+    head = NULL;
+    tail = NULL;
+}
+
 void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 	int research, int studentID, string province) {
 		DomesticStudent *current;
 		DomesticStudent *before;
+		DomesticStudent *temp;
 		DomesticStudent *newNode = new DomesticStudent;
         newNode->setFirstName(firstName);
         newNode->setLastName(lastName);
@@ -171,7 +179,9 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 		if(head == NULL) {
 			head = newNode;
 			tail = newNode;
-		} else if (head->getResearch() < newNode->getResearch()) { //if current head research score is less, replace it with the new top
+		} else if (head->getResearch() < newNode->getResearch() 
+            || head->getResearch() == newNode->getResearch() && head->getCGPA() < newNode->getCGPA() 
+                || head->getResearch() == newNode->getResearch() && head->getCGPA() == newNode->getCGPA() && head->getProvince() > newNode->getProvince()) { //if current head research score is less, replace it with the new top
             //setting old head as the next of newnode
 			newNode->setNext(head);
             //setting newnode as new head
@@ -179,7 +189,7 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 		} else {
 			current = head;
 			before = head;
-			while(current->getNext() != NULL && current->getNext()->getResearch() > newNode->getResearch()) { //looping through
+			while(current->getNext() != NULL && current->getNext()->getResearch() >= newNode->getResearch()) { //looping through
 				current = current->getNext();
 			}
 			if(current != head) {
@@ -187,8 +197,11 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 					before = before->getNext();
 				}
 			}
-			if(newNode->getResearch() < tail->getResearch()) {
-				tail = newNode;
+			if(newNode->getResearch() < tail->getResearch() 
+                || tail->getResearch() == newNode->getResearch() && tail->getCGPA() < newNode->getCGPA() 
+                    || tail->getResearch() == newNode->getResearch() && tail->getCGPA() == newNode->getCGPA() && tail->getProvince() > newNode->getProvince()) {
+                tail->setNext(newNode->getNext());
+                tail = newNode;
 			}
             if(current->getNext() == NULL){
                 current->setNext(newNode);
@@ -200,26 +213,44 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 				current->setNext(newNode);
 			}
             else if (current->getResearch() == newNode->getResearch()){ //CGPA is descending order
+				while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch() 
+					&& current->getNext()->getCGPA()  >= newNode->getCGPA()) { //looping through
+						current = current->getNext();
+				}
+				if(current != head) {
+					while (before->getNext() != current) {
+						before = before->getNext();
+					}
+				}
 				if(current->getCGPA() > newNode->getCGPA()) { //correct
                     //set newNode next to current next
                     newNode->setNext(current->getNext());
                     //set current next to newnode
                     current->setNext(newNode);
 				}
-                else if (current->getCGPA() < newNode->getCGPA()) { //This line works now
+                else if (current->getCGPA() < newNode->getCGPA()) { //Right now, this line does not work, whenever the current CGPA is less than newNode's
                     //set newNode next to current next
                     newNode->setNext(before->getNext());
                     //set current next to newnode
                     before->setNext(newNode);
 				}
                 else if(current->getCGPA() == newNode->getCGPA()) {
+					while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch() 
+						&& current->getNext()->getCGPA()  == newNode->getCGPA() && current->getNext()->getProvince() > newNode->getProvince()) { //looping through
+							current = current->getNext();
+					}
+					if(current != head) {
+						while (before->getNext() != current) {
+							before = before->getNext();
+						}
+					}
 					if(current->getProvince() < newNode->getProvince()) {
                         //set newNode next to current next
                         newNode->setNext(current->getNext());
                         //set current next to newnode
                         current->setNext(newNode);
 					}
-                    else if(current->getProvince() > newNode->getProvince()) { //This line works now
+                    else if(current->getProvince() > newNode->getProvince()) { //Also similar to line 209, doesn't work when current's province is greater than newNode's
                         //set newNode next to current next
                         newNode->setNext(before->getNext());
                         //set current next to newnode
@@ -236,10 +267,10 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 void DomesticList::display() const {
 	if(!empty()) {
 		DomesticStudent *temp = head;
-		cout << "Linked list: \n";
+		cout << "Displaying Domestic List: \n";
 		while(temp != NULL) {
-			cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
-			 	 << temp->getCGPA() << ", " << temp->getProvince() << ", " << endl;
+            cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+			 	 << temp->getCGPA() << ", " << temp->getProvince() << endl;
 			temp = temp->getNext();
 		}
 	}
@@ -272,7 +303,132 @@ bool DomesticList::empty() const {
 	return (head == NULL);
 }
 
- //compare function
+void DomesticList::displayHead() const {
+    cout << "Domestic Head Pointer: ";
+    cout << head->getID() << ", " << head->getFirstName() << ", " << head->getLastName() << ", " << head->getResearch() << ", "
+			 	 << head->getCGPA() << ", " << head->getProvince() << endl; 
+}
+
+void DomesticList::displayTail() const {
+    cout << "Domestic Tail Pointer: ";
+    cout << tail->getID() << ", " << tail->getFirstName() << ", " << tail->getLastName() << ", " << tail->getResearch() << ", "
+			 	 << tail->getCGPA() << ", " << head->getProvince() << endl;
+}
+
+void DomesticList::searchOne() const {
+    string inputSearchOne1;
+    cout << "Please input number corresponding to which field you would like to search" << endl;
+    cout << "1) CGPA" << endl;
+    cout << "2) Research Score" << endl;
+    cout << "3) Application ID" << endl;
+    cin >> inputSearchOne1;
+    if(isNumerical(inputSearchOne1) == false){
+        cout << "ERROR: Invalid input, integers accepted only" << endl;
+    }
+
+    else if(stoi(inputSearchOne1) > 3 || stoi(inputSearchOne1) <= 0){
+        cout << "ERROR: Invalid integer, please input 1-3" << endl;
+    }
+    else{
+        if(stoi(inputSearchOne1) == 1){ //cgpa is data type double, NEED TO CREATE A FUNCTION TO CHECK IF VALID DOUBLE
+            string inputSearchOne2;
+            int count = 0;
+            //output prompt
+            cout << "Please input a CGPA to search by" << endl;
+            //user input
+            cin >> inputSearchOne2;
+            //print the ones that meet the requirement
+            DomesticStudent *temp = head;
+            if(isDouble(inputSearchOne2) == false){ //checks whether inputSearchOne2 is a double
+                cout << "ERROR: Invalid input, doubles accepted only" << endl;
+            }
+            else{
+                while(temp != NULL){
+                    if(compareDoubles(temp->getCGPA(), stod(inputSearchOne2)) == true){ //stod always adds on extra decimals... thus never equal?
+                        cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+                             << temp->getCGPA() << ", " << temp->getProvince() << endl;
+                        count++;
+                    }
+                    temp = temp->getNext();
+                }
+                if(count == 0){
+                    cout << "No matches found" << endl;
+                }
+            }
+        }
+        else if(stoi(inputSearchOne1) == 2){ //research score is data type int
+            string inputSearchOne2;
+            int count = 0;
+            cout << "Please input a Research Score to search by" << endl;
+            cin >> inputSearchOne2;
+            DomesticStudent *temp = head;
+            if(isNumerical(inputSearchOne2) == false){
+                cout << "ERROR: Invalid input, integers accepted only" << endl;
+            }
+            else{
+                while(temp != NULL){
+                    if(temp->getResearch() == stoi(inputSearchOne2)){
+                        cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+                             << temp->getCGPA() << ", " << temp->getProvince() << endl;
+                        count++;
+                    }
+                    temp = temp->getNext();
+                }
+                if(count == 0){
+                    cout << "No matches found" << endl;
+                }
+            }
+        }
+        else if(stoi(inputSearchOne1) == 3){ //id is data type int
+            string inputSearchOne2;
+            int count = 0;
+            cout << "Please input an Application ID to search by" << endl;
+            cin >> inputSearchOne2;
+            DomesticStudent *temp = head;
+            if(isNumerical(inputSearchOne2) == false){
+                cout << "ERROR: Invalid input, integers accepted only" << endl;
+            }
+            else{
+                while(temp != NULL){
+                    if(temp->getID() == stoi(inputSearchOne2)){
+                        cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+                             << temp->getCGPA() << ", " << temp->getProvince() << endl;
+                        count ++;
+                    }
+                    temp = temp->getNext();
+                }
+                if(count == 0){
+                    cout << "No matches found" << endl;
+                }
+            }
+        }
+    }
+}
+
+void DomesticList::searchTwo() const {
+    string firstNameInput;
+    string lastNameInput;
+    int count = 0;
+    cout << "Please input a first name: " << endl;
+    cin >> firstNameInput;
+    cout << "Please input a last name: " << endl;
+    cin >> lastNameInput;
+    DomesticStudent *temp = head;
+    while(temp!= NULL){
+        if((toLowerCase(temp->getFirstName()) == toLowerCase(firstNameInput)) && (toLowerCase(temp->getLastName()) ==
+                toLowerCase(lastNameInput))){
+            cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+                 << temp->getCGPA() << ", " << temp->getProvince() << endl;
+            count++;
+        }
+        temp = temp->getNext();
+    }
+    if(count == 0){
+        cout << "No matches found" << endl;
+    }
+}
+
+//compare function
  string compareProvince(const DomesticStudent& DS1, const DomesticStudent& DS2){
  	if(DS1.province < DS2.province){
  		return "<";
@@ -284,7 +440,7 @@ bool DomesticList::empty() const {
  		return ">";
  	}
  	else{
- 		cout << "ERROR: DomesticStudent.compareProince";
+ 		cout << "ERROR: DomesticStudent.compareProvince";
  		exit(1);
  	}
  }
@@ -307,6 +463,9 @@ std::ostream& operator<<(std::ostream& os, const InternationalStudent& inputIS){
 	return os;
 }
 
+InternationalStudent::InternationalStudent() {
+	next = NULL;
+}
 //country getter and setter
 void InternationalStudent::setCountry(string input){
 	country = input;
@@ -349,10 +508,6 @@ toefl InternationalStudent::getTOEFL() const{
 	return TOEFL;
 }
 
-InternationalStudent::InternationalStudent() {
-    next = NULL;
-}
-
 void InternationalStudent::setNext(InternationalStudent *input) {
     next = input;
 }
@@ -360,11 +515,15 @@ void InternationalStudent::setNext(InternationalStudent *input) {
 InternationalStudent* InternationalStudent::getNext() const {
     return next;
 }
-
+InternationalList::InternationalList() {
+    head = NULL;
+    tail = NULL;
+}
 void InternationalList::sortedInsert(string firstName, string lastName, float cgpa,
 	int research, int studentID, string country, toefl TOEFL) {
 		InternationalStudent *current;
 		InternationalStudent *before;
+		InternationalStudent *temp;
 		InternationalStudent *newNode = new InternationalStudent;
         newNode->setFirstName(firstName);
         newNode->setLastName(lastName);
@@ -378,7 +537,9 @@ void InternationalList::sortedInsert(string firstName, string lastName, float cg
 		if(head == NULL) {
 			head = newNode;
 			tail = newNode;
-		} else if (head->getResearch() < newNode->getResearch()) { //if current head research score is less, replace it with the new top
+		} else if (head->getResearch() < newNode->getResearch() 
+            || head->getResearch() == newNode->getResearch() && head->getCGPA() < newNode->getCGPA() 
+                || head->getResearch() == newNode->getResearch() && head->getCGPA() == newNode->getCGPA()&& head->getCountry() > newNode->getCountry()) { //if current head research score is less, replace it with the new top
             //setting old head as the next of newnode
 			newNode->setNext(head);
             //setting newnode as new head
@@ -386,7 +547,7 @@ void InternationalList::sortedInsert(string firstName, string lastName, float cg
 		} else {
 			current = head;
 			before = head;
-			while(current->getNext() != NULL && current->getNext()->getResearch() > newNode->getResearch()) { //looping through
+			while(current->getNext() != NULL && current->getNext()->getResearch() >= newNode->getResearch()) { //looping through
 				current = current->getNext();
 			}
 			if(current != head) {
@@ -395,7 +556,8 @@ void InternationalList::sortedInsert(string firstName, string lastName, float cg
 				}
 			}
 			if(newNode->getResearch() < tail->getResearch()) {
-				tail = newNode;
+                tail->setNext(newNode->getNext());
+                tail = newNode;
 			}
             if(current->getNext() == NULL){
                 current->setNext(newNode);
@@ -407,26 +569,44 @@ void InternationalList::sortedInsert(string firstName, string lastName, float cg
 				current->setNext(newNode);
 			}
             else if (current->getResearch() == newNode->getResearch()){ //CGPA is descending order
+				while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch() 
+					&& current->getNext()->getCGPA()  >= newNode->getCGPA()) { //looping through
+						current = current->getNext();
+				}
+				if(current != head) {
+					while (before->getNext() != current) {
+						before = before->getNext();
+					}
+				}
 				if(current->getCGPA() > newNode->getCGPA()) { //correct
                     //set newNode next to current next
                     newNode->setNext(current->getNext());
                     //set current next to newnode
                     current->setNext(newNode);
 				}
-                else if (current->getCGPA() < newNode->getCGPA()) { //This line works now
+                else if (current->getCGPA() < newNode->getCGPA()) { //Right now, this line does not work, whenever the current CGPA is less than newNode's
                     //set newNode next to current next
                     newNode->setNext(before->getNext());
                     //set current next to newnode
                     before->setNext(newNode);
 				}
                 else if(current->getCGPA() == newNode->getCGPA()) {
+					while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch() 
+                        && current->getNext()->getCGPA()  == newNode->getCGPA() && current->getNext()->getCountry() > newNode->getCountry()) { //looping through
+							current = current->getNext();
+					}
+					if(current != head) {
+						while (before->getNext() != current) {
+							before = before->getNext();
+						}
+					}
 					if(current->getCountry() < newNode->getCountry()) {
                         //set newNode next to current next
                         newNode->setNext(current->getNext());
                         //set current next to newnode
                         current->setNext(newNode);
 					}
-                    else if(current->getCountry() > newNode->getCountry()) { //This line works now
+                    else if(current->getCountry() > newNode->getCountry()) { //Also similar to line 209, doesn't work when current's province is greater than newNode's
                         //set newNode next to current next
                         newNode->setNext(before->getNext());
                         //set current next to newnode
@@ -434,23 +614,9 @@ void InternationalList::sortedInsert(string firstName, string lastName, float cg
 					}
 				}
 			} 
-			
 		}
 	}
 
-
-
-void InternationalList::display() const {
-	if(!empty()) {
-		InternationalStudent *temp = head;
-		cout << "Linked list: \n";
-		while(temp != NULL) {
-			cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
-			 	 << temp->getCGPA() << ", " << temp->getCountry() << ", " << endl;
-			temp = temp->getNext();
-		}
-	}
-}
 
 InternationalList::~InternationalList() {
 	InternationalStudent *current = head;
@@ -461,20 +627,145 @@ InternationalList::~InternationalList() {
 	}
 }
 
-int InternationalList::pop() {
-	int result;
+void InternationalList::display() const {
 	if(!empty()) {
-		InternationalStudent *temp;
-		temp = new InternationalStudent;
-		temp = head;
-		head = head->getNext();
-		delete temp;
-		result = head->getResearch();
+		InternationalStudent *temp = head;
+		cout << "Displaying International List: \n";
+		while(temp != NULL) {
+			cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+			 	 << temp->getCGPA() << ", " << temp->getCountry()  << endl;
+			temp = temp->getNext();
+		}
 	}
-	return result;
 }
-
 
 bool InternationalList::empty() const {
 	return (head == NULL);
+}
+
+void InternationalList::displayHead() const {
+    cout << "International Head Pointer: ";
+    cout << head->getID() << ", " << head->getFirstName() << ", " << head->getLastName() << ", " << head->getResearch() << ", "
+			 	 << head->getCGPA() << ", " << head->getCountry() << endl; 
+}
+
+void InternationalList::displayTail() const {
+    cout << "International Tail Pointer: ";
+    cout << tail->getID() << ", " << tail->getFirstName() << ", " << tail->getLastName() << ", " << tail->getResearch() << ", "
+			 	 << tail->getCGPA() << ", " << head->getCountry() << endl;
+}
+
+
+
+void InternationalList::searchOne() const {
+    string inputSearchOne1;
+    cout << "Please input number corresponding to which field you would like to search" << endl;
+    cout << "1) CGPA" << endl;
+    cout << "2) Research Score" << endl;
+    cout << "3) Application ID" << endl;
+    cin >> inputSearchOne1;
+    if(isNumerical(inputSearchOne1) == false){
+        cout << "ERROR: Invalid input, integers accepted only" << endl;
+    }
+
+    else if(stoi(inputSearchOne1) > 3 || stoi(inputSearchOne1) <= 0){
+        cout << "ERROR: Invalid integer, please input 1-3" << endl;
+    }
+    else{
+        if(stoi(inputSearchOne1) == 1){ //cgpa is data type double, NEED TO CREATE A FUNCTION TO CHECK IF VALID DOUBLE
+            string inputSearchOne2;
+            int count = 0;
+            //output prompt
+            cout << "Please input a CGPA to search by" << endl;
+            //user input
+            cin >> inputSearchOne2;
+            //print the ones that meet the requirement
+            InternationalStudent *temp = head;
+            if(isDouble(inputSearchOne2) == false){ //checks whether inputSearchOne2 is a double
+                cout << "ERROR: Invalid input, doubles accepted only" << endl;
+            }
+            else{
+                while(temp != NULL){
+                    if(compareDoubles(temp->getCGPA(), stod(inputSearchOne2)) == true){ //stod always adds on extra decimals... thus never equal?
+                        cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+                             << temp->getCGPA() << ", " << temp->getCountry() << endl;
+                        count++;
+                    }
+                    temp = temp->getNext();
+                }
+                if(count == 0){
+                    cout << "No matches found" << endl;
+                }
+            }
+        }
+        else if(stoi(inputSearchOne1) == 2){ //research score is data type int
+            string inputSearchOne2;
+            int count = 0;
+            cout << "Please input a Research Score to search by" << endl;
+            cin >> inputSearchOne2;
+            InternationalStudent *temp = head;
+            if(isNumerical(inputSearchOne2) == false){
+                cout << "ERROR: Invalid input, integers accepted only" << endl;
+            }
+            else{
+                while(temp != NULL){
+                    if(temp->getResearch() == stoi(inputSearchOne2)){
+                        cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+                             << temp->getCGPA() << ", " << temp->getCountry() << endl;
+                        count++;
+                    }
+                    temp = temp->getNext();
+                }
+                if(count == 0){
+                    cout << "No matches found" << endl;
+                }
+            }
+        }
+        else if(stoi(inputSearchOne1) == 3){ //id is data type int
+            string inputSearchOne2;
+            int count = 0;
+            cout << "Please input an Application ID to search by" << endl;
+            cin >> inputSearchOne2;
+            InternationalStudent *temp = head;
+            if(isNumerical(inputSearchOne2) == false){
+                cout << "ERROR: Invalid input, integers accepted only" << endl;
+            }
+            else{
+                while(temp != NULL){
+                    if(temp->getID() == stoi(inputSearchOne2)){
+                        cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+                             << temp->getCGPA() << ", " << temp->getCountry() << endl;
+                        count ++;
+                    }
+                    temp = temp->getNext();
+                }
+                if(count == 0){
+                    cout << "No matches found" << endl;
+                }
+            }
+        }
+    }
+}
+
+void InternationalList::searchTwo() const{
+    string firstNameInput;
+    string lastNameInput;
+    int count = 0;
+    cout << "Please input a first name: " << endl;
+    cin >> firstNameInput;
+    cout << "Please input a last name: " << endl;
+    cin >> lastNameInput;
+    InternationalStudent *temp = head;
+    while(temp!= NULL){
+        if((toLowerCase(temp->getFirstName()) == toLowerCase(firstNameInput)) && (toLowerCase(temp->getLastName()) ==
+                                                                                  toLowerCase(lastNameInput))){
+            cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+                 << temp->getCGPA() << ", " << temp->getCountry() << endl;
+            count++;
+        }
+        temp = temp->getNext();
+    }
+    if(count == 0){
+        cout << "No matches found" << endl;
+    }
 }
