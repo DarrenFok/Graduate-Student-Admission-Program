@@ -214,7 +214,7 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 			}
             else if (current->getResearch() == newNode->getResearch()){ //CGPA is descending order
 				while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch() 
-					&& current->getNext()->getCGPA()  >= newNode->getCGPA()) { //looping through
+					&& current->getNext()->getCGPA() >= newNode->getCGPA()) { //looping through
 						current = current->getNext();
 				}
 				if(current != head) {

@@ -48,18 +48,23 @@ int main() {
          getline(ss, lastName, ','); //get lastName
          getline(ss, province, ','); //get province
          getline(ss, s_cgpa, ','); //get cgpa
-         cgpa = stof(s_cgpa);
          getline(ss, s_researchScore, ','); //get researchScore
+
+         if(firstName == "" || lastName == "" || province == "" || s_cgpa == "" || s_researchScore == ""){ //checking for empty fields
+             cout << "ERROR: One field in this line is missing. Exiting the program now" << endl;
+             exit(1);
+         }
+
+         if(province != "NL" && province != "PE" && province != "NS" && province != "NB" && province != "QC" &&
+            province != "ON" && province != "MB" && province != "SK" && province != "AB" && province != "BC" &&
+            province != "YT" && province != "NT" && province != "NU"){ //checks if one of the valid provinces
+             cout << "ERROR: Province input is invalid" << endl;
+             exit(1);
+         }
+
+         cgpa = stof(s_cgpa);
          researchScore = stoi(s_researchScore);
 
-         DomesticStudent inputDomestic;
-         inputDomestic.setFirstName(firstName);
-         inputDomestic.setLastName(lastName);
-         inputDomestic.setProvince(province);
-         inputDomestic.setCGPA(cgpa);
-         inputDomestic.setResearch(researchScore);
-         inputDomestic.setID(DL1.getDomesticID());
-         domesticStudents.push_back(inputDomestic);
          DL1.sortedInsert(firstName, lastName, cgpa, researchScore, DL1.getDomesticID(),province);
          domesticCount++;
          DL1.setDomesticID(DL1.getDomesticID() + 1);

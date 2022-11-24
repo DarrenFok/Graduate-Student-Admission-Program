@@ -19,31 +19,13 @@
   <component name="ChangeListManager">
     <list default="true" id="21fd5c2d-aa75-4c4a-b992-5b5d540d9848" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/.cmake/api/v1/reply/cache-v2-687aa11592cc4a579576.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-3a6e9189f9981df9d85c.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-503a19cabf55c01f4da7.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/.cmake/api/v1/reply/index-2022-11-23T19-08-32-0239.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/.cmake/api/v1/reply/target-Project-Debug-b2527c00c5aca5e154bc.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/3.23.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/3.23.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/3.23.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/3.23.2/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/3.23.2/CompilerIdC/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/3.23.2/CompilerIdC/a.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/3.23.2/CompilerIdCXX/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/3.23.2/CompilerIdCXX/a.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/Project.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/Project.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/Project.dir/stu_sort.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/Project.dir/stu_sort.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/Project.dir/student.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/Project.dir/student.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/Project.dir/toefl.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/Project.dir/toefl.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/Project.exe" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/Project.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/cmake_install.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/functions.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/functions.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/student.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/student.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +100,7 @@
       <workItem from="1669240037158" duration="4443000" />
       <workItem from="1669244541350" duration="1398000" />
       <workItem from="1669247289676" duration="633000" />
-      <workItem from="1669259241255" duration="339000" />
+      <workItem from="1669259241255" duration="2463000" />
     </task>
     <servers />
   </component>
@@ -135,5 +117,21 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/student.cpp</url>
+          <line>473</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/main.cpp</url>
+          <line>40</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
