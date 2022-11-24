@@ -191,6 +191,9 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 			before = head;
 			while(current->getNext() != NULL && current->getNext()->getResearch() >= newNode->getResearch()) { //looping through
 				current = current->getNext();
+                if(current->getResearch() == newNode->getResearch()) {
+                    break;
+                }
 			}
 			if(current != head) {
 				while (before->getNext() != current) {
