@@ -133,10 +133,10 @@ int main() {
         idCountInternational++;
     }
      LI.display();
-     LI.displayHead();
-     LI.displayTail();
+    //  LI.displayHead();
+    //  LI.displayTail();
 
-    LI.searchTwo();
+    // LI.searchTwo();
 
     // cout << "\nWelcome to the Graduate Student Admission Program\n";
     // //menu - loops until user wants to exit
