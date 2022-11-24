@@ -70,10 +70,11 @@ int main() {
 
      DL1.create();
      DL1.display();
+     DL1.displayHead();
+     DL1.displayTail();
 
      //DL1.searchOne();
-    
-
+     
 //   //input internationalStudents
 //    getline(internationalFile, line);
 //    int internationalCount = 0;
