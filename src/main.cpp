@@ -74,55 +74,55 @@ int main() {
     
 
    //input internationalStudents
-//    getline(internationalFile, line);
-//    int internationalCount = 0;
-//    int idCountInternational = 20220000;
-//    InternationalList LI;
-//    while (getline(internationalFile, line)){
-//        istringstream ss(line);
-//        string firstName, lastName, country, s_cgpa, s_researchScore, reading, listening, speaking, writing;
-//        float cgpa;
-//        int researchScore;
+   getline(internationalFile, line);
+   int internationalCount = 0;
+   int idCountInternational = 20220000;
+   InternationalList LI;
+   while (getline(internationalFile, line)){
+       istringstream ss(line);
+       string firstName, lastName, country, s_cgpa, s_researchScore, reading, listening, speaking, writing;
+       float cgpa;
+       int researchScore;
 
-//        getline(ss, firstName, ','); //get firstName
-//        getline(ss, lastName, ','); //get lastName
-//        getline(ss, country, ','); //get province
-//        getline(ss, s_cgpa, ','); //get cgpa
-//        cgpa = stof(s_cgpa);
-//        getline(ss, s_researchScore, ','); //get researchScore
-//        researchScore = stoi(s_researchScore);
-//        getline(ss, reading, ','); //set toefl reading
-//        getline(ss, listening, ','); //set toefl listening
-//        getline(ss, speaking, ','); //set toefl speaking
-//        getline(ss, writing, ','); //set toefl writing
-//        //create toefl object
-//        toefl score;
-//        score.setReading(stoi(reading));
-//        score.setListening(stoi(listening));
-//        score.setSpeaking(stoi(speaking));
-//        score.setWriting(stoi(writing));
-//        score.setTotal();
-//        //input everything into InternationalStudent object
-//        InternationalStudent inputInternational;
-//        inputInternational.setFirstName(firstName);
-//        inputInternational.setLastName(lastName);
-//        inputInternational.setCountry(country);
-//        inputInternational.setCGPA(cgpa);
-//        inputInternational.setResearch(researchScore);
-//        inputInternational.setTOEFL(score);
-//        inputInternational.setID(idCountInternational);
+       getline(ss, firstName, ','); //get firstName
+       getline(ss, lastName, ','); //get lastName
+       getline(ss, country, ','); //get province
+       getline(ss, s_cgpa, ','); //get cgpa
+       cgpa = stof(s_cgpa);
+       getline(ss, s_researchScore, ','); //get researchScore
+       researchScore = stoi(s_researchScore);
+       getline(ss, reading, ','); //set toefl reading
+       getline(ss, listening, ','); //set toefl listening
+       getline(ss, speaking, ','); //set toefl speaking
+       getline(ss, writing, ','); //set toefl writing
+       //create toefl object
+       toefl score;
+       score.setReading(stoi(reading));
+       score.setListening(stoi(listening));
+       score.setSpeaking(stoi(speaking));
+       score.setWriting(stoi(writing));
+       score.setTotal();
+       //input everything into InternationalStudent object
+       InternationalStudent inputInternational;
+       inputInternational.setFirstName(firstName);
+       inputInternational.setLastName(lastName);
+       inputInternational.setCountry(country);
+       inputInternational.setCGPA(cgpa);
+       inputInternational.setResearch(researchScore);
+       inputInternational.setTOEFL(score);
+       inputInternational.setID(idCountInternational);
 
-//        internationalStudents.push_back(inputInternational);
-//        if(score.getReading() > 19 && score.getListening() > 19 && score.getSpeaking() > 19 &&
-//                 score.getWriting() > 19 && score.getTotal() > 91) {
-//             LI.sortedInsert(firstName, lastName, cgpa, researchScore, idCountInternational, country, score);
-//        }
-//        internationalCount++;
-//        idCountInternational++;
-//    }
-//     LI.display();
-//     LI.displayHead();
-//     LI.displayTail();
+       internationalStudents.push_back(inputInternational);
+       if(score.getReading() > 19 && score.getListening() > 19 && score.getSpeaking() > 19 &&
+                score.getWriting() > 19 && score.getTotal() > 91) {
+            LI.sortedInsert(firstName, lastName, cgpa, researchScore, idCountInternational, country, score);
+       }
+       internationalCount++;
+       idCountInternational++;
+   }
+    LI.display();
+    LI.displayHead();
+    LI.displayTail();
 
 //    LI.searchTwo();
 

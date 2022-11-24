@@ -191,6 +191,9 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 			before = head;
 			while(current->getNext() != NULL && current->getNext()->getResearch() >= newNode->getResearch()) { //looping through
 				current = current->getNext();
+                if(current->getResearch() == newNode->getResearch()) {
+                    break;
+                }
 			}
 			if(current != head) {
 				while (before->getNext() != current) {
@@ -199,7 +202,7 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 			}
 			if(newNode->getResearch() < tail->getResearch() 
                 || tail->getResearch() == newNode->getResearch() && tail->getCGPA() < newNode->getCGPA() 
-                    || tail->getResearch() == newNode->getResearch() && tail->getCGPA() == newNode->getCGPA() && tail->getProvince() > newNode->getProvince()) {
+                    || tail->getResearch() == newNode->getResearch() && tail->getCGPA() == newNode->getCGPA() && tail->getProvince() >= newNode->getProvince()) {
                 tail->setNext(newNode->getNext());
                 tail = newNode;
 			}
@@ -213,9 +216,12 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 				current->setNext(newNode);
 			}
             else if (current->getResearch() == newNode->getResearch()){ //CGPA is descending order
-				while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch() 
+                while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch() 
 					&& current->getNext()->getCGPA()  >= newNode->getCGPA()) { //looping through
 						current = current->getNext();
+                        if(current->getCGPA() == newNode->getCGPA()) {
+                            break;
+                        }
 				}
 				if(current != head) {
 					while (before->getNext() != current) {
@@ -235,7 +241,7 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
                     before->setNext(newNode);
 				}
                 else if(current->getCGPA() == newNode->getCGPA()) {
-					while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch() 
+                    while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch() 
 						&& current->getNext()->getCGPA()  == newNode->getCGPA() && current->getNext()->getProvince() > newNode->getProvince()) { //looping through
 							current = current->getNext();
 					}
@@ -597,6 +603,9 @@ void InternationalList::sortedInsert(string firstName, string lastName, float cg
 			before = head;
 			while(current->getNext() != NULL && current->getNext()->getResearch() >= newNode->getResearch()) { //looping through
 				current = current->getNext();
+                if(current->getResearch() == newNode->getResearch()) {
+                    break;
+                }
 			}
 			if(current != head) {
 				while (before->getNext() != current) {
@@ -620,6 +629,9 @@ void InternationalList::sortedInsert(string firstName, string lastName, float cg
 				while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch() 
 					&& current->getNext()->getCGPA()  >= newNode->getCGPA()) { //looping through
 						current = current->getNext();
+                        if(current->getCGPA() == newNode->getCGPA()) {
+                            break;
+                        }
 				}
 				if(current != head) {
 					while (before->getNext() != current) {
