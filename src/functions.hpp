@@ -22,6 +22,15 @@ namespace functions{
         }
         return in;
     }
+    //converts entire string to upper case
+    string toUpperCase(string in){
+        for(int i = 0; i < in.length(); i++){
+            if(in[i] >= 97 && in[i] <= 122){
+                in[i] = in[i]-32;
+            }
+        }
+        return in;
+    }
     //checks if inputted string is a double
     bool isDouble(const string in){
         int point=0;

@@ -189,7 +189,7 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 		} else {
 			current = head;
 			before = head;
-			while(current->getNext() != NULL && current->getNext()->getResearch() > newNode->getResearch()) { //looping through
+			while(current->getNext() != NULL && current->getNext()->getResearch() >= newNode->getResearch()) { //looping through
 				current = current->getNext();
 			}
 			if(current != head) {
@@ -451,6 +451,7 @@ bool DomesticList::create(){
     cin >> cgpaInput;
     cout << "Please input a province: " << endl;
     cin >> provinceInput;
+    string provinceInput2 = toUpperCase(provinceInput);
 
     //error checking for research score (int only), and research score (double only)
     if(isNumerical(researchInput) == false){ //if not int type
@@ -461,15 +462,16 @@ bool DomesticList::create(){
         cout << "ERROR: CGPA input is not a double" << endl;
         return false;
     }
-    if(provinceInput != "NL" && provinceInput != "PE" && provinceInput != "NS" && provinceInput != "NB" && provinceInput != "QC" &&
-    provinceInput != "ON" && provinceInput != "MB" && provinceInput != "SK" && provinceInput != "AB" && provinceInput != "BC" &&
-    provinceInput != "YT" && provinceInput != "NT" && provinceInput != "NU"){ //checks if one of the valid provinces
+
+    if(provinceInput2 != "NL" && provinceInput2 != "PE" && provinceInput2 != "NS" && provinceInput2 != "NB" && provinceInput2 != "QC" &&
+    provinceInput2 != "ON" && provinceInput2 != "MB" && provinceInput2 != "SK" && provinceInput2 != "AB" && provinceInput2 != "BC" &&
+    provinceInput2 != "YT" && provinceInput2 != "NT" && provinceInput2 != "NU"){ //checks if one of the valid provinces
         cout << "ERROR: Province input is invalid" << endl;
         return false;
     }
     float CGPA = stof(cgpaInput);
     int research = stoi(researchInput);
-    sortedInsert(firstInput, lastInput, CGPA, research, idDomestic, provinceInput);
+    sortedInsert(firstInput, lastInput, CGPA, research, idDomestic, provinceInput2);
     idDomestic++;
     return true;
 }
