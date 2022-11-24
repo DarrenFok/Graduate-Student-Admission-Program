@@ -74,6 +74,8 @@ int main() {
 
      DL1.create();
      DL1.display();
+     DL1.displayHead();
+     DL1.displayTail();
 
      //DL1.searchOne();
     
@@ -133,8 +135,8 @@ int main() {
         idCountInternational++;
     }
      LI.display();
-    //  LI.displayHead();
-    //  LI.displayTail();
+     LI.displayHead();
+     LI.displayTail();
 
     // LI.searchTwo();
 

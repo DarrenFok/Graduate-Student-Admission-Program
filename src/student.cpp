@@ -257,9 +257,11 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
                         before->setNext(newNode);
 					}
 				}
-			} 
-			
+			} 	
 		}
+        while(tail->getNext() != NULL) {
+            tail = tail->getNext();
+        }    
 	}
 
 
@@ -597,6 +599,9 @@ void InternationalList::sortedInsert(string firstName, string lastName, float cg
 			before = head;
 			while(current->getNext() != NULL && current->getNext()->getResearch() >= newNode->getResearch()) { //looping through
 				current = current->getNext();
+                if(current->getResearch() == newNode->getResearch()){
+                    break;
+                }
 			}
 			if(current != head) {
 				while (before->getNext() != current) {
@@ -620,6 +625,9 @@ void InternationalList::sortedInsert(string firstName, string lastName, float cg
 				while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch() 
 					&& current->getNext()->getCGPA()  >= newNode->getCGPA()) { //looping through
 						current = current->getNext();
+                        if(current->getCGPA() == newNode->getCGPA()) {
+                            break;
+                        }
 				}
 				if(current != head) {
 					while (before->getNext() != current) {
@@ -663,6 +671,9 @@ void InternationalList::sortedInsert(string firstName, string lastName, float cg
 				}
 			} 
 		}
+        while(tail->getNext() != NULL) {
+            tail = tail->getNext();
+        }
 	}
 
 
