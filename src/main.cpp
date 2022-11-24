@@ -31,105 +31,104 @@ int main() {
     }
     
     //input domesticStudents
-     getline(domesticFile, line);
-     int domesticCount = 0;
-     DomesticList DL1;
-     while (getline(domesticFile, line)) {
-         istringstream ss(line);
-         string firstName, lastName, province, s_cgpa, s_researchScore; //strings
-         float cgpa; //to convert string cgpa to
-         int researchScore; //to convert string researchScore to
-
-         getline(ss, firstName, ','); //get firstName
-         getline(ss, lastName, ','); //get lastName
-         getline(ss, province, ','); //get province
-         getline(ss, s_cgpa, ','); //get cgpa
-         getline(ss, s_researchScore, ','); //get researchScore
-
-         if(firstName == "" || lastName == "" || province == "" || s_cgpa == "" || s_researchScore == ""){ //checking for empty fields
-             cout << "ERROR: One field in this line is missing. Exiting the program now" << endl;
-             exit(1);
-         }
-
-         if(province != "NL" && province != "PE" && province != "NS" && province != "NB" && province != "QC" &&
-            province != "ON" && province != "MB" && province != "SK" && province != "AB" && province != "BC" &&
-            province != "YT" && province != "NT" && province != "NU"){ //checks if one of the valid provinces
-             cout << "ERROR: Province input is invalid. Exiting the program now" << endl;
-             exit(1);
-         }
-
-         cgpa = stof(s_cgpa);
-         researchScore = stoi(s_researchScore);
-
-         DL1.sortedInsert(firstName, lastName, cgpa, researchScore, DL1.getDomesticID(),province);
-         domesticCount++;
-         DL1.setDomesticID(DL1.getDomesticID() + 1);
-
-
-     }
-
-     DL1.create();
-     DL1.display();
-     DL1.displayHead();
-     DL1.displayTail();
+//     getline(domesticFile, line);
+//     int domesticCount = 0;
+//     DomesticList DL1;
+//     while (getline(domesticFile, line)) {
+//         istringstream ss(line);
+//         string firstName, lastName, province, s_cgpa, s_researchScore; //strings
+//         float cgpa; //to convert string cgpa to
+//         int researchScore; //to convert string researchScore to
+//
+//         getline(ss, firstName, ','); //get firstName
+//         getline(ss, lastName, ','); //get lastName
+//         getline(ss, province, ','); //get province
+//         getline(ss, s_cgpa, ','); //get cgpa
+//         getline(ss, s_researchScore, ','); //get researchScore
+//
+//         if(firstName == "" || lastName == "" || province == "" || s_cgpa == "" || s_researchScore == ""){ //checking for empty fields
+//             cout << "ERROR: One field in this line is missing. Exiting the program now" << endl;
+//             exit(1);
+//         }
+//
+//         if(province != "NL" && province != "PE" && province != "NS" && province != "NB" && province != "QC" &&
+//            province != "ON" && province != "MB" && province != "SK" && province != "AB" && province != "BC" &&
+//            province != "YT" && province != "NT" && province != "NU"){ //checks if one of the valid provinces
+//             cout << "ERROR: Province input is invalid. Exiting the program now" << endl;
+//             exit(1);
+//         }
+//
+//         cgpa = stof(s_cgpa);
+//         researchScore = stoi(s_researchScore);
+//
+//         DL1.sortedInsert(firstName, lastName, cgpa, researchScore, DL1.getDomesticID(),province);
+//         domesticCount++;
+//         DL1.setDomesticID(DL1.getDomesticID() + 1);
+//
+//
+//     }
+//
+//     DL1.create();
+//     DL1.display();
+//     DL1.displayHead();
+//     DL1.displayTail();
 
      //DL1.searchOne();
-     
+
 //   //input internationalStudents
-//    getline(internationalFile, line);
-//    int internationalCount = 0;
-//    int idCountInternational = 20220000;
-//    InternationalList LI;
-//    while (getline(internationalFile, line)){
-//        istringstream ss(line);
-//        string firstName, lastName, country, s_cgpa, s_researchScore, reading, listening, speaking, writing;
-//        float cgpa;
-//        int researchScore;
-//
-//        getline(ss, firstName, ','); //get firstName
-//        getline(ss, lastName, ','); //get lastName
-//        getline(ss, country, ','); //get province
-//        getline(ss, s_cgpa, ','); //get cgpa
-//        getline(ss, s_researchScore, ','); //get researchScore
-//        getline(ss, reading, ','); //set toefl reading
-//        getline(ss, listening, ','); //set toefl listening
-//        getline(ss, speaking, ','); //set toefl speaking
-//        getline(ss, writing, ','); //set toefl writing
-//
-//        if(firstName == "" || lastName == "" || country == "" || s_cgpa == "" || s_researchScore == "" || reading == "" ||
-//        listening == "" || speaking == "" || writing == ""){
-//            cout << "ERROR: One field in this line is missing. Exiting program now" << endl;
-//            exit(1);
-//        }
-//
-//        if(country == "Idian"){ //correct spelling error
-//            country = "India";
-//        }
-//
-//        if(country != "Canada" && country != "China" && country != "India" && country != "Iran" && country != "Korea"){ //checking if valid country
-//            cout << "ERROR: Country input is invalid. Exiting the program now" << endl;
-//            exit(1);
-//        }
-//
-//        //create toefl object
-//        toefl score;
-//        score.setReading(stoi(reading));
-//        score.setListening(stoi(listening));
-//        score.setSpeaking(stoi(speaking));
-//        score.setWriting(stoi(writing));
-//        score.setTotal();
-//
-//        cgpa = stof(s_cgpa);
-//        researchScore = stoi(s_researchScore);
-//
-//        if(score.getReading() > 19 && score.getListening() > 19 && score.getSpeaking() > 19 &&
-//                 score.getWriting() > 19 && score.getTotal() > 91) {
-//             LI.sortedInsert(firstName, lastName, cgpa, researchScore, idCountInternational, country, score);
-//        }
-//        internationalCount++;
-//        idCountInternational++;
-//    }
-//     LI.display();
+    getline(internationalFile, line);
+    int internationalCount = 0;
+    InternationalList LI;
+    while (getline(internationalFile, line)){
+        istringstream ss(line);
+        string firstName, lastName, country, s_cgpa, s_researchScore, reading, listening, speaking, writing;
+        float cgpa;
+        int researchScore;
+
+        getline(ss, firstName, ','); //get firstName
+        getline(ss, lastName, ','); //get lastName
+        getline(ss, country, ','); //get province
+        getline(ss, s_cgpa, ','); //get cgpa
+        getline(ss, s_researchScore, ','); //get researchScore
+        getline(ss, reading, ','); //set toefl reading
+        getline(ss, listening, ','); //set toefl listening
+        getline(ss, speaking, ','); //set toefl speaking
+        getline(ss, writing, ','); //set toefl writing
+
+        if(firstName == "" || lastName == "" || country == "" || s_cgpa == "" || s_researchScore == "" || reading == "" ||
+        listening == "" || speaking == "" || writing == ""){
+            cout << "ERROR: One field in this line is missing. Exiting program now" << endl;
+            exit(1);
+        }
+
+        if(country == "Idian"){ //correct spelling error
+            country = "India";
+        }
+
+        if(country != "Canada" && country != "China" && country != "India" && country != "Iran" && country != "Korea"){ //checking if valid country
+            cout << "ERROR: Country input is invalid. Exiting the program now" << endl;
+            exit(1);
+        }
+
+        //create toefl object
+        toefl score;
+        score.setReading(stoi(reading));
+        score.setListening(stoi(listening));
+        score.setSpeaking(stoi(speaking));
+        score.setWriting(stoi(writing));
+        score.setTotal();
+
+        cgpa = stof(s_cgpa);
+        researchScore = stoi(s_researchScore);
+
+        if(score.getReading() > 19 && score.getListening() > 19 && score.getSpeaking() > 19 &&
+                 score.getWriting() > 19 && score.getTotal() > 92) {
+             LI.sortedInsert(firstName, lastName, cgpa, researchScore, LI.getIntID(), country, score);
+        }
+        internationalCount++;
+        LI.setIntID(LI.getIntID() + 1);
+    }
+     LI.display();
     //  LI.displayHead();
     //  LI.displayTail();
 

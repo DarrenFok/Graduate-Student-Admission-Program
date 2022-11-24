@@ -470,7 +470,7 @@ bool DomesticList::create(){
         return false;
     }
     if(stod(cgpaInput) < 0 || stod(cgpaInput) > 4.33){
-        cout << "ERROR: CGPA score is not within the bounds" << endl;
+        cout << "ERROR: CGPA is not within the bounds" << endl;
         return false;
     }
 
@@ -695,6 +695,14 @@ InternationalList::~InternationalList() {
 	}
 }
 
+void InternationalList::setIntID(int input) {
+    idInternational = input;
+}
+
+int InternationalList::getIntID() const {
+    return idInternational;
+}
+
 void InternationalList::display() const {
 	if(!empty()) {
 		InternationalStudent *temp = head;
@@ -836,4 +844,77 @@ void InternationalList::searchTwo() const{
     if(count == 0){
         cout << "No matches found" << endl;
     }
+}
+
+bool InternationalList::create(){
+    //fields
+    string firstInput; string lastInput; string countryInput; string cgpaInput; string researchInput; //regular fields
+    string readingInput; string listeningInput; string speakingInput; string writingInput; //toefl score stuff
+    //prompt user
+    cout << "Creating an international student to insert into list..." << endl;
+    cout << "Please input a first name: " << endl;
+    cin >> firstInput;
+    cout << "Please input a last name: " << endl;
+    cin >> lastInput;
+    cout << "Please input a country: " << endl;
+    cin >> countryInput;
+    cout << "Please input a CGPA: " << endl;
+    cin >> cgpaInput;
+    cout << "Please input a research score: " << endl;
+    cin >> researchInput;
+    //toefl scores prompt
+    cout << "Please input a TOEFL reading score: " << endl;
+    cin >> readingInput;
+    cout << "Please input a TOEFL listening score: " << endl;
+    cin >> listeningInput;
+    cout << "Please input a TOEFL speaking score: " << endl;
+    cin >> speakingInput;
+    cout << "Please input a TOEFL writing score: " << endl;
+    cin >> writingInput;
+
+    //error check cgpa and research inputs
+    if(isNumerical(researchInput) == false){
+        cout << "ERROR: Research score input is not an integer" << endl;
+        return false;
+    }
+    if(isDouble(cgpaInput) == false){
+        cout << "ERROR: CGPA input is not a double" << endl;
+        return false;
+    }
+    //check if cgpa and research scores are within bounds
+    if(stoi(researchInput) < 0 || stoi(researchInput) > 100){
+        cout << "ERROR: Research score is not within the bounds" << endl;
+        return false;
+    }
+    if(stod(cgpaInput) < 0 || stod(cgpaInput) > 4.33){
+        cout << "ERROR: CGPA is not within the bounds" << endl;
+        return false;
+    }
+    //check if country is valid
+    if(countryInput != "Canada" && countryInput != "China" && countryInput != "Iran" && countryInput != "India" && countryInput != "Korea"){
+        cout << "ERROR: Country input is invalid" << endl;
+        return false;
+    }
+    int total = stoi(readingInput) + stoi(listeningInput) + stoi(speakingInput) + stoi(writingInput);
+    //check if TOEFL scores are valid
+    if(stoi(readingInput) < 20 || stoi(listeningInput) < 20 || stoi(speakingInput) < 20 || stoi(writingInput) < 20 || total < 93){
+        cout << "ERROR: TOEFL scores do not meet the requirement" << endl;
+        return false;
+    }
+
+    float CGPA = stof(cgpaInput);
+    int research = stoi(researchInput);
+
+    //create toefl object
+    toefl score;
+    score.setReading(stoi(readingInput));
+    score.setListening(stoi(listeningInput));
+    score.setSpeaking(stoi(speakingInput));
+    score.setWriting(stoi(writingInput));
+    score.setTotal();
+
+    sortedInsert(firstInput, lastInput, CGPA, research, idInternational, countryInput, score);
+    idInternational++;
+    return true;
+
 }

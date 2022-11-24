@@ -142,6 +142,9 @@ public:
 	
 	//insert functions, search functions, everything goes here
 	~InternationalList();
+
+    void setIntID(int input);
+    int getIntID() const;
 	
 	void sortedInsert(string firstName, string lastName, float cgpa,
                       int research, int studentID, string country, toefl TOEFL);
@@ -153,6 +156,9 @@ public:
     void searchOne() const; //for research, cgpa, id
     void searchTwo() const; //for firstname and last name (both)
 
+    //create function
+    bool create(); //create internationalStudent object and insert into linked list
+
     bool empty() const;
 
     int pop();
@@ -162,7 +168,8 @@ public:
 	void displayTail() const;
 
 private:
-    InternationalStudent *head;
-    InternationalStudent *tail;
+    InternationalStudent *head = NULL;
+    InternationalStudent *tail = NULL;
+    int idInternational = 20220000;
 };
 #endif
