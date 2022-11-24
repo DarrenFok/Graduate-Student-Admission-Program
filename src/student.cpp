@@ -462,6 +462,15 @@ bool DomesticList::create(){
         cout << "ERROR: CGPA input is not a double" << endl;
         return false;
     }
+    //error checking to check if cgpa and research score are within bounds
+    if(stoi(researchInput) < 0 || stoi(researchInput) > 100){
+        cout << "ERROR: Research score is not within the bounds" << endl;
+        return false;
+    }
+    if(stod(cgpaInput) < 0 || stod(cgpaInput) > 4.33){
+        cout << "ERROR: CGPA score is not within the bounds" << endl;
+        return false;
+    }
 
     if(provinceInput2 != "NL" && provinceInput2 != "PE" && provinceInput2 != "NS" && provinceInput2 != "NB" && provinceInput2 != "QC" &&
     provinceInput2 != "ON" && provinceInput2 != "MB" && provinceInput2 != "SK" && provinceInput2 != "AB" && provinceInput2 != "BC" &&
