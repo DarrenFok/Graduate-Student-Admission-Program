@@ -95,6 +95,8 @@ public:
     //create node
     bool create(); //create new domesticStudent object, and insert them into list..
 
+    //delete headtail
+    void deleteHeadTail();
 
     bool empty() const;
 

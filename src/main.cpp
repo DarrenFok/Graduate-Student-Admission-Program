@@ -68,8 +68,11 @@ int main() {
 
     }
 
-    DL1.create();
     DL1.display();
+    DL1.deleteHeadTail();
+    cout << endl << endl;
+    DL1.display();
+    cout << endl;
     DL1.displayHead();
     DL1.displayTail();
 

@@ -490,7 +490,7 @@ bool DomesticList::create(){
     return true;
 }
 
-void DomesticList::DeleteTail(){
+void DomesticList::deleteHeadTail(){
 	//deletes head
 	pop();
 	
