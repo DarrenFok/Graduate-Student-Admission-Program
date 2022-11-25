@@ -727,6 +727,19 @@ int InternationalList::getIntID() const {
     return idInternational;
 }
 
+int InternationalList::pop(){
+    int result;
+    if(!empty()) {
+        InternationalStudent *temp;
+        temp = new InternationalStudent;
+        temp = head;
+        head = head->getNext();
+        delete temp;
+        result = head->getResearch();
+    }
+    return result;
+}
+
 void InternationalList::display() const {
 	if(!empty()) {
 		InternationalStudent *temp = head;
