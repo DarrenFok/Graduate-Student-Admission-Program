@@ -72,6 +72,10 @@ int main() {
     DL1.display();
     DL1.displayHead();
     DL1.displayTail();
+    
+    cout<<"\nDeleting head and tail\n";
+    DL1.DeleteHeadTail();
+    DL1.display();
 
      //DL1.searchOne();
 
