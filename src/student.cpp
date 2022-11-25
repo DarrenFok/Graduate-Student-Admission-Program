@@ -493,7 +493,7 @@ bool DomesticList::create(){
 void DomesticList::deleteHeadTail(){
 	//deletes head
 	pop();
-	
+
 	DomesticStudent* current = head;
 	DomesticStudent* before = head;
 
@@ -955,6 +955,28 @@ void MergeList::sortedMerge(string firstName, string lastName, float cgpa, int r
 
 
 }
+
+void InternationalList::deleteHeadTail(){
+    //deletes head
+    pop();
+
+    InternationalStudent* current = head;
+    InternationalStudent* before = head;
+
+    //get current and before
+    while(current->getNext() != NULL){
+        current = current->getNext();
+    }
+    if(current != head){//at least 2 nodes
+        while(before->getNext() != current){
+            before = before->getNext();
+        }
+    }
+    before->setNext(NULL);
+    delete current;
+    tail = before;
+}
+
 bool MergeList::empty() const{
     return (Dhead == NULL && Ihead == NULL);
 }

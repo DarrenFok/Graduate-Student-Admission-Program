@@ -94,7 +94,7 @@ public:
 
     //create node
     bool create(); //create new domesticStudent object, and insert them into list..
-    
+
     //delete headtail
     void deleteHeadTail();
 
@@ -160,6 +160,8 @@ public:
 
     //create function
     bool create(); //create internationalStudent object and insert into linked list
+
+    void deleteHeadTail();
 
     bool empty() const;
 
