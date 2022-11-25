@@ -172,4 +172,36 @@ private:
     InternationalStudent *tail = NULL;
     int idInternational = 20220000;
 };
+
+class MergeList{
+public:
+    //default constructor
+    MergeList();
+
+    //search functions, everything goes here
+    ~MergeList();
+
+    //display list
+    void display() const;
+
+    bool empty() const;
+
+    //search and print functions for merge function
+    void searchOne() const; //for research, cgpa, id
+    void searchTwo() const; //for firstname and last name (both)
+
+
+    void sortedMerge(string firstName, string lastName, float cgpa,
+                     int research, int studentID, string country, toefl TOEFL);
+
+
+
+
+private:
+    InternationalStudent *Ihead = NULL;
+    InternationalStudent *Itail = NULL;
+    DomesticStudent *Dhead = NULL;
+    DomesticStudent *Dtail = NULL;
+
+};
 #endif

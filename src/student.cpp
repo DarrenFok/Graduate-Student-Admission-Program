@@ -921,3 +921,39 @@ bool InternationalList::create(){
     return true;
 
 }
+
+void MergeList::sortedMerge(string firstName, string lastName, float cgpa, int research, int studentID, string country, toefl TOEFL) {
+
+    MergeList *temp;
+    //MergeList *newNode = new MergeList;
+
+    if(Dhead == NULL || Ihead == NULL){
+
+
+    }
+
+
+}
+bool MergeList::empty() const{
+    return (Dhead == NULL && Ihead == NULL);
+}
+
+
+void MergeList::display() const {
+    if(!empty()) {
+        DomesticStudent *temp = Dhead;
+        InternationalStudent *tmp = Ihead;
+        cout << "Displaying Merge List: \n";
+        while(temp != NULL) {
+            cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+                 << temp->getCGPA() << ", " << temp->getProvince() << endl;
+            temp = temp->getNext();
+        }
+        while(tmp != NULL){
+            cout << tmp->getID() << ", " << tmp->getFirstName() << ", " << tmp->getLastName() << ", " << tmp->getResearch() << ", "
+                 << tmp->getCGPA() << ", " << endl;
+            tmp = tmp->getNext();
+
+        }
+    }
+}
