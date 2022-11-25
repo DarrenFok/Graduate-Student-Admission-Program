@@ -490,6 +490,27 @@ bool DomesticList::create(){
     return true;
 }
 
+void DomesticList::DeleteTail(){
+	//deletes head
+	pop();
+	
+	DomesticStudent* current = head;
+	DomesticStudent* before = head;
+
+	//get current and before
+	while(current->getNext() != NULL){
+		current = current->getNext();
+	} 
+	if(current != head){//at least 2 nodes
+		while(before->getNext() != current){
+			before = before->getNext();
+		}
+	}
+	before->setNext(NULL);
+	delete current;
+	tail = before;
+}
+
 //compare function
  string compareProvince(const DomesticStudent& DS1, const DomesticStudent& DS2){
  	if(DS1.province < DS2.province){
