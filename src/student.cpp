@@ -490,6 +490,48 @@ bool DomesticList::create(){
     return true;
 }
 
+void DomesticList::Delete(){
+    int i = 0;
+    DomesticStudent* before = head;
+    string firstnameInput;
+    string lastnameInput;
+    DomesticStudent* current = head;
+    //get user input
+    cout << "\nPlease enter the first name of a student you would like to delete: " << endl;
+    cin >> firstnameInput;
+    cout << "\nPlease input the last name of a student you would like to delete: " << endl;
+    cin >> lastnameInput;
+
+    //case insensitive
+    firstnameInput = toLowerCase(firstnameInput);
+    lastnameInput = toLowerCase(lastnameInput);
+
+    while(current->getNext() != NULL){ //to check how many people have the same names
+		current = current->getNext();
+        if(firstnameInput == toLowerCase(current->getFirstName()) && lastnameInput == toLowerCase(current->getLastName())){
+            i++;
+        }
+	}
+
+    for(int j = 0; j < i; j++){//Iterates to the number of times of same names
+        current = head;
+        while(firstnameInput != toLowerCase(current->getFirstName()) && lastnameInput != toLowerCase(current->getLastName())){ //iterate to intended node
+            current = current->getNext();
+            if(current == NULL){
+                cout << "\nStudent does not exist\n";
+                return;
+            }
+        }
+        while(before->getNext() != current){//iterate to the node before intended
+            before = before->getNext();
+        }
+        if(firstnameInput == toLowerCase(current->getFirstName()) && lastnameInput == toLowerCase(current->getLastName())){ //delete if node has correct names
+            before->setNext(current->getNext());
+            delete current;
+        }
+    }
+}
+
 void DomesticList::deleteHeadTail(){
 	//deletes head
 	pop();
