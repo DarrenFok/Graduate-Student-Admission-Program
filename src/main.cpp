@@ -69,7 +69,9 @@ int main() {
 //    }
 //
 //    DL1.display();
-//    DL1.deleteHeadTail();
+//    cout << "\ntesting delete\n";
+//    DL1.Delete();
+//    DL1.display();;
 //    cout << endl << endl;
 //    DL1.display();
 //    cout << endl;
