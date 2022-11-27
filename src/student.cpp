@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "functions.hpp"
+#include <iomanip>
 using namespace std;
 using namespace functions;
 
@@ -139,7 +140,7 @@ std::ostream& operator<<(std::ostream& os, const DomesticStudent& inputDS){
 	//Example: Domestic Student #: 301461164, Fok, Darren, Province: BC, cgpa: 3.14, Research Score: 25
 	//output
 	os << "Domestic Student #: " << inputDS.getID() << ", " << inputDS.getLastName() << ", " << inputDS.getFirstName() << ", Province: " <<
-			inputDS.getProvince() << ", cgpa: " << inputDS.getCGPA() << ", Research Score: " << inputDS.getResearch() << endl;
+			inputDS.getProvince() << ", cgpa: " << inputDS.getCGPA()  << ", Research Score: " << inputDS.getResearch() << endl;
 
 	return os;
 }
@@ -274,7 +275,7 @@ void DomesticList::display() const {
 		DomesticStudent *temp = head;
 		cout << "Displaying Domestic List: \n";
 		while(temp != NULL) {
-            cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+            cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", " << fixed << setprecision(1)
 			 	 << temp->getCGPA() << ", " << temp->getProvince() << endl;
 			temp = temp->getNext();
 		}
@@ -796,7 +797,7 @@ void InternationalList::display() const {
 		InternationalStudent *temp = head;
 		cout << "Displaying International List: \n";
 		while(temp != NULL) {
-			cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
+			cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", " << fixed << setprecision(1)
 			 	 << temp->getCGPA() << ", " << temp->getCountry()  << endl;
 			temp = temp->getNext();
 		}
