@@ -490,12 +490,12 @@ bool DomesticList::create(){
     return true;
 }
 
-void DomesticList::Delete(){
-    int i = 0;
+void DomesticList::selectDelete(){
     DomesticStudent* before = head;
+    DomesticStudent* current = head; //node that we want to delete
+    int count = 0;
     string firstnameInput;
     string lastnameInput;
-    DomesticStudent* current = head;
     //get user input
     cout << "\nPlease enter the first name of a student you would like to delete: " << endl;
     cin >> firstnameInput;
@@ -506,30 +506,39 @@ void DomesticList::Delete(){
     firstnameInput = toLowerCase(firstnameInput);
     lastnameInput = toLowerCase(lastnameInput);
 
-    while(current->getNext() != NULL){ //to check how many people have the same names
-		current = current->getNext();
-        if(firstnameInput == toLowerCase(current->getFirstName()) && lastnameInput == toLowerCase(current->getLastName())){
-            i++;
-        }
-	}
-
-    for(int j = 0; j < i; j++){//Iterates to the number of times of same names
-        current = head;
-        while(firstnameInput != toLowerCase(current->getFirstName()) && lastnameInput != toLowerCase(current->getLastName())){ //iterate to intended node
-            current = current->getNext();
-            if(current == NULL){
-                cout << "\nStudent does not exist\n";
-                return;
+    //get current and before
+    while(current != NULL) {
+        //set new before
+        if(current != head){
+            while(before->getNext() != current){
+                before = before->getNext();
             }
         }
-        while(before->getNext() != current){//iterate to the node before intended
-            before = before->getNext();
+
+        if(firstnameInput == toLowerCase(current->getFirstName()) && lastnameInput == toLowerCase(current->getLastName())){
+            if(current == head){
+                current = current->getNext();
+                pop();
+                before = head;
+                count++;
+            }
+            else{
+                DomesticStudent *temp = current;
+                DomesticStudent *temp2 = current->getNext();
+                before->setNext(temp->getNext()); //set before's next to current's next (skip over current)
+                delete temp;
+                current = temp2;
+                count++;
+            }
         }
-        if(firstnameInput == toLowerCase(current->getFirstName()) && lastnameInput == toLowerCase(current->getLastName())){ //delete if node has correct names
-            before->setNext(current->getNext());
-            delete current;
+        else{
+            current = current->getNext();
         }
     }
+    if(count == 0){
+        cout << "No matches found" << endl;
+    }
+
 }
 
 void DomesticList::deleteHeadTail(){

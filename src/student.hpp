@@ -95,7 +95,7 @@ public:
     //create node
     bool create(); //create new domesticStudent object, and insert them into list..
 	
-    void Delete(); //delete a student based on user input
+    void selectDelete(); //delete a student based on user input
     //delete headtail
     void deleteHeadTail();
 
