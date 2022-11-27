@@ -135,6 +135,14 @@ int Student::getID() const{
 	return studentID;
 }
 
+//next
+void Student::setNextStudent(Student *input) {
+    next = input;
+}
+Student* Student::getNextStudent() const {
+    return next;
+}
+
 //overload <<
 std::ostream& operator<<(std::ostream& os, const DomesticStudent& inputDS){
 	//Example: Domestic Student #: 301461164, Fok, Darren, Province: BC, cgpa: 3.14, Research Score: 25
@@ -440,6 +448,13 @@ void DomesticList::searchTwo() const {
     if(count == 0){
         cout << "No matches found" << endl;
     }
+}
+
+DomesticStudent* DomesticList::getHead() const {
+    return head;
+}
+DomesticStudent* DomesticList::getTail() const{
+    return tail;
 }
 
 bool DomesticList::create(){
@@ -935,6 +950,10 @@ void InternationalList::searchTwo() const{
     }
 }
 
+InternationalStudent* InternationalList::getHead() const {
+    return head;
+}
+
 bool InternationalList::create(){
     //fields
     string firstInput; string lastInput; string countryInput; string cgpaInput; string researchInput; //regular fields
@@ -1080,293 +1099,42 @@ void InternationalList::deleteHeadTail(){
 }
 
 MergeList::MergeList() {
-    Ihead = NULL;
-    Itail = NULL;
-    Dhead = NULL;
-    Dtail = NULL;
-
+    head = NULL;
+    tail = NULL;
 }
 
 
 MergeList::~MergeList() {
-    InternationalStudent *current = Ihead;
+    Student *current = head;
     while (current != NULL) {
-        InternationalStudent *temp = current;
-        current = current->getNext();
+        Student *temp = current;
+        current = current->getNextStudent();
         delete temp;
     }
-
-    DomesticStudent *Dcurrent = Dhead;
-    while (current != NULL) {
-        DomesticStudent *Dtemp = Dcurrent;
-        Dcurrent = Dcurrent->getNext();
-        delete Dtemp;
-    }
-}
-
-void MergeList::setIntID(int input) {
-    idMerge = input;
-}
-
-int MergeList::getIntID() const {
-    return idMerge;
-}
-
-void MergeList::setDomesticID(int input) {
-    idMerge = input;
-}
-
-int MergeList::getDomesticID() const {
-    return idMerge;
-}
-
-void MergeList::setTOEFL(const toefl& input){
-    TOEFL.setReading(input.getReading());
-    TOEFL.setListening(input.getListening());
-    TOEFL.setSpeaking(input.getSpeaking());
-    TOEFL.setWriting(input.getWriting());
-    //after setting all new scores, set new total
-    TOEFL.setTotal();
-}
-
-toefl MergeList::getTOEFL() const{
-    //create toefl object to fill and return
-    return TOEFL;
 }
 
 
 
-void MergeList::sortedMerge(string firstName, string lastName, float cgpa, int research, int studentID, string country, toefl TOEFL, string province) {
 
-        InternationalStudent *current;
-        InternationalStudent *before;
-        InternationalStudent *temp;
-        InternationalStudent *newNode = new InternationalStudent;
-        newNode->setFirstName(firstName);
-        newNode->setLastName(lastName);
-        newNode->setCGPA(cgpa);
-        newNode->setResearch(research);
-        newNode->setID(studentID);
-        newNode->setCountry(country);
-        newNode->setTOEFL(TOEFL);
-        newNode->setNext(NULL);
+void MergeList::sortedMerge(DomesticList input, InternationalList input2) {
+    //copy over domestic list into merge list
 
-        if(Ihead == NULL) {
-            Ihead = newNode;
-            Itail = newNode;
-        } else if (Ihead->getResearch() < newNode->getResearch()
-                   || Ihead->getResearch() == newNode->getResearch() && Ihead->getCGPA() < newNode->getCGPA()
-                   || Ihead->getResearch() == newNode->getResearch() && Ihead->getCGPA() == newNode->getCGPA()&& Ihead->getCountry() > newNode->getCountry()) { //if current head research score is less, replace it with the new top
-            //setting old head as the next of newnode
-            newNode->setNext(Ihead);
-            //setting newnode as new head
-            Ihead = newNode;
-        } else {
-            current = Ihead;
-            before = Ihead;
-            while(current->getNext() != NULL && current->getNext()->getResearch() >= newNode->getResearch()) { //looping through
-                current = current->getNext();
-                if(current->getResearch() == newNode->getResearch()){
-                    break;
-                }
-            }
-            if(current != Ihead) {
-                while (before->getNext() != current) {
-                    before = before->getNext();
-                }
-            }
-            if(newNode->getResearch() < Itail->getResearch()) {
-                Itail->setNext(newNode->getNext());
-                Itail = newNode;
-            }
-            if(current->getNext() == NULL){
-                current->setNext(newNode);
-            }
-            else if((current->getResearch()) > (newNode->getResearch())){
-                //set newNode next to current next
-                newNode->setNext(current->getNext());
-                //set current next to newnode
-                current->setNext(newNode);
-            }
-            else if (current->getResearch() == newNode->getResearch()){ //CGPA is descending order
-                while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch()
-                      && current->getNext()->getCGPA()  >= newNode->getCGPA()) { //looping through
-                    current = current->getNext();
-                    if(current->getCGPA() == newNode->getCGPA()) {
-                        break;
-                    }
-                }
-                if(current != Ihead) {
-                    while (before->getNext() != current) {
-                        before = before->getNext();
-                    }
-                }
-                if(current->getCGPA() > newNode->getCGPA()) { //correct
-                    //set newNode next to current next
-                    newNode->setNext(current->getNext());
-                    //set current next to newnode
-                    current->setNext(newNode);
-                }
-                else if (current->getCGPA() < newNode->getCGPA()) { //Right now, this line does not work, whenever the current CGPA is less than newNode's
-                    //set newNode next to current next
-                    newNode->setNext(before->getNext());
-                    //set current next to newnode
-                    before->setNext(newNode);
-                }
-                else if(current->getCGPA() == newNode->getCGPA()) {
-                    while(current->getNext() != NULL && current->getNext()->getResearch() == newNode->getResearch()
-                          && current->getNext()->getCGPA()  == newNode->getCGPA() && current->getNext()->getCountry() > newNode->getCountry()) { //looping through
-                        current = current->getNext();
-                    }
-                    if(current != Ihead) {
-                        while (before->getNext() != current) {
-                            before = before->getNext();
-                        }
-                    }
-                    if(current->getCountry() < newNode->getCountry()) {
-                        //set newNode next to current next
-                        newNode->setNext(current->getNext());
-                        //set current next to newnode
-                        current->setNext(newNode);
-                    }
-                    else if(current->getCountry() > newNode->getCountry()) { //Also similar to line 209, doesn't work when current's province is greater than newNode's
-                        //set newNode next to current next
-                        newNode->setNext(before->getNext());
-                        //set current next to newnode
-                        before->setNext(newNode);
-                    }
-                }
-            }
-        }
-        while(Itail->getNext() != NULL) {
-            Itail = Itail->getNext();
-        }
-/*
-    DomesticStudent *Dcurrent;
-    DomesticStudent *Dbefore;
-    DomesticStudent *Dtemp;
-    DomesticStudent *DnewNode = new DomesticStudent;
-    DnewNode->setFirstName(firstName);
-    DnewNode->setLastName(lastName);
-    DnewNode->setCGPA(cgpa);
-    DnewNode->setResearch(research);
-    DnewNode->setID(studentID);
-    DnewNode->setProvince(province);
-    DnewNode->setNext(NULL);
-
-    if(Dhead == NULL) {
-        Dhead = DnewNode;
-        Dtail = DnewNode;
-    } else if (Dhead->getResearch() < DnewNode->getResearch()
-               || Dhead->getResearch() == DnewNode->getResearch() && Dhead->getCGPA() < DnewNode->getCGPA()
-               || Dhead->getResearch() == DnewNode->getResearch() && Dhead->getCGPA() == DnewNode->getCGPA() && Dhead->getProvince() > DnewNode->getProvince()) { //if current head research score is less, replace it with the new top
-        //setting old head as the next of newnode
-        DnewNode->setNext(Dhead);
-        //setting newnode as new head
-        Dhead = DnewNode;
-    } else {
-        Dcurrent = Dhead;
-        Dbefore = Dhead;
-        while(Dcurrent->getNext() != NULL && current->getNext()->getResearch() >= DnewNode->getResearch()) { //looping through
-            Dcurrent = Dcurrent->getNext();
-            if(Dcurrent->getResearch() == DnewNode->getResearch()) {
-                break;
-            }
-        }
-        if(Dcurrent != Dhead) {
-            while (Dbefore->getNext() != Dcurrent) {
-                Dbefore = Dbefore->getNext();
-            }
-        }
-        if(DnewNode->getResearch() < Dtail->getResearch()
-           || Dtail->getResearch() == DnewNode->getResearch() && Dtail->getCGPA() == DnewNode->getCGPA() && Dtail->getProvince() > DnewNode->getProvince()) {
-            Dtail->setNext(DnewNode->getNext());
-            Dtail = DnewNode;
-        }
-        if(Dcurrent->getNext() == NULL){
-            Dcurrent->setNext(DnewNode);
-        }
-        else if((Dcurrent->getResearch()) > (DnewNode->getResearch())){
-            //set newNode next to current next
-            DnewNode->setNext(Dcurrent->getNext());
-            //set current next to newnode
-            Dcurrent->setNext(DnewNode);
-        }
-        else if (Dcurrent->getResearch() == DnewNode->getResearch()){ //CGPA is descending order
-            while(Dcurrent->getNext() != NULL && Dcurrent->getNext()->getResearch() == DnewNode->getResearch()
-                  && Dcurrent->getNext()->getCGPA() >= DnewNode->getCGPA()) { //looping through
-                Dcurrent = Dcurrent->getNext();
-            }
-            if(Dcurrent != Dhead) {
-                while (Dbefore->getNext() != Dcurrent) {
-                    Dbefore = Dbefore->getNext();
-                }
-            }
-            if(Dcurrent->getCGPA() > DnewNode->getCGPA()) { //correct
-                //set newNode next to current next
-                DnewNode->setNext(Dcurrent->getNext());
-                //set current next to newnode
-                Dcurrent->setNext(DnewNode);
-            }
-            else if (Dcurrent->getCGPA() < DnewNode->getCGPA()) { //Right now, this line does not work, whenever the current CGPA is less than newNode's
-                //set newNode next to current next
-                DnewNode->setNext(Dbefore->getNext());
-                //set current next to newnode
-                Dbefore->setNext(DnewNode);
-            }
-            else if(Dcurrent->getCGPA() == DnewNode->getCGPA()) {
-                while(Dcurrent->getNext() != NULL && Dcurrent->getNext()->getResearch() == DnewNode->getResearch()
-                      && Dcurrent->getNext()->getCGPA()  == DnewNode->getCGPA() && Dcurrent->getNext()->getProvince() > DnewNode->getProvince()) { //looping through
-                    Dcurrent = Dcurrent->getNext();
-                }
-                if(Dcurrent != Dhead) {
-                    while (Dbefore->getNext() != Dcurrent) {
-                        Dbefore = Dbefore->getNext();
-                    }
-                }
-                if(Dcurrent->getProvince() < DnewNode->getProvince()) {
-                    //set newNode next to current next
-                    DnewNode->setNext(Dcurrent->getNext());
-                    //set current next to newnode
-                    Dcurrent->setNext(DnewNode);
-                }
-                else if(Dcurrent->getProvince() > DnewNode->getProvince()) { //Also similar to line 209, doesn't work when current's province is greater than newNode's
-                    //set newNode next to current next
-                    DnewNode->setNext(Dbefore->getNext());
-                    //set current next to newnode
-                    Dbefore->setNext(DnewNode);
-                }
-            }
-        }
-    }
-    while(Dtail->getNext() != NULL) {
-        Dtail = Dtail->getNext();
-    }*/
-
-
+    //slot in international
 
 }
-
-bool MergeList::empty() const{
-    return (Dhead == NULL && Ihead == NULL);
-}
-
 
 void MergeList::display() const {
     if(!empty()) {
-        DomesticStudent *temp = Dhead;
-        InternationalStudent *tmp = Ihead;
-        cout << "Displaying Merge List: \n";
+        Student *temp = head;
+        cout << "Displaying Merged List: \n";
         while(temp != NULL) {
-            cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
-            << fixed << setprecision(1) << temp->getCGPA() << ", " << temp->getProvince() << endl;
-            temp = temp->getNext();
-        }
-        while(tmp != NULL){
-            cout << tmp->getID() << ", " << tmp->getFirstName() << ", " << tmp->getLastName() << ", " << tmp->getResearch() << ", "
-              << fixed << setprecision(1) << tmp->getCGPA() << ", " << tmp->getCountry() << endl;
-            tmp = tmp->getNext();
-
+            cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", " << fixed << setprecision(1)
+                 << temp->getCGPA() << endl;
+            temp = temp->getNextStudent();
         }
     }
+}
+
+bool MergeList::empty() const {
+    return (head == NULL);
 }

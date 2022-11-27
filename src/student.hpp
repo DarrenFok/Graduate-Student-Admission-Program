@@ -30,6 +30,10 @@ public:
 	int getResearch() const;
 	int getID() const;
 
+    //for next
+    void setNextStudent(Student* input);
+    Student* getNextStudent() const;
+
 	//compare friend functions, either returns less, equal or greater
 	friend string compareCGPA(const Student& student1, const Student& student2);
 	friend string compareResearchScore(const Student& student1, const Student& student2);
@@ -44,6 +48,7 @@ private:
 	float cgpa;
 	int research;
 	int studentID;
+    Student *next;
 
 };
 
@@ -92,6 +97,10 @@ public:
     void searchOne() const; //cgpa, research score, id
     void searchTwo() const; //first name and last name
 
+    //get head
+    DomesticStudent* getHead() const;
+    DomesticStudent* getTail() const;
+
     //create node
     bool create(); //create new domesticStudent object, and insert them into list..
 	
@@ -108,8 +117,8 @@ public:
 	void displayTail() const;
 
 private:
-    DomesticStudent *head = NULL;
-    DomesticStudent *tail = NULL;
+    DomesticStudent *head;
+    DomesticStudent *tail;
     int idDomestic = 20220000;
 };
 
@@ -159,6 +168,8 @@ public:
     void searchOne() const; //for research, cgpa, id
     void searchTwo() const; //for firstname and last name (both)
 
+    InternationalStudent* getHead() const;
+
     //create function
     bool create(); //create internationalStudent object and insert into linked list
 
@@ -188,39 +199,15 @@ public:
     //search functions, everything goes here
     ~MergeList();
 
+    bool empty() const;
+
     //display list
     void display() const;
 
-    bool empty() const;
-
-    void setIntID(int input);
-    int getIntID() const;
-
-    void setDomesticID(int input);
-    int getDomesticID() const;
-
-    //search and print functions for merge function
-    void searchOne() const; //for research, cgpa, id
-    void searchTwo() const; //for firstname and last name (both)
-
-
-    void sortedMerge(string firstName, string lastName, float cgpa,
-                     int research, int studentID, string country, toefl TOEFL, string province);
-
-    void setTOEFL(const toefl& input);
-    toefl getTOEFL() const;
-
-
-
+    void sortedMerge(DomesticList input, InternationalList input2);
 
 private:
-    InternationalStudent *Ihead = NULL;
-    InternationalStudent *Itail = NULL;
-    DomesticStudent *Dhead = NULL;
-    DomesticStudent *Dtail = NULL;
-    int idMerge = 20220000;
-
-    toefl TOEFL;
-
+    Student *head;
+    Student *tail;
 };
 #endif
