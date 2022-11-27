@@ -1359,12 +1359,12 @@ void MergeList::display() const {
         cout << "Displaying Merge List: \n";
         while(temp != NULL) {
             cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", "
-                 << temp->getCGPA() << ", " << temp->getProvince() << endl;
+            << fixed << setprecision(1) << temp->getCGPA() << ", " << temp->getProvince() << endl;
             temp = temp->getNext();
         }
         while(tmp != NULL){
             cout << tmp->getID() << ", " << tmp->getFirstName() << ", " << tmp->getLastName() << ", " << tmp->getResearch() << ", "
-                 << tmp->getCGPA() << ", " << endl;
+              << fixed << setprecision(1) << tmp->getCGPA() << ", " << tmp->getCountry() << endl;
             tmp = tmp->getNext();
 
         }
