@@ -194,7 +194,7 @@ int main() {
         MLI.setIntID(MLI.getIntID() + 1);
     }
 
-    /*
+
     while (getline(domesticFile, line)) {
         istringstream ss(line);
         string firstName, lastName, province, s_cgpa, s_researchScore, country, score; //strings
@@ -233,7 +233,7 @@ int main() {
         MLI.setDomesticID(MLI.getDomesticID() + 1);
 
 
-    }*/
+    }
 
 
      MLI.display();
