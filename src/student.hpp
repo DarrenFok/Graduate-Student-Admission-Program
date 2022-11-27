@@ -96,8 +96,8 @@ public:
     bool create(); //create new domesticStudent object, and insert them into list..
 	
     void selectDelete(); //delete a student based on user input
-    //delete headtail
-    void deleteHeadTail();
+
+    void deleteHeadTail(); //deletes head and tail and re-assigns
 
     bool empty() const;
 
@@ -161,6 +161,8 @@ public:
 
     //create function
     bool create(); //create internationalStudent object and insert into linked list
+
+    void selectedDelete();
 
     void deleteHeadTail();
 

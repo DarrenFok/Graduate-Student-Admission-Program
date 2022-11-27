@@ -1007,17 +1007,54 @@ bool InternationalList::create(){
 
 }
 
-void MergeList::sortedMerge(string firstName, string lastName, float cgpa, int research, int studentID, string country, toefl TOEFL) {
+void InternationalList::selectedDelete() {
+    InternationalStudent* before = head;
+    InternationalStudent* current = head; //node that we want to delete
+    int count = 0;
+    string firstnameInput;
+    string lastnameInput;
+    //get user input
+    cout << "\nPlease enter the first name of a student you would like to delete: " << endl;
+    cin >> firstnameInput;
+    cout << "\nPlease input the last name of a student you would like to delete: " << endl;
+    cin >> lastnameInput;
 
-    MergeList *temp;
-    //MergeList *newNode = new MergeList;
+    //case insensitive
+    firstnameInput = toLowerCase(firstnameInput);
+    lastnameInput = toLowerCase(lastnameInput);
 
-    if(Dhead == NULL || Ihead == NULL){
+    //get current and before
+    while(current != NULL) {
+        //set new before
+        if(current != head){
+            while(before->getNext() != current){
+                before = before->getNext();
+            }
+        }
 
-
+        if(firstnameInput == toLowerCase(current->getFirstName()) && lastnameInput == toLowerCase(current->getLastName())){
+            if(current == head){
+                current = current->getNext();
+                pop();
+                before = head;
+                count++;
+            }
+            else{
+                InternationalStudent *temp = current;
+                InternationalStudent *temp2 = current->getNext();
+                before->setNext(temp->getNext()); //set before's next to current's next (skip over current)
+                delete temp;
+                current = temp2;
+                count++;
+            }
+        }
+        else{
+            current = current->getNext();
+        }
     }
-
-
+    if(count == 0){
+        cout << "No matches found" << endl;
+    }
 }
 
 void InternationalList::deleteHeadTail(){
@@ -1039,6 +1076,19 @@ void InternationalList::deleteHeadTail(){
     before->setNext(NULL);
     delete current;
     tail = before;
+}
+
+void MergeList::sortedMerge(string firstName, string lastName, float cgpa, int research, int studentID, string country, toefl TOEFL) {
+
+    MergeList *temp;
+    //MergeList *newNode = new MergeList;
+
+    if(Dhead == NULL || Ihead == NULL){
+
+
+    }
+
+
 }
 
 bool MergeList::empty() const{

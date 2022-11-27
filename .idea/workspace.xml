@@ -22,7 +22,6 @@
       <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/Project.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/Project.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/Project.dir/stu_sort.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/Project.dir/stu_sort.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/Project.dir/student.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/CMakeFiles/Project.dir/student.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/Project.exe" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/Project.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
@@ -100,7 +99,7 @@
       <workItem from="1669259241255" duration="3876000" />
       <workItem from="1669264614414" duration="2000" />
       <workItem from="1669264643841" duration="4549000" />
-      <workItem from="1669507399945" duration="5675000" />
+      <workItem from="1669507399945" duration="6873000" />
     </task>
     <servers />
   </component>
