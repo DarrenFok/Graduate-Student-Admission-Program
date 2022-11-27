@@ -193,13 +193,22 @@ public:
 
     bool empty() const;
 
+    void setIntID(int input);
+    int getIntID() const;
+
+    void setDomesticID(int input);
+    int getDomesticID() const;
+
     //search and print functions for merge function
     void searchOne() const; //for research, cgpa, id
     void searchTwo() const; //for firstname and last name (both)
 
 
     void sortedMerge(string firstName, string lastName, float cgpa,
-                     int research, int studentID, string country, toefl TOEFL);
+                     int research, int studentID, string country, toefl TOEFL, string province);
+
+    void setTOEFL(const toefl& input);
+    toefl getTOEFL() const;
 
 
 
@@ -209,6 +218,9 @@ private:
     InternationalStudent *Itail = NULL;
     DomesticStudent *Dhead = NULL;
     DomesticStudent *Dtail = NULL;
+    int idMerge = 20220000;
+
+    toefl TOEFL;
 
 };
 #endif
