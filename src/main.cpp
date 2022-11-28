@@ -142,9 +142,7 @@ int main() {
 
     MergeList MI;
     MI.sortedMerge(DL1, LI);
-
     MI.display();
-
 
 
 

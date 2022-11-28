@@ -204,10 +204,10 @@ public:
     //display list
     void display() const;
 
-    void sortedMerge(DomesticList input, InternationalList input2);
+    void sortedMerge(const DomesticList input, const InternationalList input2);
 
 private:
-    Student *head;
-    Student *tail;
+    Student *head = NULL;
+    Student *tail = NULL;
 };
 #endif

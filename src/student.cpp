@@ -1116,10 +1116,70 @@ MergeList::~MergeList() {
 
 
 
-void MergeList::sortedMerge(DomesticList input, InternationalList input2) {
-    //copy over domestic list into merge list
+void MergeList::sortedMerge(const DomesticList input, const InternationalList input2) {
+    int countDom = 0; //for testing how many students are input
+    //domestic part
+    DomesticStudent *temp = input.getHead();
+    Student *current = head;
 
+    if(head == NULL){
+        Student *copy1 = new Student;
+        copy1->setFirstName(temp->getFirstName());
+        copy1->setLastName(temp->getLastName());
+        copy1->setID(temp->getID());
+        copy1->setResearch(temp->getResearch());
+        Student *copy2 = new Student;
+        copy1->setNextStudent(copy2);
+
+        current = copy1;
+        head = current;
+
+        temp = temp->getNext();
+        current = current->getNextStudent();
+        countDom++;
+    }
+
+    //copy over domestic list into merge list
+    while(temp->getNext() != NULL){
+        current->setFirstName(temp->getFirstName());
+        current->setLastName(temp->getLastName());
+        current->setID(temp->getID());
+        current->setResearch(temp->getResearch());
+        current->setCGPA(temp->getCGPA());
+        Student *copy2 = new Student;
+        current->setNextStudent(copy2);
+
+        temp = temp->getNext();
+        current = current->getNextStudent();
+        countDom++;
+
+    }
+    if(temp->getNext() == NULL){
+        current->setFirstName(temp->getFirstName());
+        current->setLastName(temp->getLastName());
+        current->setID(temp->getID());
+        current->setResearch(temp->getResearch());
+        current->setCGPA(temp->getCGPA());
+        current->setNextStudent(NULL);
+
+        tail = current;
+        countDom++;
+    }
+
+    cout << "student count: " << countDom << endl;
     //slot in international
+
+    //insert the international dudes now in a sortedInsert fashion
+    InternationalStudent *temp2 = input2.getHead(); //start from input2's head
+    Student *current2;
+    Student *before2;
+    while(temp2->getNext() != NULL){ //temp2 is similar to newNode, as it iterates each time
+        if(head->getResearch() < temp2->getResearch()
+        || head->getResearch() == temp2->getResearch() && head->getCGPA() < temp->getCGPA()){
+
+        }
+    }
+
 
 }
 
