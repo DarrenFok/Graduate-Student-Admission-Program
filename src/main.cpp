@@ -160,14 +160,15 @@ int main() {
             cout <<"3) Insert a new Student\n";
             cout <<"4) Delete Student\n";
             cout <<"5) Delete the head and tail of Student list\n";
-            cout <<"6) Return back to Main Menu\n";
+            cout <<"6) Print out list\n";
+            cout <<"7) Return back to Main Menu\n";
             cin >> menuChoice2;
                 if(functionTwo::isNumerical(menuChoice2) == false){ //check for number inputs only
                     cout << "ERROR: Invalid input, numbers accepted only\n";
                     continue;
                 }
-                else if(stoi(menuChoice2) > 6 || stoi(menuChoice2) < 0){ //check for valid numbers only
-                    cout << "ERROR: Invalid number, please input 0-6\n";
+                else if(stoi(menuChoice2) > 7 || stoi(menuChoice2) < 0){ //check for valid numbers only
+                    cout << "ERROR: Invalid number, please input 0-7\n";
                     continue;
                 }
                 else{
@@ -186,6 +187,9 @@ int main() {
                     else if(menuChoice2 == "5"){
                         DL1.deleteHeadTail();
                     }
+                    else if(menuChoice2 == "6"){
+                        DL1.display();
+                    }
                 }
         }
         else if(menuChoice == "2"){
@@ -196,14 +200,15 @@ int main() {
             cout <<"3) Insert a new Student\n";
             cout <<"4) Delete Student\n";
             cout <<"5) Delete the head and tail of Student list\n";
-            cout <<"6) Return back to Main Menu\n";
+            cout <<"6) Print out list\n";
+            cout <<"7) Return back to Main Menu\n";
             cin >> menuChoice3;
             if(functionTwo::isNumerical(menuChoice3) == false){ //check for number inputs only
                     cout << "ERROR: Invalid input, numbers accepted only\n";
                     continue;
             }
-            else if(stoi(menuChoice2) > 6 || stoi(menuChoice2) < 0){ //check for valid numbers only
-                cout << "ERROR: Invalid number, please input 0-6\n";
+            else if(stoi(menuChoice2) > 7 || stoi(menuChoice2) < 0){ //check for valid numbers only
+                cout << "ERROR: Invalid number, please input 0-7\n";
                 continue;
             }
             else{
@@ -222,11 +227,14 @@ int main() {
                     else if(menuChoice2 == "5"){
                         LI.deleteHeadTail();
                     }
+                    else if(menuChoice2 == "6"){
+                        LI.display();
+                    }
                 }
         }
     }
     while(menuChoice != "0");
-
+    cout <<"\n Exiting Program, thank you for usiing Graduate Student Admission System Version 2.0\n";
 
 }
 
