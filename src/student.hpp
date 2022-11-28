@@ -118,22 +118,6 @@ public:
 
 	void displayTail() const;
 
-    bool createTestNormal();
-    bool createTestCorner();
-    bool createTestIllegal();
-
-    void searchOneNormal() const;
-    void searchOneCorner() const;
-    void searchOneIllegal() const;
-
-    void searchTwoNormal() const;
-    void searchTwoCorner() const;
-    void searchTwoIllegal() const;
-
-    void selectDeleteNormal();
-    void selectDeleteCorner();
-    void selectDeleteIllegal();
-
 private:
     DomesticStudent *head;
     DomesticStudent *tail;
@@ -225,10 +209,6 @@ public:
     void sortedMerge(const DomesticList input, const InternationalList input2);
 
     bool search() const; //search for students based on cgpa_threshold and researchScore_threshold
-
-    bool searchNormal() const;
-    bool searchCorner() const;
-    bool searchIllegal() const;
 private:
     Student *head = NULL;
     Student *tail = NULL;
