@@ -206,6 +206,8 @@ public:
 
     void sortedMerge(const DomesticList input, const InternationalList input2);
 
+    bool search() const; //search for students based on cgpa_threshold and researchScore_threshold
+
 private:
     Student *head = NULL;
     Student *tail = NULL;

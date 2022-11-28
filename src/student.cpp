@@ -1252,6 +1252,8 @@ void MergeList::sortedMerge(const DomesticList input, const InternationalList in
 
 }
 
+
+
 void MergeList::display() const {
     if(!empty()) {
         Student *temp = head;
@@ -1266,4 +1268,35 @@ void MergeList::display() const {
 
 bool MergeList::empty() const {
     return (head == NULL);
+}
+
+bool MergeList::search() const{
+    string cgpa_threshold; string researchScore_threshold;
+    int count = 0;
+    cout << "Please input a threshold research score: " << endl;
+    cin >> researchScore_threshold;
+    if(isNumerical(researchScore_threshold) == false){
+        cout << "ERROR: Invalid input, integers accepted only" << endl;
+        return false;
+    }
+    cout << "Please input a threshold CGPA " << endl;
+    cin >> cgpa_threshold;
+    if(isDouble(cgpa_threshold) == false){
+        cout << "ERROR: Invalid input, doubles accepted only" << endl;
+        return false;
+    }
+
+    Student *temp = head;
+    while(temp != NULL){
+        if(temp->getResearch() >= stoi(researchScore_threshold) && temp->getCGPA() >= stof(cgpa_threshold)){
+            cout << temp->getID() << ", " << temp->getFirstName() << ", " << temp->getLastName() << ", " << temp->getResearch() << ", " << fixed << setprecision(1)
+                 << temp->getCGPA() << endl;
+            count++;
+        }
+        temp = temp->getNextStudent();
+    }
+    if(count == 0){
+        cout << "No matches found" << endl;
+    }
+    return true;
 }
