@@ -10,6 +10,7 @@
 #include "toefl.hpp"
 #include "student.hpp"
 #include "functionTwo.hpp"
+//#include "UnitTest.hpp"
 using namespace functionTwo;
 using namespace std;
 
@@ -128,7 +129,8 @@ int main() {
     }
 
      MergeList MI;
-     MI.sortedMerge(DL1, LI);
+    //  MI.sortedMerge(DL1, LI);
+
 
 //                                             Graudation Adimission V2.0
     //----------------------------------------------------------------------------------------------------------
@@ -149,8 +151,66 @@ int main() {
 
         else if(stoi(menuChoice3) == 1){
             //unit test
+            DL1.createTestNormal();
+            DL1.createTestCorner();
+            DL1.createTestIllegal();
+            cout <<"\n";
+            DL1.display();
+
+            cout <<"\nTesting Normal case for searchone\n";
+            DL1.searchOneNormal();
+            cout <<"\nTesting Corner case for searchone\n";
+            DL1.searchOneCorner();
+            cout <<"\nIllegal Corner case for searchone\n";
+            DL1.searchOneIllegal();
+
+            cout <<"\nTesting Normal case for searchtwo\n";
+            DL1.searchTwoNormal();
+            cout <<"\nTesting Corner case for searchtwo\n";
+            DL1.searchTwoCorner();
+            cout <<"\nIllegal Corner case for searchtwo\n";
+            DL1.searchTwoIllegal();
+
+            cout <<"\nTesting case for Deleting Domestic Student\n";
+            DL1.selectDeleteNormal();
+            DL1.selectDeleteCorner();
+            DL1.selectDeleteIllegal();
+            DL1.display();
+
+            cout <<"\nTesting Delete Head and Node for Domestic List\n";
+            DL1.deleteHeadTail();
+            DL1.display();
+
+            cout <<"\nTesting merging Domestic List and International List\n";
+            MI.sortedMerge(DL1, LI);
+            MI.display();
+
+            cout<<"\nTesting search for Merged list\n";
+            MI.searchNormal();
+            MI.searchCorner();
+            MI.searchIllegal();
+
+
+
             
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         else if(stoi(menuChoice3) == 2){
             //main program
             cout << "\nMain Program\n";
