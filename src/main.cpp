@@ -150,49 +150,49 @@ int main() {
         }
 
         else if(stoi(menuChoice3) == 1){
-            //unit test
-            DL1.createTestNormal();
-            DL1.createTestCorner();
-            DL1.createTestIllegal();
-            cout <<"\n";
-            DL1.display();
-
-            cout <<"\nTesting Normal case for searchone\n";
-            DL1.searchOneNormal();
-            cout <<"\nTesting Corner case for searchone\n";
-            DL1.searchOneCorner();
-            cout <<"\nIllegal Corner case for searchone\n";
-            DL1.searchOneIllegal();
-
-            cout <<"\nTesting Normal case for searchtwo\n";
-            DL1.searchTwoNormal();
-            cout <<"\nTesting Corner case for searchtwo\n";
-            DL1.searchTwoCorner();
-            cout <<"\nIllegal Corner case for searchtwo\n";
-            DL1.searchTwoIllegal();
-
-            cout <<"\nTesting case for Deleting Domestic Student\n";
-            DL1.selectDeleteNormal();
-            DL1.selectDeleteCorner();
-            DL1.selectDeleteIllegal();
-            DL1.display();
-
-            cout <<"\nTesting Delete Head and Node for Domestic List\n";
-            DL1.deleteHeadTail();
-            DL1.display();
-
-            cout <<"\nTesting merging Domestic List and International List\n";
-            MI.sortedMerge(DL1, LI);
-            MI.display();
-
-            cout<<"\nTesting search for Merged list\n";
-            MI.searchNormal();
-            MI.searchCorner();
-            MI.searchIllegal();
-
-
-
-            
+//            //unit test
+//            DL1.createTestNormal();
+//            DL1.createTestCorner();
+//            DL1.createTestIllegal();
+//            cout <<"\n";
+//            DL1.display();
+//
+//            cout <<"\nTesting Normal case for searchone\n";
+//            DL1.searchOneNormal();
+//            cout <<"\nTesting Corner case for searchone\n";
+//            DL1.searchOneCorner();
+//            cout <<"\nIllegal Corner case for searchone\n";
+//            DL1.searchOneIllegal();
+//
+//            cout <<"\nTesting Normal case for searchtwo\n";
+//            DL1.searchTwoNormal();
+//            cout <<"\nTesting Corner case for searchtwo\n";
+//            DL1.searchTwoCorner();
+//            cout <<"\nIllegal Corner case for searchtwo\n";
+//            DL1.searchTwoIllegal();
+//
+//            cout <<"\nTesting case for Deleting Domestic Student\n";
+//            DL1.selectDeleteNormal();
+//            DL1.selectDeleteCorner();
+//            DL1.selectDeleteIllegal();
+//            DL1.display();
+//
+//            cout <<"\nTesting Delete Head and Node for Domestic List\n";
+//            DL1.deleteHeadTail();
+//            DL1.display();
+//
+//            cout <<"\nTesting merging Domestic List and International List\n";
+//            MI.sortedMerge(DL1, LI);
+//            MI.display();
+//
+//            cout<<"\nTesting search for Merged list\n";
+//            MI.searchNormal();
+//            MI.searchCorner();
+//            MI.searchIllegal();
+//
+//
+//
+//
         }
 
 
@@ -279,7 +279,7 @@ int main() {
                 cout <<"5) Delete the head and tail of Student list\n";
                 cout <<"6) Print out list\n";
                 cout <<"7) Return back to Main Program Menu\n";
-                cin >> menuChoice3;
+                cin >> menuChoice2;
                 if(functionTwo::isNumerical(menuChoice3) == false){ //check for number inputs only
                     cout << "ERROR: Invalid input, numbers accepted only\n";
                     continue;
