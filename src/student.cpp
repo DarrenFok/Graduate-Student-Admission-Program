@@ -1166,20 +1166,89 @@ void MergeList::sortedMerge(const DomesticList input, const InternationalList in
         countDom++;
     }
 
-    cout << "student count: " << countDom << endl;
+    //cout << "student count: " << countDom << endl;
     //slot in international
 
     //insert the international dudes now in a sortedInsert fashion
+    int intCount = 0;
     InternationalStudent *temp2 = input2.getHead(); //start from input2's head
     Student *current2;
     Student *before2;
-    while(temp2->getNext() != NULL){ //temp2 is similar to newNode, as it iterates each time
-        if(head->getResearch() < temp2->getResearch()
-        || head->getResearch() == temp2->getResearch() && head->getCGPA() < temp->getCGPA()){
+    while(temp2 != NULL){ //temp2 is similar to newNode, as it iterates each time
+        //create object to sort
+        Student *newNode = new Student;
+        newNode->setFirstName(temp2->getFirstName());
+        newNode->setLastName(temp2->getLastName());
+        newNode->setResearch(temp2->getResearch());
+        newNode->setCGPA(temp2->getCGPA());
+        newNode->setID(temp2->getID());
 
+        if(head->getResearch() < newNode->getResearch()
+        || head->getResearch() == newNode->getResearch() && head->getCGPA() < newNode->getCGPA()){
+            newNode->setNextStudent(head);
+            head = newNode;
         }
-    }
+        else{
+            current2 = head;
+            before2 = head;
+            while(current2->getNextStudent() != NULL && current2->getNextStudent()->getResearch() >= newNode->getResearch()){
+                current2 = current2->getNextStudent();
+                if(current2->getResearch() == newNode->getResearch()){
+                    break;
+                }
+            }
+            if(current2 != head){
+                while(before2->getNextStudent() != current2){
+                    before2 = before2->getNextStudent();
+                }
+            }
+            if(newNode->getResearch() < tail->getResearch()
+            || tail->getResearch() == newNode->getResearch() && tail->getCGPA() > newNode->getCGPA()){
+                tail->setNextStudent(newNode->getNextStudent());
+                tail = newNode;
+            }
 
+            if(current2->getNextStudent() == NULL){
+                current2->setNextStudent(newNode);
+            }
+            else if(current2->getResearch() > newNode->getResearch()){
+                newNode->setNextStudent(current2->getNextStudent());
+                current2->setNextStudent(newNode);
+            }
+            else if(current2->getResearch() == newNode->getResearch()){
+                while(current2->getNextStudent() != NULL && current2->getNextStudent()->getResearch() == newNode->getResearch()
+                && current2->getNextStudent()->getCGPA() >= newNode->getCGPA()){
+                    current2= current2->getNextStudent();
+                }
+                if(current2 != head){
+                    while(before2->getNextStudent() != current2){
+                        before2 = before2->getNextStudent();
+                    }
+                }
+                if(current2->getCGPA() > newNode->getCGPA()){
+                    newNode->setNextStudent(current2->getNextStudent());
+                    current2->setNextStudent(newNode);
+                }
+                else if(current2->getCGPA() < newNode->getCGPA()){
+                    newNode->setNextStudent(before2->getNextStudent());
+                    before2->setNextStudent(newNode);
+                }
+                else if(current2->getCGPA() == newNode->getCGPA()){
+                    while(current2->getNextStudent() != NULL && current2->getNextStudent()->getResearch() == newNode->getResearch()
+                          && current2->getNextStudent()->getCGPA() > newNode->getCGPA()){
+                        current2 = current2->getNextStudent();
+                    }
+                    newNode->setNextStudent(current2->getNextStudent());
+                    current2->setNextStudent(newNode);
+                }
+            }
+        }
+        temp2 = temp2->getNext();
+        intCount++;
+    }
+    while(tail->getNextStudent() != NULL) {
+        tail = tail->getNextStudent();
+    }
 
 }
 
