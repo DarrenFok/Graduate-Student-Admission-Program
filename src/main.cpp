@@ -16,7 +16,8 @@ using namespace std;
 int main() {
     string menuChoice; //to choose domestic, international, exit
     string menuChoice2; //to choose what to do
-    string menuChoice3, menuChoice4, menuChoice5;
+    string menuChoice3; //to choose whether test case or main program
+    string menuChoice4, menuChoice5;
     string line;
 
     //read .txt files
@@ -126,49 +127,65 @@ int main() {
         LI.setIntID(LI.getIntID() + 1);
     }
 
-    // MergeList MI;
-    // MI.sortedMerge(DL1, LI);
-    // MI.display();
-    // MI.search();
-
+     MergeList MI;
+     MI.sortedMerge(DL1, LI);
 
 //                                             Graudation Adimission V2.0
     //----------------------------------------------------------------------------------------------------------
     cout << "\nWelcome to Graduate Studemt Admission System Version 2.0\n";
     do{
-        cout << "\nMain Menu\n";
-        cout << "Select which of the following you would like by entering respective number: \n";
-        cout << "1) Domestic Students\n";
-        cout << "2) International Students\n";
-        cout << "3) Merge Domestic and International Students\n";
-        cout << "0) Exit program\n";
-        cin >> menuChoice;
-        //check user input for errors
-        if(functionTwo::isNumerical(menuChoice) == false){ //check for number inputs only
-            cout << "ERROR: Invalid input, numbers accepted only\n";
+        cout << "\nMain Menu" << endl;
+        cout << "1) Unit Test" << endl;
+        cout << "2) Main Program" << endl;
+        cout << "0) Exit Program" << endl;
+        cin >> menuChoice3;
+        if(functionTwo::isNumerical(menuChoice3) == false){
+            cout << "ERROR: Invalid input, numbers accepted only" << endl;
             continue;
         }
-        else if(stoi(menuChoice) > 3 || stoi(menuChoice) < 0){ //check for valid numbers only
-            cout << "ERROR: Invalid number, please input 0-3\n";
-            continue;
+        else if(stoi(menuChoice3) > 2 || stoi(menuChoice3) < 0){
+            cout << "ERROR: Invalid number, please input 0-2" << endl;
+        }
+
+        else if(stoi(menuChoice3) == 1){
+            //unit test
+            
+        }
+        else if(stoi(menuChoice3) == 2){
+            //main program
+            cout << "\nMain Program\n";
+            cout << "Select which of the following you would like by entering respective number: \n";
+            cout << "1) Domestic Students\n";
+            cout << "2) International Students\n";
+            cout << "3) Merge Domestic and International Students\n";
+            cout << "0) Return back to Main Menu\n";
+            cin >> menuChoice;
+            //check user input for errors
+            if(functionTwo::isNumerical(menuChoice) == false){ //check for number inputs only
+                cout << "ERROR: Invalid input, numbers accepted only\n";
+                continue;
             }
-        else if(menuChoice == "1"){
-            cout << "\nDomestic Student List Menu\n";
-            cout <<"Enter the following number of the option you would like\n";
-            cout <<"1) Search Student based on Student Objects\n";
-            cout <<"2) Search Student based on Student Name\n";
-            cout <<"3) Insert a new Student\n";
-            cout <<"4) Delete Student\n";
-            cout <<"5) Delete the head and tail of Student list\n";
-            cout <<"6) Print out list\n";
-            cout <<"7) Return back to Main Menu\n";
-            cin >> menuChoice2;
+            else if(stoi(menuChoice) > 3 || stoi(menuChoice) < 0){ //check for valid numbers only
+                cout << "ERROR: Invalid number, please input 0-3\n";
+                continue;
+            }
+            else if(menuChoice == "1"){
+                cout << "\nDomestic Student List Menu\n";
+                cout <<"Enter the following number of the option you would like\n";
+                cout <<"1) Search Student based on Student Objects\n";
+                cout <<"2) Search Student based on Student Name\n";
+                cout <<"3) Insert a new Student\n";
+                cout <<"4) Delete Student\n";
+                cout <<"5) Delete the head and tail of Student list\n";
+                cout <<"6) Print out list\n";
+                cout <<"7) Return back to Main Program Menu\n";
+                cin >> menuChoice2;
                 if(functionTwo::isNumerical(menuChoice2) == false){ //check for number inputs only
                     cout << "ERROR: Invalid input, numbers accepted only\n";
                     continue;
                 }
-                else if(stoi(menuChoice2) > 7 || stoi(menuChoice2) < 0){ //check for valid numbers only
-                    cout << "ERROR: Invalid number, please input 0-7\n";
+                else if(stoi(menuChoice2) > 7 || stoi(menuChoice2) < 1){ //check for valid numbers only
+                    cout << "ERROR: Invalid number, please input 1-7\n";
                     continue;
                 }
                 else{
@@ -191,27 +208,27 @@ int main() {
                         DL1.display();
                     }
                 }
-        }
-        else if(menuChoice == "2"){
-            cout << "\nInternational Student List Menu\n";
-            cout <<"Enter the following number of the option you would like\n";
-            cout <<"1) Search Student based on Student Objects\n";
-            cout <<"2) Search Student based on Student Name\n";
-            cout <<"3) Insert a new Student\n";
-            cout <<"4) Delete Student\n";
-            cout <<"5) Delete the head and tail of Student list\n";
-            cout <<"6) Print out list\n";
-            cout <<"7) Return back to Main Menu\n";
-            cin >> menuChoice3;
-            if(functionTwo::isNumerical(menuChoice3) == false){ //check for number inputs only
+            }
+            else if(menuChoice == "2"){
+                cout << "\nInternational Student List Menu\n";
+                cout <<"Enter the following number of the option you would like\n";
+                cout <<"1) Search Student based on Student Objects\n";
+                cout <<"2) Search Student based on Student Name\n";
+                cout <<"3) Insert a new Student\n";
+                cout <<"4) Delete Student\n";
+                cout <<"5) Delete the head and tail of Student list\n";
+                cout <<"6) Print out list\n";
+                cout <<"7) Return back to Main Program Menu\n";
+                cin >> menuChoice3;
+                if(functionTwo::isNumerical(menuChoice3) == false){ //check for number inputs only
                     cout << "ERROR: Invalid input, numbers accepted only\n";
                     continue;
-            }
-            else if(stoi(menuChoice2) > 7 || stoi(menuChoice2) < 0){ //check for valid numbers only
-                cout << "ERROR: Invalid number, please input 0-7\n";
-                continue;
-            }
-            else{
+                }
+                else if(stoi(menuChoice2) > 7 || stoi(menuChoice2) < 1){ //check for valid numbers only
+                    cout << "ERROR: Invalid number, please input 1-7\n";
+                    continue;
+                }
+                else{
                     if(menuChoice2 == "1"){
                         LI.searchOne();
                     }
@@ -231,9 +248,31 @@ int main() {
                         LI.display();
                     }
                 }
+            }
+            else if(menuChoice == "3"){
+                cout << "\nMerge List Menu" << endl;
+                cout << "1) Search with criteria" << endl;
+                cout << "2) Print out merged list" << endl;
+                cout << "0) Return to Main Program Menu" << endl;
+                cin >> menuChoice2;
+                if(functionTwo::isNumerical(menuChoice2) == false){
+                    cout << "ERROR: Invalid input, numbers accepted only" << endl;
+                    continue;
+                }
+                else if(stoi(menuChoice2) > 3 || stoi(menuChoice2) < 0){
+                    cout << "ERROR: Invalid number, please input 1-7" << endl;
+                    continue;
+                }
+                else if(menuChoice2 == "1"){
+                    MI.search();
+                }
+                else if(menuChoice2 == "2"){
+                    MI.display();
+                }
+            }
         }
     }
-    while(menuChoice != "0");
+    while(menuChoice3 != "0");
     cout <<"\n Exiting Program, thank you for usiing Graduate Student Admission System Version 2.0\n";
 
 }

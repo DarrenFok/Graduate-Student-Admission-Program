@@ -14,6 +14,7 @@ Student::Student(){
     cgpa = 4.33;
     research = 100;
     studentID = 301123456;
+    next = NULL;
 }
 
 //non-default constructor
@@ -23,6 +24,7 @@ Student::Student(string inputFirstName, string inputLastName, float inputCGPA, i
 	cgpa = inputCGPA;
 	research = inputResearch;
 	studentID = inputStudentID;
+    next = NULL;
 }
 
 
@@ -1271,6 +1273,7 @@ bool MergeList::empty() const {
 }
 
 bool MergeList::search() const{
+    cout << "\nConducting criteria search for merged list..." << endl;
     string cgpa_threshold; string researchScore_threshold;
     int count = 0;
     cout << "Please input a threshold research score: " << endl;
