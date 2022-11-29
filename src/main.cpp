@@ -277,7 +277,14 @@ int main() {
                         LI.create(firstInput, lastInput, researchInput, cgpaInput, countryInput, readingInput, listeningInput, writingInput, speakingInput);
                     }
                     else if(menuChoice2 == "4"){
-                        LI.selectedDelete();
+                        string firstnameInput;
+                        string lastnameInput;
+                        //get user input
+                        cout << "\nPlease enter the first name of a student you would like to delete: " << endl;
+                        cin >> firstnameInput;
+                        cout << "\nPlease input the last name of a student you would like to delete: " << endl;
+                        cin >> lastnameInput;
+                        LI.selectedDelete(firstnameInput, lastnameInput);
                     }
                     else if(menuChoice2 == "5"){
                         LI.deleteHeadTail();
