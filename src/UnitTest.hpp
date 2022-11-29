@@ -45,84 +45,84 @@ namespace UnitTest{
          Test.display();
 
 
-//        //test 2: searchOne
-//        //dom cgpa
-//        cout << "Domestic searchOne Test: " << endl;
-//        cout << "Please insert normal case: CGPA -> 4.33" << endl; //found
-//        test.searchOne();
-//        cout << "Please insert corner case: CGPA -> 5.33" << endl; //not found
-//        test.searchOne();
-//        cout << "Please insert corner case: CGPA -> ABC" << endl; //invalid input
-//        test.searchOne();
-//        //dom research
-//        cout << "Please insert normal case: Research -> 100" << endl;
-//        test.searchOne();
-//        cout << "Please insert normal case: Research -> 101" << endl;
-//        test.searchOne();
-//        cout << "Please insert normal case: Research -> ABC" << endl;
-//        test.searchOne();
-//        //dom id
-//        cout << "PLease insert normal case: ID -> 123456789" << endl;
-//        test.searchOne();
-//        cout << "PLease insert normal case: ID -> 1" << endl;
-//        test.searchOne();
-//        cout << "PLease insert normal case: ID -> ABC" << endl;
-//        test.searchOne();
-//
-//        //intl cgpa
-//        cout << "\nInternational searchOne Test: " << endl;
-//        cout << "Please insert normal case: CGPA -> 4.33" << endl; //found
-//        Test.searchOne();
-//        cout << "Please insert corner case: CGPA -> 5.33" << endl; //not found
-//        Test.searchOne();
-//        cout << "Please insert corner case: CGPA -> ABC" << endl; //invalid input
-//        Test.searchOne();
-//        //intl research
-//        cout << "Please insert normal case: Research -> 100" << endl;
-//        Test.searchOne();
-//        cout << "Please insert normal case: Research -> 101" << endl;
-//        Test.searchOne();
-//        cout << "Please insert normal case: Research -> ABC" << endl;
-//        Test.searchOne();
-//        //intl id
-//        cout << "PLease insert normal case: ID -> 123456789" << endl;
-//        Test.searchOne();
-//        cout << "PLease insert normal case: ID -> 1" << endl;
-//        Test.searchOne();
-//        cout << "PLease insert normal case: ID -> ABC" << endl;
-//        Test.searchOne();
-//
-//        //test 3: searchTwo
-//        //dom
-//        cout << "\nDomestic searchTwo test" << endl;
-//        cout << "Please insert: First: first, Last: last" << endl; //normal
-//        test.searchTwo();
-//        cout << "Please insert: First: non, Last: existent" << endl; //corner
-//        test.searchTwo();
-//        cout << "Please insert: First: 123, Last: 123" << endl; //illegal
-//        test.searchTwo();
-//        //intl
-//        cout << "\nInternational searchTwo test" << endl;
-//        cout << "Please insert: First: first, Last: last" << endl; //normal
-//        Test.searchTwo();
-//        cout << "Please insert: First: non, Last: existent" << endl; //corner
-//        Test.searchTwo();
-//        cout << "PLease insert: First: 123, Last: 123" << endl; //illegal
-//        Test.searchTwo();
+        //test 2: searchOne
+        //dom cgpa
+        cout << "Domestic searchOne Test: " << endl;
+        cout << "Please insert normal case: CGPA -> 4.33" << endl; //found
+        test.searchOne();
+        cout << "Please insert corner case: CGPA -> 5.33" << endl; //not found
+        test.searchOne();
+        cout << "Please insert corner case: CGPA -> ABC" << endl; //invalid input
+        test.searchOne();
+        //dom research
+        cout << "Please insert normal case: Research -> 100" << endl;
+        test.searchOne();
+        cout << "Please insert normal case: Research -> 101" << endl;
+        test.searchOne();
+        cout << "Please insert normal case: Research -> ABC" << endl;
+        test.searchOne();
+        //dom id
+        cout << "PLease insert normal case: ID -> 123456789" << endl;
+        test.searchOne();
+        cout << "PLease insert normal case: ID -> 1" << endl;
+        test.searchOne();
+        cout << "PLease insert normal case: ID -> ABC" << endl;
+        test.searchOne();
+
+        //intl cgpa
+        cout << "\nInternational searchOne Test: " << endl;
+        cout << "Please insert normal case: CGPA -> 4.33" << endl; //found
+        Test.searchOne();
+        cout << "Please insert corner case: CGPA -> 5.33" << endl; //not found
+        Test.searchOne();
+        cout << "Please insert corner case: CGPA -> ABC" << endl; //invalid input
+        Test.searchOne();
+        //intl research
+        cout << "Please insert normal case: Research -> 100" << endl;
+        Test.searchOne();
+        cout << "Please insert normal case: Research -> 101" << endl;
+        Test.searchOne();
+        cout << "Please insert normal case: Research -> ABC" << endl;
+        Test.searchOne();
+        //intl id
+        cout << "PLease insert normal case: ID -> 123456789" << endl;
+        Test.searchOne();
+        cout << "PLease insert normal case: ID -> 1" << endl;
+        Test.searchOne();
+        cout << "PLease insert normal case: ID -> ABC" << endl;
+        Test.searchOne();
+
+        //test 3: searchTwo
+        //dom
+        cout << "\nDomestic searchTwo test" << endl;
+        cout << "Please insert: First: first, Last: last" << endl; //normal
+        test.searchTwo();
+        cout << "Please insert: First: non, Last: existent" << endl; //corner
+        test.searchTwo();
+        cout << "Please insert: First: 123, Last: 123" << endl; //illegal
+        test.searchTwo();
+        //intl
+        cout << "\nInternational searchTwo test" << endl;
+        cout << "Please insert: First: first, Last: last" << endl; //normal
+        Test.searchTwo();
+        cout << "Please insert: First: non, Last: existent" << endl; //corner
+        Test.searchTwo();
+        cout << "PLease insert: First: 123, Last: 123" << endl; //illegal
+        Test.searchTwo();
 
         //test4: selectDelete
-        // cout <<"Delete Normal Case Domestic: Liam Edwards" << endl;
-        // test.selectDelete("Liam", "Edwards");
-        // cout <<"Delete Corner Case Domestic: NOT REAL" << endl;
-        // test.selectDelete("NOT", "REAL");
-        // cout <<"Delete Normal Case Domestic: 123 123" << endl;
-        // test.selectDelete("123", "123");
+         cout <<"Delete Normal Case Domestic: Liam Edwards" << endl;
+         test.selectDelete("Liam", "Edwards");
+         cout <<"Delete Corner Case Domestic: NOT REAL" << endl;
+         test.selectDelete("NOT", "REAL");
+         cout <<"Delete Normal Case Domestic: 123 123" << endl;
+         test.selectDelete("123", "123");
         toefl toeflChaewonKim; //should be caught by error check
-        toeflWrong.setSpeaking(23);
-        toeflWrong.setReading(22);
-        toeflWrong.setListening(22);
-        toeflWrong.setWriting(27);
-        toeflWrong.setTotal();
+        toeflChaewonKim.setSpeaking(29);
+        toeflChaewonKim.setReading(29);
+        toeflChaewonKim.setListening(29);
+        toeflChaewonKim.setWriting(29);
+        toeflChaewonKim.setTotal();
 
         //Chaewon,Kim,Korea,3.10,82,22,22,23,27
         Test.sortedInsert("Chaewon", "Kim", "3.10", "82", 123456789, "Korea", toeflChaewonKim);
