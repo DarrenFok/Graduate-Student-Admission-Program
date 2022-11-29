@@ -95,28 +95,35 @@ namespace UnitTest{
         //test 3: searchTwo
         //dom
         cout << "\nDomestic searchTwo test" << endl;
-        cout << "First: first, Last: last" << endl; //normal
+        cout << "Please insert: First: first, Last: last" << endl; //normal
         test.searchTwo();
-        cout << "First: non, Last: existent" << endl; //corner
+        cout << "Please insert: First: non, Last: existent" << endl; //corner
         test.searchTwo();
-        cout << "First: 123, Last: 123" << endl; //illegal
+        cout << "Please insert: First: 123, Last: 123" << endl; //illegal
         test.searchTwo();
         //intl
         cout << "\nInternational searchTwo test" << endl;
-        cout << "First: first, Last: last" << endl; //normal
+        cout << "Please insert: First: first, Last: last" << endl; //normal
         Test.searchTwo();
-        cout << "First: non, Last: existent" << endl; //corner
+        cout << "Please insert: First: non, Last: existent" << endl; //corner
         Test.searchTwo();
-        cout << "First: 123, Last: 123" << endl; //illegal
+        cout << "PLease insert: First: 123, Last: 123" << endl; //illegal
         Test.searchTwo();
 
         //test4: selectDelete
 
         //test 5: deleteHeadTail
+        test.deleteHeadTail();
+        test.display();
+        Test.deleteHeadTail();
+        Test.display();
 
         //test 6: merge
+        MergeList testerino;
+        testerino.sortedMerge(test, Test);
 
         //test 7: mergeSearch
+
 
     }
 

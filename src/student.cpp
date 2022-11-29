@@ -1300,21 +1300,8 @@ bool MergeList::empty() const {
     return (head == NULL);
 }
 
-bool MergeList::search() const{
-    string cgpa_threshold; string researchScore_threshold;
+bool MergeList::search(string cgpa_threshold, string researchScore_threshold) const{
     int count = 0;
-    cout << "Please input a threshold research score: " << endl;
-    cin >> researchScore_threshold;
-    if(isNumerical(researchScore_threshold) == false){
-        cout << "ERROR: Invalid input, integers accepted only" << endl;
-        return false;
-    }
-    cout << "Please input a threshold CGPA " << endl;
-    cin >> cgpa_threshold;
-    if(isDouble(cgpa_threshold) == false){
-        cout << "ERROR: Invalid input, doubles accepted only" << endl;
-        return false;
-    }
 
     Student *temp = head;
     while(temp != NULL){

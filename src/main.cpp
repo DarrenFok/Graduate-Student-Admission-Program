@@ -300,7 +300,21 @@ int main() {
                     continue;
                 }
                 else if(menuChoice == "1"){
-                    MI.search();
+                    string researchScore_threshold;
+                    string cgpa_threshold;
+                    cout << "Please input a threshold research score: " << endl;
+                    cin >> researchScore_threshold;
+                    if(isNumerical(researchScore_threshold) == false){
+                        cout << "ERROR: Invalid input, integers accepted only" << endl;
+                        return false;
+                    }
+                    cout << "Please input a threshold CGPA " << endl;
+                    cin >> cgpa_threshold;
+                    if(isDouble(cgpa_threshold) == false){
+                        cout << "ERROR: Invalid input, doubles accepted only" << endl;
+                        return false;
+                    }
+                    MI.search(cgpa_threshold, researchScore_threshold);
                 }
                 else if(menuChoice == "2"){
                     MI.display();
