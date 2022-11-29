@@ -129,7 +129,7 @@ int main() {
 
 //                                             Graudation Adimission V2.0
     //----------------------------------------------------------------------------------------------------------
-    cout << "\nWelcome to Graduate Studemt Admission System Version 2.0\n";
+    cout << "\nWelcome to Graduate Student Admission System Version 2.0\n";
     do{
         cout << "\nMain Menu" << endl;
         cout << "1) Unit Test" << endl;
