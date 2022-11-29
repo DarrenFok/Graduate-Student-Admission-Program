@@ -122,8 +122,6 @@ int main() {
         LI.setIntID(LI.getIntID() + 1);
     }
 
-    TestInsert();
-
 
 //                                             Graudation Adimission V2.0
     //----------------------------------------------------------------------------------------------------------
@@ -145,10 +143,7 @@ int main() {
 
         else if(stoi(menuChoice3) == 1){
             cout << "Performing unit tests..." << endl;
-
-
-
-
+            TestInsert();
         }
 
         else if(stoi(menuChoice3) == 2){
