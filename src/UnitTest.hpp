@@ -123,7 +123,9 @@ namespace UnitTest{
         testerino.sortedMerge(test, Test);
 
         //test 7: mergeSearch
-
+        testerino.search("4.33", "100"); //normal
+        testerino.search("5.33", "101"); //corner
+        testerino.search("ABC", "ABC"); //illegal
 
     }
 

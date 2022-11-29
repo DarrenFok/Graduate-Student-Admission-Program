@@ -19,9 +19,6 @@
   <component name="ChangeListManager">
     <list default="true" id="21fd5c2d-aa75-4c4a-b992-5b5d540d9848" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/src/UnitTest.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/UnitTest.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/student.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/student.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/student.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/student.hpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
