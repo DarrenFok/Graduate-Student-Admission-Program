@@ -176,7 +176,7 @@ public:
     bool create(string firstInput, string lastInput, string researchInput, string cgpaInput, string countryInput, string readingInput,
                 string listeningInput, string writingInput, string speakingInput); //create internationalStudent object and insert into linked list
 
-    void selectedDelete(string firstnameInput, string lasntnameInput);
+    void selectedDelete(string firstnameInput, string lastnameInput);
 
     bool deleteHeadTail();
 
