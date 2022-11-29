@@ -1064,12 +1064,10 @@ bool InternationalList::create(string firstInput, string lastInput, string resea
 
 }
 
-void InternationalList::selectedDelete(string firstnameInput, string lasntnameInput) {
+void InternationalList::selectedDelete(string firstnameInput, string lastnameInput) {
     InternationalStudent* before = head;
     InternationalStudent* current = head; //node that we want to delete
     int count = 0;
-    string firstnameInput;
-    string lastnameInput;
     //get user input
 
     //case insensitive
