@@ -117,6 +117,13 @@ namespace UnitTest{
         test.selectDelete("NOT", "REAL");
         cout <<"Delete Normal Case Domestic: 123 123" << endl;
         test.selectDelete("123", "123");
+        
+        cout <<"Delete Normal Case International: Chaewon Kim" << endl;
+        Test.selectedDelete();
+        cout <<"Delete Corner Case International: NOT REAL" << endl;
+        Test.selectedDelete();
+        cout <<"Delete Normal Case International: 123 123" << endl;
+        Test.selectedDelete();
 
         //test 5: deleteHeadTail
         test.deleteHeadTail();
