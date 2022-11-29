@@ -1064,17 +1064,13 @@ bool InternationalList::create(string firstInput, string lastInput, string resea
 
 }
 
-void InternationalList::selectedDelete() {
+void InternationalList::selectedDelete(string firstnameInput, string lasntnameInput) {
     InternationalStudent* before = head;
     InternationalStudent* current = head; //node that we want to delete
     int count = 0;
     string firstnameInput;
     string lastnameInput;
     //get user input
-    cout << "\nPlease enter the first name of a student you would like to delete: " << endl;
-    cin >> firstnameInput;
-    cout << "\nPlease input the last name of a student you would like to delete: " << endl;
-    cin >> lastnameInput;
 
     //case insensitive
     firstnameInput = toLowerCase(firstnameInput);
