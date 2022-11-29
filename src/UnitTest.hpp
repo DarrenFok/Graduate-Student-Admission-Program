@@ -36,13 +36,13 @@ namespace UnitTest{
         toeflWrong.setTotal();
 
         InternationalList Test;
-         cout <<"\nInternational inserting Normal Case: first, last, 4.33, 100, 123456789, China, toeflTest\n";
-         Test.sortedInsert("first", "last", "4.33", "100", 123456789, "China", toeflTest);
-         cout <<"\nInternational inserting Corner Case: first, last, 5.33, 110, 123456789, FAKECOUNTRY, toeflWrong\n";
-         Test.sortedInsert("first", "last", "5.33", "110", 123456789, "FAKEPROVINCE", toeflWrong);
-         cout <<"\nInternational inserting Illegal Case: first, last, four, hundred, 123456789, 123, toeflWrong\n";
-         Test.sortedInsert("first", "last", "four", "hundred", 123456789, "123", toeflWrong);
-         Test.display();
+        cout <<"\nInternational inserting Normal Case: first, last, 4.33, 100, 123456789, China, toeflTest\n";
+        Test.sortedInsert("first", "last", "4.33", "100", 123456789, "China", toeflTest);
+        cout <<"\nInternational inserting Corner Case: first, last, 5.33, 110, 123456789, FAKECOUNTRY, toeflWrong\n";
+        Test.sortedInsert("first", "last", "5.33", "110", 123456789, "FAKEPROVINCE", toeflWrong);
+        cout <<"\nInternational inserting Illegal Case: first, last, four, hundred, 123456789, 123, toeflWrong\n";
+        Test.sortedInsert("first", "last", "four", "hundred", 123456789, "123", toeflWrong);
+        Test.display();
 
 
 //        //test 2: searchOne
@@ -117,13 +117,13 @@ namespace UnitTest{
         // test.selectDelete("NOT", "REAL");
         // cout <<"Delete Normal Case Domestic: 123 123" << endl;
         // test.selectDelete("123", "123");
-        
-        // cout <<"Delete Normal Case International: Chaewon Kim" << endl;
-        // Test.selectedDelete();
-        // cout <<"Delete Corner Case International: NOT REAL" << endl;
-        // Test.selectedDelete();
-        // cout <<"Delete Normal Case International: 123 123" << endl;
-        // Test.selectedDelete();
+
+        cout <<"Delete Normal Case International: Chaewon Kim" << endl;
+        Test.selectedDelete("Chaewon", "Kim");
+        cout <<"Delete Corner Case International: NOT REAL" << endl;
+        Test.selectedDelete("NOT", "REAL");
+        cout <<"Delete Normal Case International: 123 123" << endl;
+        Test.selectedDelete("123", "123");
 
         //test 5: deleteHeadTail
         test.deleteHeadTail();
