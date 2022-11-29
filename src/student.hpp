@@ -108,7 +108,7 @@ public:
 	
     void selectDelete(string firstname, string lastname); //delete a student based on user input
 
-    void deleteHeadTail(); //deletes head and tail and re-assigns
+    bool deleteHeadTail(); //deletes head and tail and re-assigns
 
     bool empty() const;
 
@@ -178,7 +178,7 @@ public:
 
     void selectedDelete();
 
-    void deleteHeadTail();
+    bool deleteHeadTail();
 
     bool empty() const;
 

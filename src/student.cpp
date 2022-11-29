@@ -572,25 +572,38 @@ void DomesticList::selectDelete(string firstnameInput, string lastnameInput){
 
 //--------------------------------------------------------------------------------------------
 
-void DomesticList::deleteHeadTail(){
-	//deletes head
-	pop();
+bool DomesticList::deleteHeadTail(){
+	if(head == NULL && tail == NULL){
+        cout << "ERROR: List is empty";
+        return false;
+    }
+    else if(head == tail){
+        delete head;
+        tail = NULL;
+        head = NULL;
+        return true;
+    }
+    else{
+        //deletes head
+        pop();
 
-	DomesticStudent* current = head;
-	DomesticStudent* before = head;
+        DomesticStudent* current = head;
+        DomesticStudent* before = head;
 
-	//get current and before
-	while(current->getNext() != NULL){
-		current = current->getNext();
-	} 
-	if(current != head){//at least 2 nodes
-		while(before->getNext() != current){
-			before = before->getNext();
-		}
-	}
-	before->setNext(NULL);
-	delete current;
-	tail = before;
+        //get current and before
+        while(current->getNext() != NULL){
+            current = current->getNext();
+        }
+        if(current != head){//at least 2 nodes
+            while(before->getNext() != current){
+                before = before->getNext();
+            }
+        }
+        before->setNext(NULL);
+        delete current;
+        tail = before;
+        return true;
+    }
 }
 
 //compare function
@@ -1101,25 +1114,37 @@ void InternationalList::selectedDelete() {
     }
 }
 
-void InternationalList::deleteHeadTail(){
-    //deletes head
-    pop();
-
-    InternationalStudent* current = head;
-    InternationalStudent* before = head;
-
-    //get current and before
-    while(current->getNext() != NULL){
-        current = current->getNext();
+bool InternationalList::deleteHeadTail(){
+    if(head == NULL && tail == NULL){
+        cout << "ERROR: List is empty";
+        return false;
     }
-    if(current != head){//at least 2 nodes
-        while(before->getNext() != current){
-            before = before->getNext();
+    else if(head == tail){
+        delete head;
+        tail = NULL;
+        head = NULL;
+        return true;
+    }
+    else{
+        //deletes head
+        pop();
+
+        InternationalStudent* current = head;
+        InternationalStudent* before = head;
+
+        //get current and before
+        while(current->getNext() != NULL){
+            current = current->getNext();
         }
+        if(current != head){//at least 2 nodes
+            while(before->getNext() != current){
+                before = before->getNext();
+            }
+        }
+        before->setNext(NULL);
+        delete current;
+        tail = before;
     }
-    before->setNext(NULL);
-    delete current;
-    tail = before;
 }
 
 MergeList::MergeList() {
@@ -1295,6 +1320,15 @@ bool MergeList::empty() const {
 }
 
 bool MergeList::search(string cgpa_threshold, string researchScore_threshold) const{
+    if(isDouble(cgpa_threshold) == false){
+        cout << "ERROR: CGPA threshold must be double" << endl;
+        return false;
+    }
+    if(isNumerical(researchScore_threshold) == false){
+        cout << "ERROR: Research score threshold must be integer" << endl;
+        return false;
+    }
+
     int count = 0;
 
     Student *temp = head;

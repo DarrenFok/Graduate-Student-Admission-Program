@@ -210,10 +210,10 @@ int main() {
                         string firstnameinput;
                         string lastnameinput;
                         cout << "\nPlease enter the first name of a student you would like to delete: " << endl;
-                        cin >> firstnameInput;
+                        cin >> firstnameinput;
                         cout << "\nPlease input the last name of a student you would like to delete: " << endl;
-                        cin >> lastnameInput;
-                        DL1.selectDelete(firstnameInput, lastnameInput);
+                        cin >> lastnameinput;
+                        DL1.selectDelete(firstnameinput, lastnameinput);
                     }
                     else if(menuChoice2 == "5"){
                         DL1.deleteHeadTail();
