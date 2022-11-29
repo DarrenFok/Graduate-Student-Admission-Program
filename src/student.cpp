@@ -462,11 +462,11 @@ bool DomesticList::create(){
     string firstInput; string lastInput; string researchInput; string cgpaInput; string provinceInput;
     //prompts
     cout << "Creating a domestic student to insert into list..." << endl;
-    cout << "Please input a first namne: " << endl;
+    cout << "Please input a first name: " << endl;
     cin >> firstInput;
     cout << "Please input a last name: " << endl;
     cin >> lastInput;
-    cout << "PLease input a research score: " << endl;
+    cout << "Please input a research score: " << endl;
     cin >> researchInput;
     cout << "Please input a CGPA: " << endl;
     cin >> cgpaInput;

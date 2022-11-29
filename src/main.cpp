@@ -323,7 +323,6 @@ int main() {
     }
     while(menuChoice3 != "0");
     cout <<"\n Exiting Program, thank you for using Graduate Student Admission System Version 2.0\n";
-
 }
 
 
