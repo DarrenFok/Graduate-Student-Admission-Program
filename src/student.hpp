@@ -106,7 +106,7 @@ public:
     //create node
     bool create(string firstInput, string lastInput, string researchInput, string cgpaInput, string provinceInput); //create new domesticStudent object, and insert them into list..
 	
-    void selectDelete(); //delete a student based on user input
+    void selectDelete(string firstname, string lastname); //delete a student based on user input
 
     void deleteHeadTail(); //deletes head and tail and re-assigns
 
