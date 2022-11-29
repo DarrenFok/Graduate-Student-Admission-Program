@@ -111,6 +111,12 @@ namespace UnitTest{
         Test.searchTwo();
 
         //test4: selectDelete
+        cout <<"Delete Normal Case Domestic: Liam Edwards" << endl;
+        test.selectDelete("Liam", "Edwards");
+        cout <<"Delete Corner Case Domestic: NOT REAL" << endl;
+        test.selectDelete("NOT", "REAL");
+        cout <<"Delete Normal Case Domestic: 123 123" << endl;
+        test.selectDelete("123", "123");
 
         //test 5: deleteHeadTail
         test.deleteHeadTail();
