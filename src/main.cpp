@@ -128,9 +128,6 @@ int main() {
         LI.setIntID(LI.getIntID() + 1);
     }
 
-     MergeList MI;
-    //  MI.sortedMerge(DL1, LI);
-
 
 //                                             Graudation Adimission V2.0
     //----------------------------------------------------------------------------------------------------------
@@ -138,15 +135,16 @@ int main() {
     do{
         cout << "\nMain Menu" << endl;
         cout << "1) Unit Test" << endl;
-        cout << "2) Main Program" << endl;
+        cout << "2) Domestic/International Lists" << endl;
+        cout << "3) Merge List (CAUTION: Perform last, after performing, program will exit)" << endl;
         cout << "0) Exit Program" << endl;
         cin >> menuChoice3;
         if(functionTwo::isNumerical(menuChoice3) == false){
             cout << "ERROR: Invalid input, numbers accepted only" << endl;
             continue;
         }
-        else if(stoi(menuChoice3) > 2 || stoi(menuChoice3) < 0){
-            cout << "ERROR: Invalid number, please input 0-2" << endl;
+        else if(stoi(menuChoice3) > 3 || stoi(menuChoice3) < 0){
+            cout << "ERROR: Invalid number, please input 0-3" << endl;
         }
 
         else if(stoi(menuChoice3) == 1){
@@ -195,29 +193,12 @@ int main() {
 //
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         else if(stoi(menuChoice3) == 2){
             //main program
             cout << "\nMain Program\n";
             cout << "Select which of the following you would like by entering respective number: \n";
             cout << "1) Domestic Students\n";
             cout << "2) International Students\n";
-            cout << "3) Merge Domestic and International Students\n";
             cout << "0) Return back to Main Menu\n";
             cin >> menuChoice;
             //check user input for errors
@@ -225,7 +206,7 @@ int main() {
                 cout << "ERROR: Invalid input, numbers accepted only\n";
                 continue;
             }
-            else if(stoi(menuChoice) > 3 || stoi(menuChoice) < 0){ //check for valid numbers only
+            else if(stoi(menuChoice) > 2 || stoi(menuChoice) < 0){ //check for valid numbers only
                 cout << "ERROR: Invalid number, please input 0-3\n";
                 continue;
             }
@@ -309,31 +290,39 @@ int main() {
                     }
                 }
             }
-            else if(menuChoice == "3"){
+        }
+        else if(stoi(menuChoice3) == 3){
+            MergeList MI;
+            MI.sortedMerge(DL1, LI);
+            do{
                 cout << "\nMerge List Menu" << endl;
                 cout << "1) Search with criteria" << endl;
                 cout << "2) Print out merged list" << endl;
-                cout << "0) Return to Main Program Menu" << endl;
-                cin >> menuChoice2;
+                cout << "0) Exit program" << endl;
+                cin >> menuChoice;
                 if(functionTwo::isNumerical(menuChoice2) == false){
                     cout << "ERROR: Invalid input, numbers accepted only" << endl;
                     continue;
                 }
-                else if(stoi(menuChoice2) > 3 || stoi(menuChoice2) < 0){
+                else if(stoi(menuChoice) > 3 || stoi(menuChoice) < 0){
                     cout << "ERROR: Invalid number, please input 1-7" << endl;
                     continue;
                 }
-                else if(menuChoice2 == "1"){
+                else if(menuChoice == "1"){
                     MI.search();
                 }
-                else if(menuChoice2 == "2"){
+                else if(menuChoice == "2"){
                     MI.display();
                 }
             }
+            while(stoi(menuChoice) != 0);
+            cout << "Merge list actions finished. Integrity of domesticList and internationalList no longer stable" << endl;
+            cout <<"Exiting Program, thank you for using Graduate Student Admission System Version 2.0" << endl;
+            exit(0);
         }
     }
     while(menuChoice3 != "0");
-    cout <<"\n Exiting Program, thank you for usiing Graduate Student Admission System Version 2.0\n";
+    cout <<"\n Exiting Program, thank you for using Graduate Student Admission System Version 2.0\n";
 
 }
 
