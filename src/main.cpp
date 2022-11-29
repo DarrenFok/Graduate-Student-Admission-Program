@@ -207,6 +207,8 @@ int main() {
                         DL1.create(firstInput, lastInput, researchInput, cgpaInput, provinceInput);
                     }
                     else if(menuChoice2 == "4"){
+                        string firstnameinput;
+                        string lastnameinput;
                         cout << "\nPlease enter the first name of a student you would like to delete: " << endl;
                         cin >> firstnameInput;
                         cout << "\nPlease input the last name of a student you would like to delete: " << endl;
