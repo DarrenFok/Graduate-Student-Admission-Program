@@ -171,16 +171,49 @@ DomesticList::DomesticList() {
     tail = NULL;
 }
 
-void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
-	int research, int studentID, string province) {
+bool DomesticList::sortedInsert(string firstName, string lastName, string cgpa,
+	string research, int studentID, string province) {
+    string provinceInput2 = toUpperCase(province);
+
+    //error checking for research score (int only), and research score (double only)
+    if(isNumerical(research) == false){ //if not int type
+        cout << "ERROR: Research score input is not an integer" << endl;
+        return false;
+    }
+    if(isDouble(cgpa) == false){
+        cout << "ERROR: CGPA input is not a double" << endl;
+        return false;
+    }
+    //error checking to check if cgpa and research score are within bounds
+    if(stoi(research) < 0 || stoi(research) > 100){
+        cout << "ERROR: Research score is not within the bounds" << endl;
+        return false;
+    }
+    if(stod(cgpa) < 0 || stod(cgpa) > 4.33){
+        cout << "ERROR: CGPA is not within the bounds" << endl;
+        return false;
+    }
+
+    if(provinceInput2 != "NL" && provinceInput2 != "PE" && provinceInput2 != "NS" && provinceInput2 != "NB" && provinceInput2 != "QC" &&
+       provinceInput2 != "ON" && provinceInput2 != "MB" && provinceInput2 != "SK" && provinceInput2 != "AB" && provinceInput2 != "BC" &&
+       provinceInput2 != "YT" && provinceInput2 != "NT" && provinceInput2 != "NU"){ //checks if one of the valid provinces
+        cout << "ERROR: Province input is invalid" << endl;
+        return false;
+    }
+
+    float cgpaInput = stof(cgpa);
+    int researchInput = stoi(research);
+
+
+
 		DomesticStudent *current;
 		DomesticStudent *before;
 		DomesticStudent *temp;
 		DomesticStudent *newNode = new DomesticStudent;
         newNode->setFirstName(firstName);
         newNode->setLastName(lastName);
-        newNode->setCGPA(cgpa);
-        newNode->setResearch(research);
+        newNode->setCGPA(cgpaInput);
+        newNode->setResearch(researchInput);
         newNode->setID(studentID);
         newNode->setProvince(province);
         newNode->setNext(NULL);
@@ -273,7 +306,8 @@ void DomesticList::sortedInsert(string firstName, string lastName, float cgpa,
 		}
         while(tail->getNext() != NULL) {
             tail = tail->getNext();
-        }    
+        }
+        return true;
 	}
 
 
@@ -457,21 +491,7 @@ DomesticStudent* DomesticList::getTail() const{
     return tail;
 }
 
-bool DomesticList::create(){
-    //fields
-    string firstInput; string lastInput; string researchInput; string cgpaInput; string provinceInput;
-    //prompts
-    cout << "Creating a domestic student to insert into list..." << endl;
-    cout << "Please input a first name: " << endl;
-    cin >> firstInput;
-    cout << "Please input a last name: " << endl;
-    cin >> lastInput;
-    cout << "Please input a research score: " << endl;
-    cin >> researchInput;
-    cout << "Please input a CGPA: " << endl;
-    cin >> cgpaInput;
-    cout << "Please input a province: " << endl;
-    cin >> provinceInput;
+bool DomesticList::create(string firstInput, string lastInput, string researchInput, string cgpaInput, string provinceInput){
     string provinceInput2 = toUpperCase(provinceInput);
 
     //error checking for research score (int only), and research score (double only)
@@ -499,9 +519,7 @@ bool DomesticList::create(){
         cout << "ERROR: Province input is invalid" << endl;
         return false;
     }
-    float CGPA = stof(cgpaInput);
-    int research = stoi(researchInput);
-    sortedInsert(firstInput, lastInput, CGPA, research, idDomestic, provinceInput2);
+    sortedInsert(firstInput, lastInput, cgpaInput, researchInput, idDomestic, provinceInput2);
     idDomestic++;
     return true;
 }

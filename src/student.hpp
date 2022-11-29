@@ -89,8 +89,8 @@ public:
     int getDomesticID() const;
 
     //Insert in an overall sorted order
-    void sortedInsert(string firstName, string lastName, float cgpa,
-                      int research, int studentID, string province);
+    bool sortedInsert(string firstName, string lastName, string cgpa,
+                      string research, int studentID, string province);
 
     //display
     void display() const;
@@ -104,7 +104,7 @@ public:
     DomesticStudent* getTail() const;
 
     //create node
-    bool create(); //create new domesticStudent object, and insert them into list..
+    bool create(string firstInput, string lastInput, string researchInput, string cgpaInput, string provinceInput); //create new domesticStudent object, and insert them into list..
 	
     void selectDelete(); //delete a student based on user input
 

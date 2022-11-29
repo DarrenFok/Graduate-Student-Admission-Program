@@ -10,8 +10,9 @@
 #include "toefl.hpp"
 #include "student.hpp"
 #include "functionTwo.hpp"
-//#include "UnitTest.hpp"
+#include "UnitTest.hpp"
 using namespace functionTwo;
+using namespace UnitTest;
 using namespace std;
 
 int main() {
@@ -44,8 +45,6 @@ int main() {
     while (getline(domesticFile, line)) {
         istringstream ss(line);
         string firstName, lastName, province, s_cgpa, s_researchScore; //strings
-        float cgpa; //to convert string cgpa to
-        int researchScore; //to convert string researchScore to
 
         getline(ss, firstName, ','); //get firstName
         getline(ss, lastName, ','); //get lastName
@@ -65,10 +64,7 @@ int main() {
             exit(1);
         }
 
-        cgpa = stof(s_cgpa);
-        researchScore = stoi(s_researchScore);
-
-        DL1.sortedInsert(firstName, lastName, cgpa, researchScore, DL1.getDomesticID(),province);
+        DL1.sortedInsert(firstName, lastName, s_cgpa, s_researchScore, DL1.getDomesticID(), province);
         domesticCount++;
         DL1.setDomesticID(DL1.getDomesticID() + 1);
     }
@@ -128,6 +124,8 @@ int main() {
         LI.setIntID(LI.getIntID() + 1);
     }
 
+    TestInsert();
+
 
 //                                             Graudation Adimission V2.0
     //----------------------------------------------------------------------------------------------------------
@@ -148,49 +146,11 @@ int main() {
         }
 
         else if(stoi(menuChoice3) == 1){
-//            //unit test
-//            DL1.createTestNormal();
-//            DL1.createTestCorner();
-//            DL1.createTestIllegal();
-//            cout <<"\n";
-//            DL1.display();
-//
-//            cout <<"\nTesting Normal case for searchone\n";
-//            DL1.searchOneNormal();
-//            cout <<"\nTesting Corner case for searchone\n";
-//            DL1.searchOneCorner();
-//            cout <<"\nIllegal Corner case for searchone\n";
-//            DL1.searchOneIllegal();
-//
-//            cout <<"\nTesting Normal case for searchtwo\n";
-//            DL1.searchTwoNormal();
-//            cout <<"\nTesting Corner case for searchtwo\n";
-//            DL1.searchTwoCorner();
-//            cout <<"\nIllegal Corner case for searchtwo\n";
-//            DL1.searchTwoIllegal();
-//
-//            cout <<"\nTesting case for Deleting Domestic Student\n";
-//            DL1.selectDeleteNormal();
-//            DL1.selectDeleteCorner();
-//            DL1.selectDeleteIllegal();
-//            DL1.display();
-//
-//            cout <<"\nTesting Delete Head and Node for Domestic List\n";
-//            DL1.deleteHeadTail();
-//            DL1.display();
-//
-//            cout <<"\nTesting merging Domestic List and International List\n";
-//            MI.sortedMerge(DL1, LI);
-//            MI.display();
-//
-//            cout<<"\nTesting search for Merged list\n";
-//            MI.searchNormal();
-//            MI.searchCorner();
-//            MI.searchIllegal();
-//
-//
-//
-//
+            cout << "Performing unit tests..." << endl;
+
+
+
+
         }
 
         else if(stoi(menuChoice3) == 2){
@@ -237,7 +197,21 @@ int main() {
                         DL1.searchTwo();
                     }
                     else if (menuChoice2 == "3"){
-                        DL1.create();
+                        //fields
+                        string firstInput; string lastInput; string researchInput; string cgpaInput; string provinceInput;
+                        //prompts
+                        cout << "Creating a domestic student to insert into list..." << endl;
+                        cout << "Please input a first name: " << endl;
+                        cin >> firstInput;
+                        cout << "Please input a last name: " << endl;
+                        cin >> lastInput;
+                        cout << "Please input a research score: " << endl;
+                        cin >> researchInput;
+                        cout << "Please input a CGPA: " << endl;
+                        cin >> cgpaInput;
+                        cout << "Please input a province: " << endl;
+                        cin >> provinceInput;
+                        DL1.create(firstInput, lastInput, researchInput, cgpaInput, provinceInput);
                     }
                     else if(menuChoice2 == "4"){
                         DL1.selectDelete();
