@@ -524,17 +524,11 @@ bool DomesticList::create(string firstInput, string lastInput, string researchIn
     return true;
 }
 
-void DomesticList::selectDelete(){
+void DomesticList::selectDelete(string firstnameInput, string lastnameInput){
     DomesticStudent* before = head;
     DomesticStudent* current = head; //node that we want to delete
     int count = 0;
-    string firstnameInput;
-    string lastnameInput;
     //get user input
-    cout << "\nPlease enter the first name of a student you would like to delete: " << endl;
-    cin >> firstnameInput;
-    cout << "\nPlease input the last name of a student you would like to delete: " << endl;
-    cin >> lastnameInput;
 
     //case insensitive
     firstnameInput = toLowerCase(firstnameInput);
