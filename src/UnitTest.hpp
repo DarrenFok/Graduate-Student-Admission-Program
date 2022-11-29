@@ -111,19 +111,19 @@ namespace UnitTest{
 //        Test.searchTwo();
 
         //test4: selectDelete
-        cout <<"Delete Normal Case Domestic: Liam Edwards" << endl;
-        test.selectDelete("Liam", "Edwards");
-        cout <<"Delete Corner Case Domestic: NOT REAL" << endl;
-        test.selectDelete("NOT", "REAL");
-        cout <<"Delete Normal Case Domestic: 123 123" << endl;
-        test.selectDelete("123", "123");
+        // cout <<"Delete Normal Case Domestic: Liam Edwards" << endl;
+        // test.selectDelete("Liam", "Edwards");
+        // cout <<"Delete Corner Case Domestic: NOT REAL" << endl;
+        // test.selectDelete("NOT", "REAL");
+        // cout <<"Delete Normal Case Domestic: 123 123" << endl;
+        // test.selectDelete("123", "123");
         
-        cout <<"Delete Normal Case International: Chaewon Kim" << endl;
-        Test.selectedDelete();
-        cout <<"Delete Corner Case International: NOT REAL" << endl;
-        Test.selectedDelete();
-        cout <<"Delete Normal Case International: 123 123" << endl;
-        Test.selectedDelete();
+        // cout <<"Delete Normal Case International: Chaewon Kim" << endl;
+        // Test.selectedDelete();
+        // cout <<"Delete Corner Case International: NOT REAL" << endl;
+        // Test.selectedDelete();
+        // cout <<"Delete Normal Case International: 123 123" << endl;
+        // Test.selectedDelete();
 
         //test 5: deleteHeadTail
         test.deleteHeadTail();
