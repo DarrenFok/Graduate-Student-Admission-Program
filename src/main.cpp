@@ -113,12 +113,10 @@ int main() {
         score.setWriting(stoi(writing));
         score.setTotal();
 
-        cgpa = stof(s_cgpa);
-        researchScore = stoi(s_researchScore);
 
         if(score.getReading() > 19 && score.getListening() > 19 && score.getSpeaking() > 19 &&
                  score.getWriting() > 19 && score.getTotal() > 92) {
-             LI.sortedInsert(firstName, lastName, cgpa, researchScore, LI.getIntID(), country, score);
+             LI.sortedInsert(firstName, lastName, s_cgpa, s_researchScore, LI.getIntID(), country, score);
         }
         internationalCount++;
         LI.setIntID(LI.getIntID() + 1);
@@ -251,7 +249,31 @@ int main() {
                         LI.searchTwo();
                     }
                     else if (menuChoice2 == "3"){
-                        LI.create();
+                        //fields
+                        string firstInput; string lastInput; string countryInput; string cgpaInput; string researchInput; //regular fields
+                        string readingInput; string listeningInput; string speakingInput; string writingInput; //toefl score stuff
+                        //prompt user
+                        cout << "Creating an international student to insert into list..." << endl;
+                        cout << "Please input a first name: " << endl;
+                        cin >> firstInput;
+                        cout << "Please input a last name: " << endl;
+                        cin >> lastInput;
+                        cout << "Please input a country: " << endl;
+                        cin >> countryInput;
+                        cout << "Please input a CGPA: " << endl;
+                        cin >> cgpaInput;
+                        cout << "Please input a research score: " << endl;
+                        cin >> researchInput;
+                        //toefl scores prompt
+                        cout << "Please input a TOEFL reading score: " << endl;
+                        cin >> readingInput;
+                        cout << "Please input a TOEFL listening score: " << endl;
+                        cin >> listeningInput;
+                        cout << "Please input a TOEFL speaking score: " << endl;
+                        cin >> speakingInput;
+                        cout << "Please input a TOEFL writing score: " << endl;
+                        cin >> writingInput;
+                        LI.create(firstInput, lastInput, researchInput, cgpaInput, countryInput, readingInput, listeningInput, writingInput, speakingInput);
                     }
                     else if(menuChoice2 == "4"){
                         LI.selectedDelete();

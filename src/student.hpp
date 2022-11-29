@@ -160,8 +160,8 @@ public:
     void setIntID(int input);
     int getIntID() const;
 	
-	void sortedInsert(string firstName, string lastName, float cgpa,
-                      int research, int studentID, string country, toefl TOEFL);
+	bool sortedInsert(string firstName, string lastName, string cgpa,
+                      string research, int studentID, string country, toefl TOEFL);
 
     //display
     void display() const;
@@ -173,7 +173,8 @@ public:
     InternationalStudent* getHead() const;
 
     //create function
-    bool create(); //create internationalStudent object and insert into linked list
+    bool create(string firstInput, string lastInput, string researchInput, string cgpaInput, string countryInput, string readingInput,
+                string listeningInput, string writingInput, string speakingInput); //create internationalStudent object and insert into linked list
 
     void selectedDelete();
 

@@ -690,16 +690,50 @@ InternationalList::InternationalList() {
     head = NULL;
     tail = NULL;
 }
-void InternationalList::sortedInsert(string firstName, string lastName, float cgpa,
-	int research, int studentID, string country, toefl TOEFL) {
+bool InternationalList::sortedInsert(string firstName, string lastName, string cgpa,
+	string research, int studentID, string country, toefl TOEFL) {
+    //error check cgpa and research inputs
+    if(isNumerical(research) == false){
+        cout << "ERROR: Research score input is not an integer" << endl;
+        return false;
+    }
+    if(isDouble(cgpa) == false){
+        cout << "ERROR: CGPA input is not a double" << endl;
+        return false;
+    }
+    //check if cgpa and research scores are within bounds
+    if(stoi(research) < 0 || stoi(research) > 100){
+        cout << "ERROR: Research score is not within the bounds" << endl;
+        return false;
+    }
+    if(stod(cgpa) < 0 || stod(cgpa) > 4.33){
+        cout << "ERROR: CGPA is not within the bounds" << endl;
+        return false;
+    }
+    //check if country is valid
+    if(country != "Canada" && country != "China" && country != "Iran" && country != "India" && country != "Korea"){
+        cout << "ERROR: Country input is invalid" << endl;
+        return false;
+    }
+    int total = TOEFL.getReading() + TOEFL.getListening() + TOEFL.getSpeaking() + TOEFL.getWriting();
+    //check if TOEFL scores are valid
+    if(TOEFL.getReading() < 20 || TOEFL.getListening() < 20 || TOEFL.getSpeaking() < 20 || TOEFL.getWriting() < 20 || total < 93){
+        cout << "ERROR: TOEFL scores do not meet the requirement" << endl;
+        return false;
+    }
+
+    float cgpaInput = stof(cgpa);
+    int researchInput = stoi(research);
+
+
 		InternationalStudent *current;
 		InternationalStudent *before;
 		InternationalStudent *temp;
 		InternationalStudent *newNode = new InternationalStudent;
         newNode->setFirstName(firstName);
         newNode->setLastName(lastName);
-        newNode->setCGPA(cgpa);
-        newNode->setResearch(research);
+        newNode->setCGPA(cgpaInput);
+        newNode->setResearch(researchInput);
         newNode->setID(studentID);
         newNode->setCountry(country);
 		newNode->setTOEFL(TOEFL);
@@ -975,31 +1009,8 @@ InternationalStudent* InternationalList::getHead() const {
     return head;
 }
 
-bool InternationalList::create(){
-    //fields
-    string firstInput; string lastInput; string countryInput; string cgpaInput; string researchInput; //regular fields
-    string readingInput; string listeningInput; string speakingInput; string writingInput; //toefl score stuff
-    //prompt user
-    cout << "Creating an international student to insert into list..." << endl;
-    cout << "Please input a first name: " << endl;
-    cin >> firstInput;
-    cout << "Please input a last name: " << endl;
-    cin >> lastInput;
-    cout << "Please input a country: " << endl;
-    cin >> countryInput;
-    cout << "Please input a CGPA: " << endl;
-    cin >> cgpaInput;
-    cout << "Please input a research score: " << endl;
-    cin >> researchInput;
-    //toefl scores prompt
-    cout << "Please input a TOEFL reading score: " << endl;
-    cin >> readingInput;
-    cout << "Please input a TOEFL listening score: " << endl;
-    cin >> listeningInput;
-    cout << "Please input a TOEFL speaking score: " << endl;
-    cin >> speakingInput;
-    cout << "Please input a TOEFL writing score: " << endl;
-    cin >> writingInput;
+bool InternationalList::create(string firstInput, string lastInput, string researchInput, string cgpaInput, string countryInput, string readingInput,
+                               string listeningInput, string writingInput, string speakingInput){
 
     //error check cgpa and research inputs
     if(isNumerical(researchInput) == false){
@@ -1031,8 +1042,6 @@ bool InternationalList::create(){
         return false;
     }
 
-    float CGPA = stof(cgpaInput);
-    int research = stoi(researchInput);
 
     //create toefl object
     toefl score;
@@ -1042,7 +1051,7 @@ bool InternationalList::create(){
     score.setWriting(stoi(writingInput));
     score.setTotal();
 
-    sortedInsert(firstInput, lastInput, CGPA, research, idInternational, countryInput, score);
+    sortedInsert(firstInput, lastInput, cgpaInput, researchInput, idInternational, countryInput, score);
     idInternational++;
     return true;
 
