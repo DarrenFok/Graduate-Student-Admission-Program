@@ -27,4 +27,4 @@ toefl.o: toefl.cpp toefl.hpp
 
 #remove built files
 clean:
-	del main main.exe main.o student.o stu_sort.o toefl.o *~
+	rm -rf main main.exe main.o student.o stu_sort.o toefl.o *~
